@@ -1,25 +1,23 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
-  </ion-header-bar>
-  <ion-content>
-    <form ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
+<ion-view title="" class="loginlist" hide-nav-bar="true" >
+  <ion-content padding="true">
+          <button class="button-clear ion-navicon" menu-toggle="left" style="color:white; font-size:30px;"></button>
+<!--      <button class="button-clear" style="color: white; float:right; padding-top:2%;" ui-sref="tabsController.home()">X</button>-->
+    <form ng-submit="doLogin()"  class="loginlist" >
+      <div class="loginlist">
+          <h1 style="color: white; margin-top:-10%; padding-bottom:5%;">Login</h1>
+        <label class="item item-input loginlist" >
+          <span class="input-label loginlist">Username</span>
+          <input style="color: white;" type="text" ng-model="loginData.username">
         </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
+        <label class="item item-input loginlist">
+          <span class="input-label loginlist">Password</span>
+          <input style="color: white;" type="password" ng-model="loginData.password">
         </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
+        <label class="item loginlist">
+          <button class="button button-block loginlist" style="background-color:white; color:#20B2AA;" type="submit">Log in</button>
         </label>
+          <label><button class="button button-clear button-block" style="color:white;">Create an account</button></label>
       </div>
     </form>
   </ion-content>
-</ion-modal-view>
+</ion-view>

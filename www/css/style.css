@@ -1,1 +1,359 @@
-/* Empty. Add your own CSS if you like */
+
+/** BODY **/
+ion-item,ion-nav-view{
+    font-family: karla;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    word-spacing: 0.3px;
+    background-color: white;
+}
+ion-content{
+    margin-top:5%;
+}
+h1,.title{
+    font-family: karla;
+    font-size: 22px;
+    text-align: center;
+    margin:5%;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
+h2{
+    font-family: karla;
+    text-align: center;
+    color:dimgray;
+    font-size: 20px;
+}
+
+h3{
+    font-family: karla;
+    text-align: left;
+    color:black;
+    font-size: 19px;
+}
+h5{
+    font-family: karla;
+    text-align: left;
+    padding:0%;
+    color:black;
+    font-size: 14px;
+}
+
+input,option,select{
+
+    font-family: karla;
+    letter-spacing: 0.3px;
+    word-spacing: 0.3px;
+}
+
+/** HEADER BAR **/
+
+.bar-header,
+.bar.bar-stable{
+    text-align: center;
+    background-color: white;
+    box-shadow: none;
+    margin-bottom:5%;
+    border:0px solid whitesmoke;
+}
+.bar.bar-stable .title{
+    color:black;
+    font-weight: none;
+    font-size:15px;
+    text-transform: capitalize;
+}
+
+.bar-header > h1{
+    color:dimgray;
+}
+
+.bar-stable .button.button-icon{
+    color:dimgray;
+}
+
+.button{
+    background-color:#20B2AA;
+    color:white;
+    font-family: karla;
+    letter-spacing: 0.3px;
+    word-spacing: 0.3px;
+}
+ion-nav-back-button{
+    border:1px solid red;
+    color:dimgray
+}
+.input-label{
+    font-family: karla;
+    font-size: 15px;
+    letter-spacing: 1px;
+    word-spacing: 0.5px;
+    border:none;
+    width:20%;
+    margin-left:0%;
+    margin-right:-10%;
+}
+
+/** OTHERS **/
+.label{
+    padding-right:7%;
+}
+
+input{
+    width:1em;
+    border:10px solid navy;
+    text-align: center;
+}
+
+.input-label{
+    font-size:12px;
+}
+
+.item{
+    border-color: white;
+    width:100%;
+}
+.item item-input{
+    display: block;
+    font-size:10px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+p{
+    padding:2%;
+    font-size:17px;
+    font-weight: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.pagetitle{
+    padding:3%;
+}
+/** RADIO **/
+.radio-content{
+    width:100%;
+    background-color: white;
+    margin-bottom:0%;
+    font-size: 12px;
+}
+.radio-icon{
+    font-size: 1px;
+    background-color: white;
+}
+
+.item-radio input:checked + .radio-content .item-content{
+    background-color: white;
+    color:#20B2AA;
+}
+.item-radio .icon{
+    color:#20b2AA;
+}
+
+option,select{
+    border:white;
+    padding:2%;
+    width:11em;
+    text-align: center;
+}
+option{
+    background-color:white;
+    padding:1%;
+    border:white;
+}
+.toptitle{
+    background-color: #20B2AA;
+    color:white;
+    padding-top:-10%;
+}
+#listcard{
+    border: 1px solid #20B2AA;
+    border-radius: 5%;
+}
+
+.link{
+    color:#20B2AA;
+    text-align: center;
+    font-size: 15px;
+    display: block;
+}
+.buttons{
+    color:#20B2AA;
+}
+
+/** LOGIN **/
+
+.loginlist{
+    background-color: #20B2AA;
+    color:white;
+    border:none;
+}
+form>.loginlist{
+    margin-top:30%;
+}
+.icon{
+    /*color:#20B2AA;*/
+    color:grey;
+}
+
+/** NAVIGATION MENU **/
+
+.menu .bar-header{
+    height:20%;
+    margin-bottom: 20%;
+    text-align: center;
+    background-color: white;
+    border:none;
+}
+.side-menu-left{
+    margin-top:31%;
+    font-size: 10px;
+    border:none;
+}
+.titleheader{
+    width:100%;
+    height:100%;
+    border:none;
+}
+.menunav {
+    height:3.5em;
+    font-size:13px;
+    padding-left: 10%;
+}
+
+/** TABS **/
+
+.tab-item{
+    font-family: karla;
+    letter-spacing: 0.5px;
+}
+.tabs{
+    border-top:0px solid grey;
+    background-color: white;
+}
+
+.tab-item .icon{
+    font-size: 25px;
+    padding-top:5%;
+}
+
+.tab-title{
+    font-size:10px;
+}
+
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated,.tab-item-active .icon{
+    color:#20B2AA;
+    font-weight: bold;
+}
+
+/** PROFILE PAGE **/
+
+.ic-selected{
+    margin: 0px; 
+    line-height:100px; 
+    background-color:whitesmoke; 
+    text-align: center;
+    border-radius: 100%;
+    width:26%;
+    margin-top:5%;
+    margin-left:10%;
+    z-index: 0;
+}
+
+.ion-image{
+    font-size: 40px; 
+    color: rgb(136, 136, 136); 
+    vertical-align: middle;
+}
+
+.profilebackgrd{
+    border-bottom: 0px solid lightgrey; 
+    margin-top:-45%; 
+    width:100%;
+    height:125px;  
+    z-index: -1; 
+    background-color:#20b2AA;
+    position: relative;
+}
+.profilelabel{
+    margin-top:15%;
+    word-spacing: 0.5px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    font-size:15px;
+    padding-left:13%;
+}
+.bio{
+    font-style: italic;
+    border:1px solid red;
+    width:40%;
+    word-break: break-all;
+    margin-left:3%;
+    font-family: karla;
+    font-size:10px;
+    padding:1%;
+    margin-top:-3%;
+    word-spacing: 1px;
+    letter-spacing:1px;
+    color:antiquewhite;
+    border:1px solid red;
+}
+.buttonbar{
+    background-color:white;
+    color:dimgray;
+    border:none;
+    padding:5%;
+}
+.buttongrid{
+    margin-top:5%;
+    border-top:0px solid whitesmoke;
+}
+.buttonbar span{
+    display:block;
+    font-family: karla;
+    font-size: 10px;
+    padding-top:16%;
+}
+
+.buttonbar i{
+    font-size:25px;
+    color:dimgray;
+    font-weight: none;
+}
+/** HOME **/
+
+ion-slides{
+    margin:5%;
+    width:90%;
+    height:250px;
+    border-radius:0%;
+}
+.slidepage{
+    padding:10%;
+    border-radius: 5%;
+}
+.homelabel{
+    padding-top:9%;
+    padding-left:8%;
+}
+
+/** NUTRITION **/
+
+.nuritionTitle{
+    margin-top:0%;
+    color:black;
+    padding:5%;
+}
+
+.assess{
+    border:0px solid whitesmoke;
+    float:left;
+    height:300px;
+    width:50%;
+    margin-top:2%;
+    padding:3%;   
+}
+.hlabel{
+    border-bottom: 1px solid whitesmoke;
+    padding-left: 8%;
+    padding-bottom:10px;
+}
