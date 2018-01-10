@@ -1,0 +1,39 @@
+<ion-view title="" class="loginlist" hide-nav-bar="true">
+  <ion-content padding="true">
+    <button class="button-clear ion-navicon" menu-toggle="left" style="color:white; font-size:30px;"></button>
+    <!--      <button class="button-clear" style="color: white; float:right; padding-top:2%;" ui-sref="tabsController.home()">X</button>-->
+    <form ng-submit="doRegister(RegisterData)" class="loginlist">
+      <div class="loginlist">
+        <h1 style="color: white; margin-top:-10%; padding-bottom:5%;">Register</h1>
+        <p>To take note during testing: 1st 4 fields are required</p>
+        <label class="item item-input loginlist">
+          <span class="input-label loginlist">Username</span>
+          <input type="text" ng-model="RegisterData.username" required />
+        </label>
+        <label class="item item-input loginlist">
+          <span class="input-label loginlist">Email</span>
+          <input type="email" ng-model="RegisterData.email" required />
+        </label>
+        <label class="item item-input loginlist">
+          <span class="input-label loginlist">Password</span>
+          <input type="password" ng-model="RegisterData.password" required />
+        </label>
+        <label class="item item-input loginlist">
+          <span class="input-label loginlist">Retype Password</span>
+          <input type="password" ng-model="RegisterData.repassword" required />
+        </label>
+        <label class="item item-input loginlist">
+          <span class="input-label loginlist">Gender</span>
+          <input type="text" ng-model="RegisterData.gender">
+        </label>
+        <label class="item item-input loginlist">
+          <span class="input-label loginlist">Date of Birth</span>
+          <input type="text" ng-model="RegisterData.birth">
+        </label>
+        <label class="item loginlist">
+          <button class="button button-block loginlist" style="background-color:white; color:#20B2AA;" type="submits">Register</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
