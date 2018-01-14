@@ -84,7 +84,7 @@ angular.module('firebaseService', ['firebase'])
                 firebase.initializeApp(config);
             }
 
-            var ref = firebase.database().ref().child("recipe").child;
+            var ref = firebase.database().ref().child("recipe");
             
             var recipeArray = $firebaseArray(ref);
             
@@ -101,7 +101,6 @@ angular.module('firebaseService', ['firebase'])
                         date:rdate.toDateString()
                     };
                     recipeArray.$add(recipeItem);
-                    firebase
                 },
 
                 all: function () {
