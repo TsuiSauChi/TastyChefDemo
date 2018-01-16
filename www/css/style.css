@@ -12,7 +12,7 @@ ion-content{
 }
 h1,.title{
     font-family: karla;
-    font-size: 22px;
+    font-size: 15px;
     text-align: center;
     margin:5%;
     letter-spacing: 1px;
@@ -31,6 +31,15 @@ h3{
     color:black;
     font-size: 19px;
 }
+
+h4{
+    font-family: karla;
+    text-align: left;
+    padding:0%;
+    color:black;
+    font-size: 16px;
+}
+
 h5{
     font-family: karla;
     text-align: left;
@@ -54,7 +63,7 @@ input,option,select{
     background-color: white;
     box-shadow: none;
     margin-bottom:5%;
-    border:0px solid whitesmoke;
+    border:none;
 }
 .bar.bar-stable .title{
     color:black;
@@ -129,6 +138,7 @@ p{
 .pagetitle{
     padding:3%;
 }
+
 /** RADIO **/
 .radio-content{
     width:100%;
@@ -225,19 +235,24 @@ form>.loginlist{
 .tab-item{
     font-family: karla;
     letter-spacing: 0.5px;
+    margin-top:-3px;
 }
 .tabs{
-    border-top:0px solid grey;
+    border-top:0.5px solid ghostwhite;
+    height:45px;
     background-color: white;
 }
 
 .tab-item .icon{
     font-size: 25px;
-    padding-top:5%;
+    margin-top:%;
+    padding:5%;
+    margin-bottom: :-5%;
+    color:black;
 }
 
 .tab-title{
-    font-size:10px;
+    font-size:9px;
 }
 
 .tab-item.tab-item-active, .tab-item.active, .tab-item.activated,.tab-item-active .icon{
@@ -297,85 +312,13 @@ form>.loginlist{
     color:antiquewhite;
     border:1px solid red;
 }
-.buttonbar{
-    background-color:white;
-    color:dimgray;
-    border:none;
-    padding:5%;
-}
-.buttongrid{
-    margin-top:5%;
-    border-top:0px solid whitesmoke;
-}
-.buttonbar span{
-    display:block;
-    font-family: karla;
-    font-size: 10px;
-    padding-top:16%;
-}
 
-.buttonbar i{
-    font-size:25px;
-    color:dimgray;
-    font-weight: none;
-}
-  /* Profile avatar */
-  .avatar {
-    border-radius: 100%;
-    position: absolute;
-  }
-
-  /* Small for notifications */
-  .badge-container {
-    position: relative;
-  }
-
-  .custom-badge {
-    position:absolute; 
-    top:5px; 
-    left:15px; 
-    background: map-get($colors, danger); 
-    border-radius: 100%; 
-    color: #fff; 
-    font-size: 12px !important;
-    padding: 4px; 
-    font-weight: bold;
-  }
-
-  .info {
-    padding-top: 4px;
-  }
-
-  /* Profile edit button */
-  .edit-button {
-    background: #fff; 
-    border: 1px solid #ccc; 
-    font-size: 13px; 
-    border-radius: 3px;
-    padding: 5px;
-    font-weight: bold;
-    width: 90%;
-    margin-right: 30px;
-  }
-
-  .edit-button:active {
-    border-color: #dce2ed;
-  }
-
+ 
 /** HOME **/
 
-ion-slides{
-    margin:5%;
-    width:90%;
-    height:250px;
-    border-radius:0%;
-}
-.slidepage{
-    padding:10%;
-    border-radius: 5%;
-}
+
 .homelabel{
-    padding-top:9%;
+    padding-top:2%;
     padding-left:8%;
 }
 
@@ -399,4 +342,105 @@ ion-slides{
     border-bottom: 1px solid whitesmoke;
     padding-left: 8%;
     padding-bottom:10px;
+}
+
+/** Search **/
+.searchbar{
+
+    background-color: #ffg;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+    font-size: 15px;
+    color:#ccc;
+    width: 80%;
+    margin:10%;
+    margin-top:-6%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.wide-as-needed {
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+.scroll { 
+  min-width: 100%;
+}
+.categories{
+    margin-top:-7%;
+}
+/** RECIPE **/
+.recipepage{
+    
+}
+.toppick{
+   width:1800px;
+    padding:0;
+    margin-left:3%;
+}
+.card{
+    width:200px;
+    height:250px;
+    float:left;
+}
+ion-slides{
+    margin:5%;
+    width:90%;
+    height:200px;
+    border-radius:0%;
+}
+.slidepage{
+    padding:10%;
+    border-radius: 5%;
+}
+.button-bar{
+    min-width: 100%;
+}
+.buttonbar{
+    background-color:white;
+    color:dimgray;
+    border:none;
+    border-radius: 10px;
+    padding:4%;
+    margin:3%;
+    min-width:20%;
+    min-height:90px;
+}
+.buttongrid{
+    margin:3%;
+    border-top:0px solid whitesmoke;
+}
+.buttonbar span{
+    display:block;
+    font-family: karla;
+    font-size: 10px;
+    padding-top:16%;
+}
+
+.buttonbar i{
+    font-size:25px;
+    color:dimgray;
+    font-weight: none;
+}
+img{
+    width:80%;
+}
+ion-card{
+    width:50%;
+    line-height: 00px;
+    padding:3%;
+    margin:5%;
+    border:1px solid whitesmoke;
+}
+
+
+ion-card-content{
+    border:1px solid ;
+}
+.scroll-bar{
+    display: none;
+}
+.scroll-view.scroll-x {
+    overflow-x: hidden;  /* default value is 'scroll' */
 }

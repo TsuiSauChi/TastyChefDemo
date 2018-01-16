@@ -1,13 +1,14 @@
 <ion-view title="Profile" id="page4" hide-nav-bar="true">
-    <ion-content>
-        <button class="button-clear ion-navicon" menu-toggle="left" style="color:white; font-size:30px;"></button>
-        <button class="button-clear ion-ios-gear-outline" style="color:white; font-size:25px; float:right; padding:1%; padding-right:2%;"></button>
-        <div data-componentid="image1" data-tap-disabled="true" class="ic-selected"><i class="icon ion-image" src="img/"></i>
-        </div>
-        <div class="profilebackgrd" style="background:url(img/slide4.jpg) no-repeat center;     background-size:cover; "></div>
-        <h2 class="profilelabel">username</h2>
-        <input class="bio" style="font-size: 10px; color:dimgray" type="text" placeholder="edit your description">
-<!--
+  <ion-content>
+    <button class="button-clear ion-navicon" menu-toggle="left" style="color:white; font-size:30px;"></button>
+    <button class="button-clear ion-ios-gear-outline" style="color:white; font-size:25px; float:right; padding:1%; padding-right:2%;"></button>
+    <div data-componentid="image1" data-tap-disabled="true" class="ic-selected">
+      <img class="icon ion-image" ng-src="{{trustSrc(profileImage)}}" style="border-radius: 50%;"></img>
+    </div>
+    <div class="profilebackgrd" style="background:url(img/slide4.jpg) no-repeat center;     background-size:cover; "></div>
+    <h2 class="profilelabel">{{profileName}}</h2>
+    <input class="bio" style="font-size: 10px; color:dimgray" type="text" placeholder="edit your description">
+    <!--
         <div class="buttongrid">
             <div id="profile-button-bar1" class="button-bar">
                 <button class="buttonbar button-block" ui-sref="nurition()"><i class="ion-android-clipboard"></i><span>Nurition Assessment</span></button>
@@ -18,5 +19,18 @@
             </div>
         </div>
 -->
-    </ion-content>
+    <div class="buttongrid">
+      <div id="profile-button-bar1" class="button-bar">
+        <button class="buttonbar button-block" ui-sref="">
+          <i class="ion-ios-heart"></i>
+          <span>likes</span>
+        </button>
+        <button class="buttonbar button-block" ui-sref="">
+          <i class="ion-grid"></i>
+          <span>Feed</span>
+        </button>
+      </div>
+    </div>
+
+  </ion-content>
 </ion-view>
