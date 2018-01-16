@@ -1,61 +1,80 @@
 <ion-view title="Recipe" id="page5" hide-nav-bar="true">
-    <div class="bar-stable bar bar-header">
-        <span class="left-buttons">
-            <button style="color:dimgray; font-size:32px;" class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-        </span>
-        <div class="title title-center header-item" style="left: 45px; right: 45px;">Recipe</div>
+  <div class="bar-stable bar bar-header">
+    <span class="left-buttons">
+      <button style="color:dimgray; font-size:32px;" class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </span>
+    <div class="title title-center header-item" style="left: 45px; right: 45px;">Recipe</div>
 
-        <span style="margin-left:83%;">
-            <button class="button-clear ion-ios-search" style="color:dimgray; font-size:25px; text-align:right; padding:1%;  padding-right:3%;" ui-sref="search()"></button>
-        </span>
+    <span style="margin-left:83%;">
+      <button class="button-clear ion-ios-search" style="color:dimgray; font-size:25px; text-align:right; padding:1%;  padding-right:3%;"
+        ui-sref="search()"></button>
+    </span>
 
+  </div>
+  <ion-content padding="false" has-header="true" style="margin-top:16%;">
+
+    <div class="recipepage">
+      <h3 class="homelabel">Today's Recipe</h3>
+      <ion-slides disable-side-menu-drag="" options="{'loop': true}" slider="slider1" delegate-handle="slider1" id="home-slider1">
+        <ion-slide-page class="slidepage" style="background:url(img/slide1.jpg) no-repeat center;     background-size:cover; "></ion-slide-page>
+        <ion-slide-page class=" slidepage" style="background:url(img/slide2.jpg)no-repeat center;     background-size:cover; "></ion-slide-page>
+        <ion-slide-page class="slidepage" style="background:url(img/slide3.jpg) no-repeat center;     background-size:cover; "></ion-slide-page>
+      </ion-slides>
+
+      <div>
+        <h3 class="homelabel">Top Pick</h3>
+        <ion-scroll direction="x" class="wide-as-needed">
+          <div class="toppick">
+            <div class="card">
+              <ion-slide-page class="slidepage" style="background:url(img/slide5.jpg) no-repeat center;     background-size:cover; "></ion-slide-page>
+            </div>
+            <div class="card">
+              <ion-slide-page class="slidepage" style="background:url(img/slide4.jpg) no-repeat center;  background-size:cover; "></ion-slide-page>
+            </div>
+            <div class="card">
+              <ion-slide-page class="slidepage" style="background:url(img/slide3.jpg) no-repeat center;  background-size:cover; "></ion-slide-page>
+            </div>
+            <div class="card">
+              <ion-slide-page class="slidepage" style="background:url(img/slide2.jpg) no-repeat center;  background-size:cover; "></ion-slide-page>
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
+
+      <div class="assessment">
+        <h5 class="homelabel">Browse in Category</h5>
+        <div class="buttongrid">
+          <div id="profile-button-bar1" class="button-bar">
+            <button class="buttonbar button-block" ui-sref="nurition()">
+              <img src="img/icon/main.png">
+              <span>Main</span>
+            </button>
+            <button class="buttonbar button-block" ui-sref="payment()">
+              <img src="img/ingredient/pizza.png">
+              <span>Western</span>
+            </button>
+            <button class="buttonbar button-block">
+              <img src="img/ingredient/chicken.png">
+              <span>Meat</span>
+            </button>
+          </div>
+
+          <div id="profile-button-bar1" class="button-bar">
+            <button class="buttonbar button-block" ui-sref="nurition()">
+              <img src="img/ingredient/healthy.png">
+              <span>Healthy</span>
+            </button>
+            <button class="buttonbar button-block" ui-sref="payment()">
+              <img src="img/icon/quick.png">
+              <span>Quick</span>
+            </button>
+            <button class="buttonbar button-block">
+              <img src="img/icon/budget.png">
+              <span>Budget</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <ion-content padding="false" has-header="true" style="margin-top:16%;">
-
-        <div class="recipepage">
-            <h3 class="homelabel">Today's Recipe</h3>
-            <ion-slides disable-side-menu-drag="" options="{'loop': true}" slider="slider1" delegate-handle="slider1" id="home-slider1" >
-                <ion-slide-page class="slidepage" style="background:url(img/slide1.jpg) no-repeat center;     background-size:cover; "></ion-slide-page>
-                <ion-slide-page class=" slidepage" style="background:url(img/slide2.jpg)no-repeat center;     background-size:cover; "></ion-slide-page>
-                <ion-slide-page class="slidepage" style="background:url(img/slide3.jpg) no-repeat center;     background-size:cover; "></ion-slide-page>
-            </ion-slides>
-
-            <div>
-                <h3 class="homelabel">Top Pick</h3>
-                <ion-scroll direction="x" class="wide-as-needed">
-                    <div class="toppick"> 
-                        <div class="card">
-                            <ion-slide-page class="slidepage" style="background:url(img/slide5.jpg) no-repeat center;     background-size:cover; "></ion-slide-page>
-                        </div>
-                        <div class="card">
-                            <ion-slide-page class="slidepage" style="background:url(img/slide4.jpg) no-repeat center;  background-size:cover; "></ion-slide-page>
-                        </div>
-                        <div class="card">
-                            <ion-slide-page class="slidepage" style="background:url(img/slide3.jpg) no-repeat center;  background-size:cover; "></ion-slide-page>
-                        </div>
-                        <div class="card">
-                            <ion-slide-page class="slidepage" style="background:url(img/slide2.jpg) no-repeat center;  background-size:cover; "></ion-slide-page>
-                        </div>
-                    </div>
-                </ion-scroll>
-            </div>
-
-            <div class="assessment">
-                <h5 class="homelabel">Browse in Category</h5>
-                <div class="buttongrid">
-                    <div id="profile-button-bar1" class="button-bar">
-                        <button class="buttonbar button-block" ui-sref="nurition()"><img src="img/icon/main.png"><span>Main</span></button>
-                        <button class="buttonbar button-block" ui-sref="payment()"><img src="img/ingredient/pizza.png"><span>Western</span></button>
-                        <button class="buttonbar button-block"><img src="img/ingredient/chicken.png"><span>Meat</span></button>
-                    </div>
-
-                    <div id="profile-button-bar1" class="button-bar">
-                        <button class="buttonbar button-block" ui-sref="nurition()"><img src="img/ingredient/healthy.png"><span>Healthy</span></button>
-                        <button class="buttonbar button-block" ui-sref="payment()"><img src="img/icon/quick.png"><span>Quick</span></button>
-                        <button class="buttonbar button-block"><img src="img/icon/budget.png"><span>Budget</span></button>
-                    </div>
-                </div>
-            </div>
-        </div> 
-    </ion-content>
+  </ion-content>
 </ion-view>

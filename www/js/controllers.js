@@ -46,7 +46,7 @@ angular.module('app.controllers', ['firebase'])
         date: new Date(),
       };
 
-      scope.add = function () {
+     $scope.add = function () {
 
       recipeService.add($scope.recipe.name,
         $scope.recipe.image,
