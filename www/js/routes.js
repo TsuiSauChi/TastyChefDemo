@@ -49,6 +49,25 @@ angular.module('app.routes', [])
         }
       })
 
+      .state('search', {
+        url: '/search',
+        templateUrl: 'templates/search.html',
+        controller: 'searchCtrl'
+      })
+
+      .state('addrecipe', {
+        url: '/addrecipe',
+        templateUrl: 'templates/addrecipe.html',
+        controller: 'addrecipeCtrl'
+      })
+
+      .state('category', {
+        url: '/category',
+        templateUrl: 'templates/category.html',
+        controller: 'categoryCtrl'
+      })
+
+
       .state('recommendedRecipes', {
         url: '/recommendedrecipe',
         templateUrl: 'templates/recommendedRecipes.html',
