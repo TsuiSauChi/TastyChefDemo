@@ -1,27 +1,27 @@
 angular.module('app.controllers', ['firebase'])
 
   .controller('tastyChefCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-        // You can include any angular dependencies as parameters for this function
-        // TIP: Access Route Parameters for your page via $stateParams.parameterName
-        function ($scope, $stateParams, $state) {
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, $state) {
 
-          $scope.signOut = function () {
-            firebase.auth().signOut().then(function () {
-              console.log("Sign-out successful");
-              $state.go('login');
-            }).catch(function (error) {
-              console.log("Error");
-            });
-          }
+      $scope.signOut = function () {
+        firebase.auth().signOut().then(function () {
+          console.log("Sign-out successful");
+          $state.go('login');
+        }).catch(function (error) {
+          console.log("Error");
+        });
+      }
 
-        }])
+    }])
 
-    .controller('homeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-      // You can include any angular dependencies as parameters for this function
-      // TIP: Access Route Parameters for your page via $stateParams.parameterName
-      function ($scope, $stateParams) {
+  .controller('homeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams) {
 
-      }])
+    }])
 
   .controller('cartCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
@@ -30,47 +30,47 @@ angular.module('app.controllers', ['firebase'])
 
     }])
 
-    .controller('profileCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-      // You can include any angular dependencies as parameters for this function
-      // TIP: Access Route Parameters for your page via $stateParams.parameterName
-      function ($scope, $stateParams) {
-      }])
+  .controller('profileCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams) {
+    }])
 
   .controller('addrecipeCtrl', ['$scope', '$stateParams', 'recipeService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-      // You can include any angular dependencies as parameters for this function
-      // TIP: Access Route Parameters for your page via $stateParams.parameterName
-      function ($scope, $stateParams, recipeService) {
-        $scope.recipe = {
-          name: null,
-          image: null,
-          portion: null,
-          dificulty: null,
-          type: null,
-          date: new Date(),
-        };
-      }])
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, recipeService) {
+      $scope.recipe = {
+        name: null,
+        image: null,
+        portion: null,
+        dificulty: null,
+        type: null,
+        date: new Date(),
+      };
+    }])
 
-      .controller('recipeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-        // You can include any angular dependencies as parameters for this function
-        // TIP: Access Route Parameters for your page via $stateParams.parameterName
-        function ($scope, $stateParams) {
+  .controller('recipeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams) {
 
 
-          $scope.add = function () {
+      $scope.add = function () {
 
-            recipeService.add($scope.recipe.name,
-              $scope.recipe.image,
-              $scope.recipe.portion,
-              $scope.recipe.difficulty,
-              $scope.recipe.type,
-              $scope.recipe.date);
-          }
-        }])
+        recipeService.add($scope.recipe.name,
+          $scope.recipe.image,
+          $scope.recipe.portion,
+          $scope.recipe.difficulty,
+          $scope.recipe.type,
+          $scope.recipe.date);
+      }
+    }])
 
 
   .controller('recommendedRecipesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     function ($scope, $stateParams) {
-  }])
+    }])
 
   .controller('searchCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
@@ -79,29 +79,47 @@ angular.module('app.controllers', ['firebase'])
 
     }])
 
-  .controller('GetStartedNutritionAssessmentCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+  .controller('GetStartedNutritionAssessmentCtrl', ['$scope', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
+    function ($scope, $state) {
+      $scope.next = function () {
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user != null) {
+            $state.go('AntropometricAssessmentPage');
 
+          } else {
+            $state.go('login');
+          }
+        });
+      }
 
     }])
 
-  .controller('AntropometricAssessmentPageCtrl', ['$scope', '$stateParams', 'NutritionProfileService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+  .controller('AntropometricAssessmentPageCtrl', ['$scope', '$stateParams', 'NPService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams,NutritionProfileService) {
+    function ($scope, $stateParams, NPService) {
 
-      $scope.addAntropometricAssessmentInput = function (item) {
-     
-        NutritionProfileService.add(item);
+      $scope.addAntropometricAssessmentInput = function (nutritionprofile) {
+   
+        var item = NPService.get();
+        item.push(nutritionprofile);
+        console.log(item);
+       
+        console.log(item[0].height);
 
-      }
+        //NutritionProfileService.add(nutritionprofile);
+         
+       
+
+        }
+  
 
     }])
   .controller('DietaryIntakeAssessmentPageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     function ($scope, $stateParams) {
-}])
+    }])
   .controller('categoryCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -135,8 +153,8 @@ angular.module('app.controllers', ['firebase'])
 
 
     }])
-    .controller('MedicalConditionAssessmentPageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-      function ($scope, $stateParams) {
+  .controller('MedicalConditionAssessmentPageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    function ($scope, $stateParams) {
     }])
 
 
@@ -148,10 +166,10 @@ angular.module('app.controllers', ['firebase'])
 
     }])
   .controller('NutritionalAsessmentConfirmationPageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-      function ($scope, $stateParams) {
+    function ($scope, $stateParams) {
 
 
-      }])
+    }])
 
   .controller('nuritionCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function

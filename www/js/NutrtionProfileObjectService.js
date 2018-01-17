@@ -1,4 +1,4 @@
-angular.module('app.NutrtionProfileObjectService', ['ngStorage'])
+angular.module('app.NutrtionProfileObjectService', ['ngStorage', 'firebase'])
 
   /**************************
    Favourite Service
@@ -23,9 +23,15 @@ angular.module('app.NutrtionProfileObjectService', ['ngStorage'])
         },
 
         isFav: function (item) {
+        
           for (var i = 0; i < $storage.nutritionProfile.length; i++) {
             var event = JSON.parse($storage.nutritionProfile[i]);
-            if (event.id == item.id)
+   
+            //Check by username
+            firebase.auth().onAuthStateChanged((user) => {
+              //$scope.nutritionprofile.email = user.email;;
+            });
+            if (event.email == user.email)
               return i; // Returns the index
           }
           return -1;
@@ -35,6 +41,10 @@ angular.module('app.NutrtionProfileObjectService', ['ngStorage'])
           if (this.isFav(item) < 0) {// Not already in fav
             $storage.nutritionProfile.push(JSON.stringify(item)); // Save into local storage
           }
+          //else {
+
+          //  this.remove(item);
+          //}
         },
 
         remove: function (item) {
@@ -44,4 +54,17 @@ angular.module('app.NutrtionProfileObjectService', ['ngStorage'])
         },
 
       }
+        
+            
     }])
+
+  .factory('NPService',
+  function () {
+    var array = [];
+    return {
+      get: function () {
+        return array;
+      }
+    }
+
+     })

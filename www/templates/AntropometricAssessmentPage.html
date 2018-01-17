@@ -158,37 +158,39 @@
       <div id="content">
         <label class="item item-input" id="applyLeave-input2">
           <span class="input-label">Height:</span>
-          <input type="number" placeholder="cm" ng-model="antropometric.height">
+          <input type="number" placeholder="cm" ng-model="nutritionprofile.height">
 
         </label>
         <hr />
 
         <label class="item item-input" id="applyLeave-input2">
           <span class="input-label">Weight:</span>
-          <input type="number" placeholder="kg" ng-model="antropometric.weight">
+          <input type="number" placeholder="kg" ng-model="nutritionprofile.weight">
 
         </label>
         <hr />
-     
 
-          <label class="item item-input" id="applyLeave-input2">
-            <span class="input-label">Activity Level:</span>
-            <select style="height:40px; width:60%;" ng-model="antropometric.activityLevel">
-              <option value="1">Please Select</option>
-              <option value="2">Little or no exercise</option>
-              <option value="3">Light exercise/sports 1 to 3 days per week</option>
-              <option value="4">Moderate exercise/sports 6 to 7 days per week</option>
-              <option value="5">Hard exercise every day or exercise 2 times a day</option>
-              <option value="6">Hard exercise 2 or more times per day</option>
-            </select>
-          </label>
 
-</div>
-    </form>
-      <div id="buttonBorder">
-        <button class="button button-block" ui-sref="DietaryIntakeAssessmentPage()" ng-click="addAntropometricAssessmentInput(antropometric)">Next</button>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Activity Level:</span>
+          <select style="height:40px; width:60%;" ng-model="nutritionprofile.activityLevel">
+            <!--<option>Please Select</option>-->
+            <option value="2">Little or no exercise</option>
+            <option value="3">Light exercise/sports 1 to 3 days per week</option>
+            <option value="4">Moderate exercise/sports 6 to 7 days per week</option>
+            <option value="5">Hard exercise every day or exercise 2 times a day</option>
+            <option value="6">Hard exercise 2 or more times per day</option>
+          </select>
+        </label>
+        <input type="hidden" ng-model="email">
 
       </div>
+      <div id="buttonBorder">
+        <button class="button button-block" ui-sref="DietaryIntakeAssessmentPage()" ng-click="addAntropometricAssessmentInput(nutritionprofile)">Next</button>
+
+      </div>
+    </form>
+      
 
   </ion-content>
 
