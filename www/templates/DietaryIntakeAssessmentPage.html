@@ -1,0 +1,234 @@
+<ion-view title="Dietary Intake Assessment" id="page7">
+  <style>
+    #stepsButton {
+      border: 2px solid #4DB6AC;
+      border-radius: 8px;
+      background-color: white;
+      width: 90px;
+      height: 100%;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #stepsButtonHover {
+      border: 2px solid #4DB6AC;
+      border-radius: 8px;
+      background-color: #4DB6AC;
+      color: white;
+      width: 90px;
+      height: 100%;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #stepsLine {
+      /*border: 2px solid #4DB6AC;*/
+      /*border-radius: 8px;*/
+      background-color: white;
+      margin-top: 80%;
+    }
+
+    .grid {
+      /*border: 2px solid black;*/
+      width: 100%;
+    }
+
+    .row {
+      height: 10%;
+      width: 100%;
+      /*border: 2px solid black;*/
+    }
+
+    .rowContent {
+      height: 10%;
+      width: 100%;
+      /*margin-top:10%;
+      border: 2px solid black;*/
+    }
+
+
+
+    hr {
+      color: #4DB6AC;
+      /*z-index: -1;
+      margin-top: -136px;
+      position: static;*/
+    }
+
+    #buttonBorder {
+      margin-left: 10%;
+      float: left;
+      width: 80%;
+      height: 20%;
+      /*border: 2px solid #4DB6AC;*/
+    }
+
+    #antropometricborder {
+      border: 2px solid #4DB6AC;
+      border-radius: 12px;
+      background-color: white;
+      margin-top: 7.5%;
+      margin-left: 10%;
+      float: left;
+      width: 80%;
+      height: 18%;
+    }
+
+    .borderhead {
+      background-color: #4DB6AC;
+      text-align: center;
+      color: black;
+      font-weight: bold;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    h2 {
+      color: black;
+      font-weight: bold;
+    }
+
+    .padding {
+      border: 2px solid red;
+      height: 100%;
+      width: 100%;
+      float: left;
+    }
+
+
+
+    .input-label {
+      font-size: 14px;
+      width: 50%;
+    }
+
+    #content {
+      margin-left: 10%;
+      width: 80%;
+      height: 20%;
+      border: 3px solid #4DB6AC;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border-radius: 6px;
+    }
+
+    h1 {
+      font-weight: bold;
+    }
+
+    #form {
+      margin-top: 5%;
+    }
+  </style>
+  <ion-content padding="false" class=“has-header”>
+
+    <ion-grid class="grid">
+      <ion-row class="row">
+        <ion-col class="col-35">
+          <div id="stepsButtonHover">Step 1<br />Get Started</div>
+
+
+        </ion-col>
+        <ion-col class="col-10">
+          <div id="stepsLine">
+            <hr />
+          </div>
+        </ion-col>
+        <ion-col class="col-35">
+          <div id="stepsButtonHover">Step 2<br />Assessment</div>
+
+
+        </ion-col>
+        <ion-col class="col-10">
+          <div id="stepsLine">
+            <hr />
+          </div>
+        </ion-col>
+        <ion-col class="col-35">
+          <div id="stepsButton">Step 3<br />Confirmation</div>
+
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+    <form id="form" class="list">
+      <h1>Dietary Intake Asessment</h1>
+      <div id="content">
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Diet Type:</span>
+          <select style="height:40px; width:60%;">
+            <option value="1">Please Select</option>
+            <option value="2">Vegetarian</option>
+            <option value="3">Vegan</option>
+            <option value="4">Atkins/Ketogenic</option>
+          </select>
+
+        </label>
+        <hr />
+
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Food Allergy:</span>
+
+        </label>
+        <ion-item>
+          <ion-checkbox class="checkbox-balanced"> None</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Egg</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Fish</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Milk</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Peanuts</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Shellfish</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Soy</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Tree-Nuts</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Wheat</ion-checkbox>
+        </ion-item>
+        <hr />
+
+
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Food Avoidance:</span>
+        </label>
+        <ion-item>
+          <ion-checkbox class="checkbox-balanced"> None</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Beef</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Cheese</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Mutton</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced"> Onion</ion-checkbox>
+        </ion-item>
+        <hr />
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Meal Frequency</span>
+          <select style="height:40px; width:60%;">
+            <option value="0">Please Select</option>
+            <option value="1">1 times per day</option>
+            <option value="2">2 times per day</option>
+            <option value="3">3 times per day</option>
+            <option value="4">4 times per day</option>
+            <option value="5">5 times per day</option>
+            <option value="6">6 times per day</option>
+          </select>
+        </label>
+        <hr />
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Snack</span>
+          <select style="height:40px; width:60%;">
+            <option value="0">Please Select</option>
+            <option value="1">1 times per day</option>
+            <option value="2">2 times per day</option>
+            <option value="3">3 times per day</option>
+            <option value="4">4 times per day</option>
+            <option value="5">5 times per day</option>
+            <option value="6">6 times per day</option>
+          </select>
+        </label>
+      </div>
+    </form>
+    <div id="buttonBorder">
+      <button class="button button-block" ui-sref="MedicalConditionAssessmentPage()">Next</button>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>
