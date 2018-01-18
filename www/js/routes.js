@@ -49,6 +49,16 @@ angular.module('app.routes', [])
     }
   })
     
+    .state('tabsController.recipeDetails', {
+    url: '/recipeDetails',
+    views: {
+      'tab2': {
+        templateUrl: 'templates/recipeDetails.html',
+        controller: 'recipeDetailsCtrl'
+      }
+    }
+  })
+    
  .state('search', {
      url: '/search',
      templateUrl: 'templates/search.html',

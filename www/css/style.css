@@ -48,6 +48,8 @@ h5{
     font-size: 14px;
 }
 
+
+
 input,option,select{
 
     font-family: karla;
@@ -313,13 +315,14 @@ form>.loginlist{
     border:1px solid red;
 }
 
- 
+
 /** HOME **/
 
 
 .homelabel{
     padding-top:2%;
     padding-left:8%;
+    font-weight: 200;
 }
 
 /** NUTRITION **/
@@ -360,30 +363,77 @@ form>.loginlist{
 }
 
 .wide-as-needed {
-  overflow: scroll;
-  white-space: nowrap;
+    overflow: scroll;
+    white-space: nowrap;
 }
 
 .scroll { 
-  min-width: 100%;
+    min-width: 100%;
 }
 .categories{
     margin-top:-7%;
 }
+
+
 /** RECIPE **/
+
 .recipepage{
-    
+
 }
 .toppick{
-   width:1800px;
+    width:1800px;
     padding:0;
     margin-left:3%;
 }
 .card{
-    width:200px;
-    height:250px;
+    height:230px;
     float:left;
+    border-radius: 5%;
+    text-align: center;
+    
+    
 }
+.cardimage{
+    background-size:50% 50%; 
+    width:100%; 
+    object-fit: cover; 
+    height:100%;
+    z-index: -1;
+}
+
+.outercard{
+    max-width:200px;
+    height:250px;;
+    float:left;
+    margin-bottom: 5%;
+}
+
+.cardtitle{
+    text-align: left;
+    padding:10%;
+    font-size: 13px;
+    white-space:pre-line;
+
+}
+.fav{
+    margin-top:-21%;
+    text-align: left;
+}
+.heart{
+    font-size: 23px;
+    z-index: 2;
+    color:black;
+    font-weight: bold;
+    padding:7%;
+    
+}
+.no{
+    margin-top:-17%;
+    color:black;
+    text-align: left;
+    padding-left:22%;
+}
+
 ion-slides{
     margin:5%;
     width:90%;
@@ -391,7 +441,7 @@ ion-slides{
     border-radius:0%;
 }
 .slidepage{
-    padding:10%;
+    padding:0%;
     border-radius: 5%;
 }
 .button-bar{
@@ -443,4 +493,17 @@ ion-card-content{
 }
 .scroll-view.scroll-x {
     overflow-x: hidden;  /* default value is 'scroll' */
+}
+
+
+/** RECIPE DETAILS  **/
+
+.recipeTitle{
+    font-size: 18px;
+    border: none;
+}
+
+.rdfav{
+    font-size:20px;
+    text-align: center;
 }

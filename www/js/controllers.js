@@ -64,12 +64,44 @@ recipeService.add($scope.recipe.name,
 
 
 
-.controller('recipeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+
+.controller('recipeCtrl', ['$scope', '$stateParams','recipeService', 'favService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams,recipeService,favService) {
 
-//$scope.recipeArray = recipeService.all();
+   recipeService.all().then(function(result) {
+
+      $scope.recipeArray = result;
+       for (var i = 0; i < $scope.recipeArray.length; i++) {
+          if (favService.isFav($scope.recipeArray[i]) >= 0)
+            $scope.recipeArray[i].favIcon = "icon ion-ios-heart";
+          else
+            $scope.recipeArray[i].favIcon = "icon ion-ios-heart-outline";
+        }
+
+        });
+    
+     $scope.toggleFav = function(item) {
+        if (item.favIcon == "icon ion-ios-heart-outline") {
+          item.favIcon = "icon ion-ios-heart";
+          favService.add(item);
+        }
+        else {
+          item.favIcon = "icon ion-ios-heart-outline";
+          favService.dislike(item);
+        }
+      }
+
+}])
+
+.controller('recipeDetailsCtrl', ['$scope', '$stateParams','recipeService','favService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams,recipeService,favService) {
+    var id = $stateParams.id;
+    
+     $scope.recipeDetailsArray = recipeService.getSpecificRecipe(id);
 }])
 
 .controller('searchCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
