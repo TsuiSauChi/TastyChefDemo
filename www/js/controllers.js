@@ -68,7 +68,6 @@ angular.module('app.controllers', ['firebase'])
     function ($scope, $stateParams, recipeService, favService) {
 
       recipeService.all().then(function (result) {
-
         $scope.recipeArray = result;
         for (var i = 0; i < $scope.recipeArray.length; i++) {
           if (favService.isFav($scope.recipeArray[i]) >= 0)
@@ -181,13 +180,6 @@ angular.module('app.controllers', ['firebase'])
 
     }])
 
-  .controller('recipeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controllerr
-    // You can include any angular dependencies as parameters for this function
-    // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
-
-
-    }])
   .controller('MedicalConditionAssessmentPageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     function ($scope, $stateParams) {
     }])
@@ -275,11 +267,10 @@ angular.module('app.controllers', ['firebase'])
       }
     }])
 
-  .controller('registerCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup',
-    function ($scope, $stateParams, $state, $ionicPopup) {
+  .controller('registerCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', 'HomeService',
+    function ($scope, $stateParams, $state, $ionicPopup, HomeService) {
 
       $scope.doRegister = function (registerData) {
-        console.log(registerData.password, registerData.repassword);
         if (registerData.password === registerData.repassword) {
           firebase.auth().createUserWithEmailAndPassword(registerData.email, registerData.password).then(function (data) {
             //Pop up function
@@ -289,8 +280,16 @@ angular.module('app.controllers', ['firebase'])
             alertPopup.then(function (res) {
               console.log(res, "Register Success")
             });
-
-            $state.go('login');
+            //$state.go('login');
+          }).then(function () {
+            HomeService.addMember(
+              registerData.birth,
+              registerData.email,
+              registerData.gender,
+              registerData.mobile,
+              registerData.password,
+              registerData.username
+            );
           }).catch(function (error) {
             //Pop up function
             var alertPopup = $ionicPopup.alert({
