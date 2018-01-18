@@ -49,6 +49,16 @@ angular.module('app.routes', [])
         }
       })
 
+      .state('tabsController.recipeDetails', {
+        url: '/recipeDetails',
+        views: {
+          'tab2': {
+            templateUrl: 'templates/recipeDetails.html',
+            controller: 'recipeDetailsCtrl'
+          }
+        }
+      })
+
       .state('search', {
         url: '/search',
         templateUrl: 'templates/search.html',
@@ -66,7 +76,6 @@ angular.module('app.routes', [])
         templateUrl: 'templates/category.html',
         controller: 'categoryCtrl'
       })
-
 
       .state('recommendedRecipes', {
         url: '/recommendedrecipe',
@@ -110,43 +119,40 @@ angular.module('app.routes', [])
         controller: 'loginCtrl'
       })
 
+      .state('GetStartedNutritionAssessment', {
+        url: '/GetStartedNutritionAssessment',
+        templateUrl: 'templates/GetStartedNutritionAssessment.html',
+        controller: 'GetStartedNutritionAssessmentCtrl'
+      })
+
+      .state('AntropometricAssessmentPage', {
+        url: '/AntropometricAssessmentPage',
+        templateUrl: 'templates/AntropometricAssessmentPage.html',
+        controller: 'AntropometricAssessmentPageCtrl'
+      })
+
+      .state('DietaryIntakeAssessmentPage', {
+        url: '/DietaryIntakeAssessmentPage',
+        templateUrl: 'templates/DietaryIntakeAssessmentPage.html',
+        controller: 'DietaryIntakeAssessmentPageCtrl'
+      })
+
+      .state('MedicalConditionAssessmentPage', {
+        url: '/MedicalConditionAssessmentPage',
+        templateUrl: 'templates/MedicalConditionAssessmentPage.html',
+        controller: 'MedicalConditionAssessmentPageCtrl'
+      })
+      .state('NutritionalAsessmentConfirmationPage', {
+        url: '/NutritionalAsessmentConfirmationPage',
+        templateUrl: 'templates/NutritionalAsessmentConfirmationPage.html',
+        controller: 'NutritionalAsessmentConfirmationPageCtrl'
+      })
       .state('register', {
         url: '/register',
         templateUrl: 'templates/register.html',
         controller: 'registerCtrl'
       })
 
- .state('GetStartedNutritionAssessment', {
-    url: '/GetStartedNutritionAssessment',
-    templateUrl: 'templates/GetStartedNutritionAssessment.html',
-    controller: 'GetStartedNutritionAssessmentCtrl'
-    })
-
-    .state('AntropometricAssessmentPage', {
-      url: '/AntropometricAssessmentPage',
-      templateUrl: 'templates/AntropometricAssessmentPage.html',
-      controller: 'AntropometricAssessmentPageCtrl'
-    })
-
-    .state('DietaryIntakeAssessmentPage', {
-      url: '/DietaryIntakeAssessmentPage',
-      templateUrl: 'templates/DietaryIntakeAssessmentPage.html',
-      controller: 'DietaryIntakeAssessmentPageCtrl'
-    })
-
-    .state('MedicalConditionAssessmentPage', {
-      url: '/MedicalConditionAssessmentPage',
-      templateUrl: 'templates/MedicalConditionAssessmentPage.html',
-      controller: 'MedicalConditionAssessmentPageCtrl'
-    })
-    .state('NutritionalAsessmentConfirmationPage', {
-      url: '/NutritionalAsessmentConfirmationPage',
-      templateUrl: 'templates/NutritionalAsessmentConfirmationPage.html',
-      controller: 'NutritionalAsessmentConfirmationPageCtrl'
-    })
-
 
     $urlRouterProvider.otherwise('/page1/home')
-
-
   });

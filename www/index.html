@@ -30,9 +30,9 @@
       padding-top: 0px;
     }
 
-      .manual-remove-top-padding .scroll {
-        padding-top: 0px !important;
-      }
+    .manual-remove-top-padding .scroll {
+      padding-top: 0px !important;
+    }
 
     ion-list.manual-list-fullwidth div.list,
     .list.card.manual-card-fullwidth {
@@ -40,12 +40,12 @@
       margin-right: -10px;
     }
 
-      ion-list.manual-list-fullwidth div.list > .item,
-      .list.card.manual-card-fullwidth > .item {
-        border-radius: 0px;
-        border-left: 0px;
-        border-right: 0px;
-      }
+    ion-list.manual-list-fullwidth div.list>.item,
+    .list.card.manual-card-fullwidth>.item {
+      border-radius: 0px;
+      border-left: 0px;
+      border-right: 0px;
+    }
 
     .show-list-numbers-and-dots ul {
       list-style-type: disc;
@@ -125,16 +125,18 @@
             <ion-item id="tastyChef-list-item5" ui-sref="tabsController.home()" menu-close="" data-componentid="list-item5" class="menunav">Home</ion-item>
             <ion-item id="tastyChef-list-item6" ui-sref="tabsController.recipe()" menu-close="" data-componentid="list-item6" class="menunav">Recipes</ion-item>
             <ion-item id="tastyChef-list-item7" ui-sref="recommendedRecipes()" menu-close="" data-componentid="list-item7" class="menunav">Recommended Receipes</ion-item>
-            <ion-item id="tastyChef-list-item8" ui-sref="GetStartedNutritionAssessment()" menu-close="" data-componentid="list-item8" class="menunav">Nurition Assessment</ion-item>
+            <ion-item id="tastyChef-list-item8" ui-sref="GetStartedNutritionAssessment()" menu-close="" data-componentid="list-item8"
+              class="menunav">Nurition Assessment</ion-item>
             <ion-item id="tastyChef-list-item9" ui-sref="tabsController.cart()" menu-close="" data-componentid="list-item9" class="menunav">Shopping Cart</ion-item>
             <ion-item id="tastyChef-list-item10" ui-sref="orderedRecipe()" menu-close="" data-componentid="list-item10" class="menunav">Ordered Receipe</ion-item>
             <ion-item id="tastyChef-list-item11" ui-sref="orderHistory()" menu-close="" data-componentid="list-item11" class="menunav">Order History</ion-item>
             <ion-item id="tastyChef-list-item12" ui-sref="payment()" menu-close="" data-componentid="list-item12" class="menunav">Payment</ion-item>
-            <ion-item id="tastyChef-list-item13"  menu-close="" data-componentid="list-item13" class="menunav" ng-click="signOut()">Sign Out</ion-item>
+            <ion-item id="tastyChef-list-item13" menu-close="" data-componentid="list-item13" class="menunav" ng-click="signOut()">Sign Out</ion-item>
           </ion-list>
         </ion-content>
       </ion-side-menu>
     </ion-side-menus>
   </div>
 </body>
+
 </html>

@@ -21,18 +21,24 @@
         <ion-slide-page class="slidepage" style="background:url(img/slide3.jpg) no-repeat center;     background-size:cover; "></ion-slide-page>
       </ion-slides>
 
-      <div>
-        <h3 class="homelabel">Top Pick</h3>
-        <ion-scroll direction="x" class="wide-as-needed">
-          <div class="toppick">
-            <div class="card">
-              <ion-slide-page class="slidepage" style="background:url(img/slide5.jpg) no-repeat center;     background-size:cover; "></ion-slide-page>
-            </div>
-            <div class="card">
-              <ion-slide-page class="slidepage" style="background:url(img/slide4.jpg) no-repeat center;  background-size:cover; "></ion-slide-page>
-            </div>
-            <div class="card">
-              <ion-slide-page class="slidepage" style="background:url(img/slide3.jpg) no-repeat center;  background-size:cover; "></ion-slide-page>
+            <div>
+                <h3 class="homelabel">Top Pick</h3>
+                <ion-scroll direction="x" class="wide-as-needed" >
+                    <div class="toppick" ng-repeat="item in recipeArray">
+                        <div class="outercard">
+                            <div class="card"  ui-sref="tabsController.recipeDetails({id:item.id})" >
+                                <img class="cardimage" src="{{item.image}}"  />
+                                <div class="fav">
+                                    <icon class="{{item.favIcon}} heart" ng-click="toggleFav(item)"></icon>
+                                    <p class="no" >{{item.likes}}</p>
+                                </div>
+                            </div>
+                            <div class="cardtitle">
+                                <i>{{item.name}}</i>
+                            </div>
+                        </div>
+                    </div>
+                </ion-scroll>
             </div>
             <div class="card">
               <ion-slide-page class="slidepage" style="background:url(img/slide2.jpg) no-repeat center;  background-size:cover; "></ion-slide-page>

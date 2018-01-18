@@ -1,3 +1,4 @@
+
 angular.module('app.controllers', ['firebase'])
 
   .controller('tastyChefCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -40,6 +41,7 @@ angular.module('app.controllers', ['firebase'])
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
     function ($scope, $stateParams, recipeService) {
+
       $scope.recipe = {
         name: null,
         image: null,
@@ -48,13 +50,6 @@ angular.module('app.controllers', ['firebase'])
         type: null,
         date: new Date(),
       };
-    }])
-
-  .controller('recipeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-    // You can include any angular dependencies as parameters for this function
-    // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
-
 
       $scope.add = function () {
 
@@ -66,6 +61,46 @@ angular.module('app.controllers', ['firebase'])
           $scope.recipe.date);
       }
     }])
+
+  .controller('recipeCtrl', ['$scope', '$stateParams', 'recipeService', 'favService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, recipeService, favService) {
+
+      recipeService.all().then(function (result) {
+
+        $scope.recipeArray = result;
+        for (var i = 0; i < $scope.recipeArray.length; i++) {
+          if (favService.isFav($scope.recipeArray[i]) >= 0)
+            $scope.recipeArray[i].favIcon = "icon ion-ios-heart";
+          else
+            $scope.recipeArray[i].favIcon = "icon ion-ios-heart-outline";
+        }
+
+      });
+
+      $scope.toggleFav = function (item) {
+        if (item.favIcon == "icon ion-ios-heart-outline") {
+          item.favIcon = "icon ion-ios-heart";
+          favService.add(item);
+        }
+        else {
+          item.favIcon = "icon ion-ios-heart-outline";
+          favService.dislike(item);
+        }
+      }
+
+    }])
+
+  .controller('recipeDetailsCtrl', ['$scope', '$stateParams', 'recipeService', 'favService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, recipeService, favService) {
+      var id = $stateParams.id;
+
+      $scope.recipeDetailsArray = recipeService.getSpecificRecipe(id);
+    }])
+
 
 
   .controller('recommendedRecipesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -102,19 +137,19 @@ angular.module('app.controllers', ['firebase'])
     function ($scope, $stateParams, NPService) {
 
       $scope.addAntropometricAssessmentInput = function (nutritionprofile) {
-   
+
         var item = NPService.get();
         item.push(nutritionprofile);
         console.log(item);
-       
+
         console.log(item[0].height);
 
         //NutritionProfileService.add(nutritionprofile);
-         
-       
 
-        }
-  
+
+
+      }
+
 
     }])
   .controller('DietaryIntakeAssessmentPageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
