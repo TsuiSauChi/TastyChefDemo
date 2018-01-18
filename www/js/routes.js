@@ -116,6 +116,36 @@ angular.module('app.routes', [])
         controller: 'registerCtrl'
       })
 
+ .state('GetStartedNutritionAssessment', {
+    url: '/GetStartedNutritionAssessment',
+    templateUrl: 'templates/GetStartedNutritionAssessment.html',
+    controller: 'GetStartedNutritionAssessmentCtrl'
+    })
+
+    .state('AntropometricAssessmentPage', {
+      url: '/AntropometricAssessmentPage',
+      templateUrl: 'templates/AntropometricAssessmentPage.html',
+      controller: 'AntropometricAssessmentPageCtrl'
+    })
+
+    .state('DietaryIntakeAssessmentPage', {
+      url: '/DietaryIntakeAssessmentPage',
+      templateUrl: 'templates/DietaryIntakeAssessmentPage.html',
+      controller: 'DietaryIntakeAssessmentPageCtrl'
+    })
+
+    .state('MedicalConditionAssessmentPage', {
+      url: '/MedicalConditionAssessmentPage',
+      templateUrl: 'templates/MedicalConditionAssessmentPage.html',
+      controller: 'MedicalConditionAssessmentPageCtrl'
+    })
+    .state('NutritionalAsessmentConfirmationPage', {
+      url: '/NutritionalAsessmentConfirmationPage',
+      templateUrl: 'templates/NutritionalAsessmentConfirmationPage.html',
+      controller: 'NutritionalAsessmentConfirmationPageCtrl'
+    })
+
+
     $urlRouterProvider.otherwise('/page1/home')
 
 

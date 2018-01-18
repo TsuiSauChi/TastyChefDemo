@@ -14,7 +14,7 @@ angular.module('app',
     'firebase',
     'ngCordova',
     'firebaseService',
-    'ngCordovaOauth'])
+    'ngCordovaOauth', 'app.NutrtionProfileObjectService'])
 
   .config(function ($ionicConfigProvider, $sceDelegateProvider) {
 

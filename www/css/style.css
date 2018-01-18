@@ -12,7 +12,7 @@ ion-content{
 }
 h1,.title{
     font-family: karla;
-    font-size: 15px;
+    font-size: 22px;
     text-align: center;
     margin:5%;
     letter-spacing: 1px;
@@ -343,6 +343,8 @@ form>.loginlist{
     padding-left: 8%;
     padding-bottom:10px;
 }
+<<<<<<< HEAD
+=======
 
 /** Search **/
 .searchbar{
@@ -444,3 +446,4 @@ ion-card-content{
 .scroll-view.scroll-x {
     overflow-x: hidden;  /* default value is 'scroll' */
 }
+>>>>>>> master

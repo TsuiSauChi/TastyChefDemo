@@ -1,0 +1,198 @@
+
+<ion-view title="Nurition Assessment" id="page7">
+  <style>
+
+    #stepsButton {
+      border: 2px solid #4DB6AC;
+      border-radius: 8px;
+      background-color: white;
+      width: 90px;
+      height: 100%;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #stepsButtonHover {
+      border: 2px solid #4DB6AC;
+      border-radius: 8px;
+      background-color: #4DB6AC;
+      color: white;
+      width: 90px;
+      height: 100%;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #stepsLine {
+      /*border: 2px solid #4DB6AC;*/
+      /*border-radius: 8px;*/
+      background-color: white;
+      margin-top: 80%;
+    }
+
+    .grid {
+      /*border: 2px solid black;*/
+      width: 100%;
+    }
+
+    .row {
+      height: 10%;
+      width: 100%;
+      /*border: 2px solid black;*/
+    }
+
+    .rowContent {
+      height: 10%;
+      width: 100%;
+      /*margin-top:10%;
+      border: 2px solid black;*/
+    }
+
+
+
+    hr {
+      color: #4DB6AC;
+      /*z-index: -1;
+      margin-top: -136px;
+      position: static;*/
+    }
+    /*#description {
+      font-family: karla;
+      font-size: 16px;
+      font-weight:bold;
+      letter-spacing: 0.5px;
+      text-align:center;
+      margin-top:5%;
+    }*/
+    #description1 {
+      font-family: karla;
+      font-size: 16px;
+      font-weight: bold;
+      color: #4DB6AC;
+      letter-spacing: 0.5px;
+      text-align: center;
+      margin-top: 10%;
+      width: 80%;
+      margin-left: 10%;
+    }
+
+    #antropometricborder {
+      border: 2px solid #4DB6AC;
+      border-radius: 12px;
+      background-color: white;
+      margin-top: 7.5%;
+      margin-left: 10%;
+      float: left;
+      width: 80%;
+      height: 20%;
+    }
+
+    .borderhead {
+      background-color: #4DB6AC;
+      text-align: center;
+      color: black;
+      font-weight: bold;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    h2 {
+      color: black;
+      font-weight: bold;
+    }
+
+    .padding {
+      font-size: 16px;
+      text-align:center;
+      /*border: 2px solid red;*/
+      height:100%;
+    }
+
+    #buttonBorder {
+      margin-top: 7.5%;
+      margin-left: 10%;
+      float: left;
+      width: 80%;
+      height: 20%;
+    }
+  </style>
+  <ion-content padding="false" class=“has-header”>
+
+    <ion-grid class="grid">
+      <ion-row class="row">
+        <ion-col class="col-35">
+          <div id="stepsButtonHover">Step 1<br />Get Started</div>
+
+
+        </ion-col>
+        <ion-col class="col-10">
+          <div id="stepsLine">
+            <hr />
+          </div>
+        </ion-col>
+        <ion-col class="col-35">
+          <div id="stepsButton">Step 2<br />Assessment</div>
+
+
+        </ion-col>
+        <ion-col class="col-10">
+          <div id="stepsLine">
+            <hr />
+          </div>
+        </ion-col>
+        <ion-col class="col-35">
+          <div id="stepsButton">Step 3<br />Confirmation</div>
+
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row">
+
+        <div id="description1">Record your nutrition assessment to recommend recipes just for you!</div>
+      </ion-row>
+      <ion-row class="rowContent">
+        <div id="antropometricborder">
+          <div class="borderhead">
+            <h2>Antropometric</h2>
+          </div>
+          <div class="padding">
+           It is the measurement of our body height and weight based on age and gender for calculation of BMI.
+          </div>
+        </div>
+
+      </ion-row>
+      <ion-row class="rowContent">
+        <div id="antropometricborder">
+          <div class="borderhead">
+            <h2>Dietary Intake</h2>
+          </div>
+          <div class="padding">
+            It is refer to the daily eating patterns of an individual, inclucding diet type, food allergies and food avoidance.
+          </div>
+        </div>
+
+      </ion-row>
+      <ion-row class="rowContent">
+
+        <div id="antropometricborder">
+          <div class="borderhead">
+            <h2>Medical Condition</h2>
+          </div>
+          <div class="padding">
+            It is evaluation of an individual's health status.
+          </div>
+        </div>
+
+    </ion-grid>
+    <div id="buttonBorder">
+      <button class="button button-block" ng-click="next()">Get Started</button>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>
+
