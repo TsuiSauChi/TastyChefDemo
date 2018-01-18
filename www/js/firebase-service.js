@@ -215,3 +215,4 @@ angular.module('firebaseService', ['firebase'])
 
       }
     }])
+

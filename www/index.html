@@ -8,7 +8,6 @@
 
   <script src="lib/ionic/js/ionic.bundle.js"></script>
   <script src="js/ng-cordova.min.js"></script>
-  <script src="js/NutrtionProfileObjectService.js"></script>
 
   <!-- cordova script (this will be a 404 during development) -->
   <script src="cordova.js"></script>
@@ -63,23 +62,18 @@
   <script src="js/routes.js"></script>
   <script src="lib/ngStorage.min.js"></script>
 
+  <!--Service-->
   <script src="js/directives.js"></script>
   <script src="js/services.js"></script>
   <script src="js/firebase-service.js"></script>
+  <script src="js/NutrtionProfileObjectService.js"></script>
+  <script src="js/paypalService.js"></script>
 
   <!--Firebase-->
   <script src="lib/ngCordova/dist/ng-cordova.js"></script>
   <script src='lib/angularfire/dist/angularfire.js'></script>
   <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-
-  <!--
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js"></script>
-  -->
 
   <script>
     // Initialize Firebase
@@ -94,6 +88,10 @@
     };
     firebase.initializeApp(config);
   </script>
+
+  <!--Paypal-->
+  <script type="text/javascript" src="js/paypal-mobile-js-helper.js"></script>
+  <script type="text/javascript" src="js/cdv-plugin-paypal-mobile-sdk.js"></script>
 
   <!-- Only required for Tab projects w/ pages in multiple tabs
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>

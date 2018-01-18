@@ -23,10 +23,10 @@ angular.module('app.NutrtionProfileObjectService', ['ngStorage', 'firebase'])
         },
 
         isFav: function (item) {
-        
+
           for (var i = 0; i < $storage.nutritionProfile.length; i++) {
             var event = JSON.parse($storage.nutritionProfile[i]);
-   
+
             //Check by username
             firebase.auth().onAuthStateChanged((user) => {
               //$scope.nutritionprofile.email = user.email;;
@@ -54,8 +54,8 @@ angular.module('app.NutrtionProfileObjectService', ['ngStorage', 'firebase'])
         },
 
       }
-        
-            
+
+
     }])
 
   .factory('NPService',
@@ -67,4 +67,4 @@ angular.module('app.NutrtionProfileObjectService', ['ngStorage', 'firebase'])
       }
     }
 
-     })
+  })

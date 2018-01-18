@@ -213,19 +213,26 @@ angular.module('app.controllers', ['firebase'])
 
     }])
 
-  .controller('orderHistoryCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-    // You can include any angular dependencies as parameters for this function
-    // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
-
-
+  .controller('orderHistoryCtrl', ['$scope', '$stateParams', 'PaypalFactory',
+    function ($scope, $stateParams, PaypalFactory) {
     }])
 
-  .controller('paymentCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+  .controller('paymentCtrl', ['$scope', '$stateParams','PaypalFactory', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
+    function ($scope, $stateParams, PaypalFactory) {
+      $scope.subscriptionName = 'MASTERCARD';
+      $scope.subscriptionPrice = 'Price from Cart Page';
 
+      $scope.payWithPayPal = function() {
+          PaypalFactory.initPaymentUI().then(function() {
+              PaypalFactory.makePayment($scope.subscriptionPrice, $scope.subscriptionName).then(function(data) {
+                  console.dir(data, 'Paypal Purchase');
+              }, function(err) {
+                  console.dir(err, 'Paypal Purchase Canceled, Try Again');
+              });
+          });
+      };
 
     }])
 

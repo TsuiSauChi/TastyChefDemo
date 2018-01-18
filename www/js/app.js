@@ -14,7 +14,9 @@ angular.module('app',
     'firebase',
     'ngCordova',
     'firebaseService',
-    'ngCordovaOauth', 'app.NutrtionProfileObjectService'])
+    'ngCordovaOauth',
+    'app.NutrtionProfileObjectService',
+    'payPalService'])
 
   .config(function ($ionicConfigProvider, $sceDelegateProvider) {
 
@@ -64,6 +66,14 @@ angular.module('app',
     };
   }])
 
+  .constant('APP_CONSTS', {
+    payPalSandboxId: 'tsuisauchi.tsc@gmail.com',
+    payPalProductionId: 'AauVhaCQ7LeH7R8THcGpL9PbjaKWdKiJJ0r9BIJbJGce1Gtm14_K9Rr3K-qmglceo48HFjnYJbFRMXiW',
+    payPalEnv: 'PayPalEnvironmentSandbox', // for testing: PayPalEnvironmentSandbox, for production PayPalEnvironmentProduction
+    payPalShopName: 'Demo Shop',
+    payPalMerchantPrivacyPolicyURL: 'https://www.demoshop.com/privacy',
+    payPalMerchantUserAgreementURL: 'https://www.demoshop.com/terms'
+  })
   /*
     This directive is used to open regular and dynamic href links inside of inappbrowser.
   */
@@ -90,3 +100,4 @@ angular.module('app',
       }
     };
   });
+
