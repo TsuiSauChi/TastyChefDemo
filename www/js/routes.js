@@ -143,7 +143,17 @@ angular.module('app.routes', [])
       url: '/NutritionalAsessmentConfirmationPage',
       templateUrl: 'templates/NutritionalAsessmentConfirmationPage.html',
       controller: 'NutritionalAsessmentConfirmationPageCtrl'
-    })
+      })
+      .state('NutritionProfilePage', {
+        url: '/NutritionProfilePage',
+        templateUrl: 'templates/NutritionProfilePage.html',
+        controller: 'NutritionProfilePageCtrl'
+      })
+      .state('UpdateNutritionProfilePage', {
+        url: '/UpdateNutritionProfilePage',
+        templateUrl: 'templates/UpdateNutritionProfilePage.html',
+        controller: 'UpdateNutritionProfilePageCrtl'
+      })
 
 
     $urlRouterProvider.otherwise('/page1/home')

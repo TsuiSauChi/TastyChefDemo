@@ -61,10 +61,12 @@ angular.module('app.NutrtionProfileObjectService', ['ngStorage', 'firebase'])
   .factory('NPService',
   function () {
     var array = [];
+    
     return {
       get: function () {
         return array;
       }
     }
+  
 
      })

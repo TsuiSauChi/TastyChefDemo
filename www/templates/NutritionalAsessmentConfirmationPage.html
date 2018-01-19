@@ -112,6 +112,7 @@
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
       border-radius: 6px;
+      margin-top:5%;
     }
 
     h1 {
@@ -155,31 +156,78 @@
     </ion-grid>
     <form id="form" class="list">
       <h1>Confirmation</h1>
+
       <div id="content">
+        <h2>Antropometric</h2>
+        <hr />
         <label class="item item-input" id="applyLeave-input2">
-          <span class="input-label">Diagnosed Medical Condition:</span>
+          <span class="input-label">Height:{{nutritionprofile[0].height}}cm</span>
 
         </label>
-        <ion-item>
-          <ion-checkbox class="checkbox-balanced"> None</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Diabetes</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Hypertension</ion-checkbox>
 
-        </ion-item>
+
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Weight:{{nutritionprofile[0].weight}}kg</span>
+
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Activity Level:{{showActivityLevel(nutritionprofile[0].activityLevel)}}</span>
+
+        </label>
         <hr />
 
+
+
+      </div>
+      <div id="content">
+        <h2>Dietary Intake</h2>
+        <hr />
         <label class="item item-input" id="applyLeave-input2">
-          <span class="input-label">Glucose Level:</span>
-          <input type="number" placeholder="mmol/L" ng-model="glucoseLevel">
+          <span class="input-label">Diet Type:{{nutritionprofile[1].DietType}}</span>
+
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Meal Frequency:{{nutritionprofile[1].MealFrequency}}</span>
+
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Snack Frequency:{{nutritionprofile[1].SnackFrequency}}</span>
+
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Food Allergy:{{nutritionprofile[1].foodallergy}}</span>
+
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Food Avoidance:{{nutritionprofile[1].foodavoidance}}</span>
+
+        </label>
+        <hr />
+
+
+
+      </div>
+      <div id="content">
+        <h2>Medical Condition</h2>
+        <hr />
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Medical Condition:{{nutritionprofile[2].medicalCondition}}</span>
+
         </label>
 
+
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Glucose Level:{{nutritionprofile[2].glucoseLevel}}mmo/L</span>
+
+        </label>
+        <hr />
 
 
 
       </div>
     </form>
     <div id="buttonBorder">
-      <button class="button button-block" ui-sref="">Submit</button>
+      <button class="button button-block" ui-sref="NutritionProfilePage()" ng-click="submit()">Submit</button>
 
     </div>
 

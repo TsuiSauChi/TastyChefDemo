@@ -160,26 +160,25 @@
           <span class="input-label">Diagnosed Medical Condition:</span>
 
         </label>
-        <ion-item>
-          <ion-checkbox class="checkbox-balanced"> None</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Diabetes</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Hypertension</ion-checkbox>
-
+      
+        <ion-item ng-model="checkItems[$index]">
+          <ion-checkbox class="checkbox-balanced" ng-click="clickNone()"> None</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced" ng-show="!none" ng-repeat="chk in MedicalConditionArray" ng-checked="chk.checked" ng-model="chk.checked">{{chk.name}} </ion-checkbox>
         </ion-item>
         <hr />
 
         <label class="item item-input" id="applyLeave-input2">
           <span class="input-label">Glucose Level:</span>
-          <input type="number" placeholder="mmol/L" ng-model="glucoseLevel">
+          <input type="number" placeholder="mmol/L" ng-model="glucoseLevel.text">
         </label>
-        
 
 
-       
+
+
       </div>
     </form>
     <div id="buttonBorder">
-      <button class="button button-block" ui-sref="NutritionalAsessmentConfirmationPage()">Next</button>
+      <button class="button button-block" ui-sref="NutritionalAsessmentConfirmationPage()" ng-click="addDietaryIntakeAssessmentInput()">Next</button>
 
     </div>
 
