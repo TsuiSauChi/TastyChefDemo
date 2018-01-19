@@ -73,11 +73,15 @@ function ($scope, $stateParams,recipeService,favService) {
    recipeService.all().then(function(result) {
 
       $scope.recipeArray = result;
+       
        for (var i = 0; i < $scope.recipeArray.length; i++) {
-          if (favService.isFav($scope.recipeArray[i]) >= 0)
+               $scope.recipeArray[i].favIcon = "icon ion-ios-heart-outline";
+          if (favService.isFav($scope.recipeArray[i]) >= 0){
             $scope.recipeArray[i].favIcon = "icon ion-ios-heart";
-          else
+          }
+          else{
             $scope.recipeArray[i].favIcon = "icon ion-ios-heart-outline";
+          }
         }
 
         });

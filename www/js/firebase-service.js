@@ -87,28 +87,55 @@ angular.module('firebaseService', ['firebase'])
             var ref = firebase.database().ref().child("recipe");
             
             var recipeArray = $firebaseArray(ref);
-            
+             
+//           var nuritionRef = firebase.database().ref().child("nuritionValue");
+//            
+//            var nuritionValueArray = $firebaseArray(nuritionRef);
+
+
             return {
-               add: function (rname, rimage, rportion, rdifficulty, rtype, rdate,likes) {
-                   // Transform Date to string
+               add: function (rname, rimage, rvideo,rduration,rportion, rdifficulty, rtype, rdate,likes,rnurition,rutensil,ringredients) {
                    var recipeItem = {
                        ref:rname,
                        name:rname,
                        image: rimage,
+                       video:rvideo,
+                       duration:rduration,
                        portion: rportion,
                        difficulty: rdifficulty,
                        type:rtype, 
                        date:rdate.toDateString(),
                        likes:likes,
+                       nurition:rnurition,
+                       utensils:rutensil,
+                       ingredients:ringredients,
+                       
                    };
                    recipeArray.$add(recipeItem);
                },
-
+                
+//               addNurition: function (rid,icarbo,iprotein,ikcal,ifat) {
+//                   var nuritionValue = {
+//                       recipeId:rid,
+//                       carbo:icarbo,
+//                       protein:iprotein,
+//                       kcal:ikcal,
+//                       fat:ifat,
+//                   };
+//                   nuritionValueArray.$add(nuritions);
+//               },
+                
                all: function () {
                    return recipeArray.$loaded().then(function () {
                        return recipeArray;
                    });
                },
+                
+//                allNuritionValue: function () {
+//                   return nuritionValueArray.$loaded().then(function () {
+//                       return nuritionValueArray;
+//                   });
+//               },
 
                get: function (item) {
                    var item = recipeArray.$getRecord(item.$id);

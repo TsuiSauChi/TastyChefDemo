@@ -25,9 +25,9 @@
                 <ion-scroll direction="x" class="wide-as-needed" >
                     <div class="toppick" ng-repeat="item in recipeArray">
                         <div class="outercard">
-                            <div class="card"  ui-sref="tabsController.recipeDetails({id:item.id})" >
-                                <img class="cardimage" src="{{item.image}}"  />
-                                <div class="fav">
+                            <div class="card"  >
+                                <img class="cardimage" src="img/recipe/{{item.name}}.jpeg"  ui-sref="tabsController.recipeDetails({id:item.id})" />
+                                <div class="fav" >
                                     <icon class="{{item.favIcon}} heart" ng-click="toggleFav(item)"></icon>
                                     <p class="no" >{{item.likes}}</p>
                                 </div>
