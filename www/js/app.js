@@ -16,7 +16,8 @@ angular.module('app',
     'firebaseService',
     'ngCordovaOauth',
     'app.NutrtionProfileObjectService',
-    'payPalService'])
+    'payPalService',
+    'ion-datetime-picker',])
 
   .config(function ($ionicConfigProvider, $sceDelegateProvider) {
 
@@ -37,6 +38,7 @@ angular.module('app',
         StatusBar.styleDefault();
       }
     });
+
   })
 
   /*
@@ -74,6 +76,7 @@ angular.module('app',
     payPalMerchantPrivacyPolicyURL: 'https://www.demoshop.com/privacy',
     payPalMerchantUserAgreementURL: 'https://www.demoshop.com/terms'
   })
+
   /*
     This directive is used to open regular and dynamic href links inside of inappbrowser.
   */

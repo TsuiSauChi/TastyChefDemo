@@ -69,6 +69,10 @@
   <script src="js/NutrtionProfileObjectService.js"></script>
   <script src="js/paypalService.js"></script>
 
+  <!--DatePicker-->
+  <script src="lib/ion-datetime-picker/release/ion-datetime-picker.min.js"></script>
+  <link href="lib/ion-datetime-picker/release/ion-datetime-picker.min.css" rel="stylesheet">
+
   <!--Firebase-->
   <script src="lib/ngCordova/dist/ng-cordova.js"></script>
   <script src='lib/angularfire/dist/angularfire.js'></script>
@@ -92,7 +96,6 @@
   <!--Paypal-->
   <script type="text/javascript" src="js/paypal-mobile-js-helper.js"></script>
   <script type="text/javascript" src="js/cdv-plugin-paypal-mobile-sdk.js"></script>
-
   <!-- Only required for Tab projects w/ pages in multiple tabs
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
     -->
@@ -122,6 +125,8 @@
             <ion-item id="tastyChef-list-item4" ui-sref="login()" menu-close="" data-componentid="list-item4" class="menunav">Login</ion-item>
             <ion-item id="tastyChef-list-item5" ui-sref="tabsController.home()" menu-close="" data-componentid="list-item5" class="menunav">Home</ion-item>
             <ion-item id="tastyChef-list-item6" ui-sref="tabsController.recipe()" menu-close="" data-componentid="list-item6" class="menunav">Recipes</ion-item>
+            <ion-item id="tastyChef-list-item14" ui-sref="addrecipe()" ng-style="admin" menu-close="" data-componentid="list-item14"
+              class="menunav">Create Recipe</ion-item>
             <ion-item id="tastyChef-list-item7" ui-sref="recommendedRecipes()" menu-close="" data-componentid="list-item7" class="menunav">Recommended Receipes</ion-item>
             <ion-item id="tastyChef-list-item8" ui-sref="GetStartedNutritionAssessment()" menu-close="" data-componentid="list-item8"
               class="menunav">Nurition Assessment</ion-item>

@@ -5,7 +5,6 @@
     <form ng-submit="doRegister(RegisterData)" class="loginlist">
       <div class="loginlist">
         <h1 style="color: white; margin-top:-10%; padding-bottom:5%;">Register</h1>
-        <p>To take note during testing: 1st 4 fields are required</p>
         <label class="item item-input loginlist">
           <span class="input-label loginlist">Username</span>
           <input type="text" ng-model="RegisterData.username" required />
@@ -26,14 +25,17 @@
           <span class="input-label loginlist">Mobile</span>
           <input type="text" ng-model="RegisterData.mobile">
         </label>
-        <label class="item item-input loginlist">
-          <span class="input-label loginlist">Gender</span>
-          <input type="text" ng-model="RegisterData.gender">
-        </label>
-        <label class="item item-input loginlist">
+        <ion-list>
+          <ion-radio value="Male" ng-model="RegisterData.gender">Male</ion-radio>
+          <ion-radio value="Female" ng-model="RegisterData.gender">Female</ion-radio>
+          <ion-radio value="Other" ng-model="RegisterData.gender">Other</ion-radio>
+        </ion-list>
+        <ion-list class="item item-input loginlist">
           <span class="input-label loginlist">Date of Birth</span>
-          <input type="text" ng-model="RegisterData.birth">
-        </label>
+          <div class="item" style="width:100%;" ion-datetime-picker ng-model="RegisterData.birth">
+            {{datetimeValue| date: "yyyy-MM-dd H:mm:ss"}}
+          </div>
+        </ion-list>
         <label class="item loginlist">
           <button class="button button-block loginlist" style="background-color:white; color:#20B2AA;" type="submits">Register</button>
         </label>
