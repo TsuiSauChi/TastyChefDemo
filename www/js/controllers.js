@@ -178,6 +178,8 @@ angular.module('app.controllers', ['firebase'])
     }])
 
   .controller('registerCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup',
+
+
     function ($scope, $stateParams, $state, $ionicPopup) {
 
       $scope.doRegister = function (registerData) {
@@ -218,3 +220,10 @@ angular.module('app.controllers', ['firebase'])
         }
       }
     }])
+
+  .controller('itemsCtrl',['$scope','$stateParams','$state','recipeService',
+    function($scope,$stateParams,recipeService){
+      //$scope.itemsArray = recipeService.all();
+      console.log(recipeService)
+    }
+  ])

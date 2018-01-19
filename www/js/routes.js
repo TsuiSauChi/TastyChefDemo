@@ -116,6 +116,12 @@ angular.module('app.routes', [])
         controller: 'registerCtrl'
       })
 
+      .state('items',{
+        url:'/items',
+        templateUrl:'templates/items.html',
+        controller:'itemsCtrl'
+      })
+
     $urlRouterProvider.otherwise('/page1/home')
 
 

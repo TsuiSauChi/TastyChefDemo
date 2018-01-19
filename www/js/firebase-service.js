@@ -103,7 +103,7 @@ angular.module('firebaseService', ['firebase'])
         },
 
         all: function () {
-          return recipeArray.$loaded().then(function () {
+           return recipeArray.$loaded().then(function () {
             return recipeArray;
           });
         },
