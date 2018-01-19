@@ -1,10 +1,23 @@
 
 angular.module('app.controllers', ['firebase'])
 
-  .controller('tastyChefCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+  .controller('tastyChefCtrl', ['$scope', '$stateParams', '$state', 'HomeService', '$firebaseArray', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams, $state) {
+    function ($scope, $stateParams, $state, HomeService, $firebaseArray) {
+
+      firebase.auth().onAuthStateChanged(function (user) {
+        console.log(user)
+        if (user.email == "admin@tastychef.com") {
+          $scope.admin = {
+            "display": "block",
+          }
+        } else {
+          $scope.admin = {
+            "display": "none",
+          }
+        }
+      });
 
       $scope.signOut = function () {
         firebase.auth().signOut().then(function () {
@@ -17,11 +30,10 @@ angular.module('app.controllers', ['firebase'])
 
     }])
 
-  .controller('homeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+  .controller('homeCtrl', ['$scope', '$stateParams','$ionicPlatform', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
-
+    function ($scope, $stateParams, $ionicPlatform) {
     }])
 
   .controller('cartCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -144,9 +156,6 @@ angular.module('app.controllers', ['firebase'])
         console.log(item[0].height);
 
         //NutritionProfileService.add(nutritionprofile);
-
-
-
       }
 
 
@@ -217,21 +226,21 @@ angular.module('app.controllers', ['firebase'])
     function ($scope, $stateParams, PaypalFactory) {
     }])
 
-  .controller('paymentCtrl', ['$scope', '$stateParams','PaypalFactory', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+  .controller('paymentCtrl', ['$scope', '$stateParams', 'PaypalFactory', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
     function ($scope, $stateParams, PaypalFactory) {
       $scope.subscriptionName = 'MASTERCARD';
       $scope.subscriptionPrice = 'Price from Cart Page';
 
-      $scope.payWithPayPal = function() {
-          PaypalFactory.initPaymentUI().then(function() {
-              PaypalFactory.makePayment($scope.subscriptionPrice, $scope.subscriptionName).then(function(data) {
-                  console.dir(data, 'Paypal Purchase');
-              }, function(err) {
-                  console.dir(err, 'Paypal Purchase Canceled, Try Again');
-              });
+      $scope.payWithPayPal = function () {
+        PaypalFactory.initPaymentUI().then(function () {
+          PaypalFactory.makePayment($scope.subscriptionPrice, $scope.subscriptionName).then(function (data) {
+            console.dir(data, 'Paypal Purchase');
+          }, function (err) {
+            console.dir(err, 'Paypal Purchase Canceled, Try Again');
           });
+        });
       };
 
     }])
@@ -289,14 +298,17 @@ angular.module('app.controllers', ['firebase'])
             });
             //$state.go('login');
           }).then(function () {
+            var role;
             HomeService.addMember(
               registerData.birth,
               registerData.email,
               registerData.gender,
               registerData.mobile,
               registerData.password,
-              registerData.username
+              registerData.username,
+              role = "member"
             );
+            $state.go('login');
           }).catch(function (error) {
             //Pop up function
             var alertPopup = $ionicPopup.alert({
@@ -321,4 +333,5 @@ angular.module('app.controllers', ['firebase'])
           });
         }
       }
+
     }])
