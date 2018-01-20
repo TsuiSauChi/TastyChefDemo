@@ -694,4 +694,57 @@ angular.module('app.controllers', ['firebase'])
         }
       }
 
+
+        .controller('updateprofileCtrl', ['$scope', '$stateParams', 'HomeService', '$firebaseArray', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+          // You can include any angular dependencies as parameters for this function
+          // TIP: Access Route Parameters for your page via $stateParams.parameterName
+          function ($scope, $stateParams, HomeService, $firebaseArray) {
+            var config = {
+              apiKey: "AIzaSyDW5o-5259QI8DZ8I-IT0vKIFyB5P7ahRk",
+              authDomain: "tastychefdemo-20139.firebaseapp.com",
+              databaseURL: "https://tastychefdemo-20139.firebaseio.com",
+              projectId: "tastychefdemo-20139",
+              storageBucket: "tastychefdemo-20139.appspot.com",
+              messagingSenderId: "648974068968"
+            };
+            if (!firebase.apps.length) {
+              firebase.initializeApp(config);
+            }
+
+            var ref = firebase.database().ref().child("member");
+            var HomeArray = $firebaseArray(ref);
+
+            firebase.auth().onAuthStateChanged((user) => {
+              HomeArray.$loaded().then(function (data) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                  if (user.uid == data[i].uid) {
+                    $scope.updateProfile = data[i]
+                  }
+                }
+              })
+            });
+
+            $scope.update = function (updateProfile) {
+              firebase.database().ref().child("member/" + updateProfile.$id)
+                .update({
+                  Email: updateProfile.Email,
+                  Gender: updateProfile.Gender,
+                  Mobile: updateProfile.Mobile,
+                  Password: updateProfile.Password,
+                  Username: updateProfile.Username
+                }).then(function () {
+                  var user = firebase.auth().currentUser;
+                  console.log(user);
+
+                  user.updatePassword(updateProfile.Password).then(function () {
+                    console.log("Success")
+                  }, function (error) {
+                    console.log("Fail")
+                  });
+
+                });
+            }
+
+          }]);
     }])

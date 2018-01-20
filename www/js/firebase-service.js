@@ -36,6 +36,11 @@ angular.module('firebaseService', ['firebase'])
           HomeArray.$add(HomeItem);
         },
 
+        get: function (uid) {
+          var starCountRef = ref;
+          return starCountRef;
+        },
+
         addMember: function (DoB, Email, Gender, Mobile, Password, Username) {
 
           var MemberItem = {

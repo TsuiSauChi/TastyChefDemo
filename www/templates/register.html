@@ -32,13 +32,11 @@
         </ion-list>
         <ion-list class="item item-input loginlist">
           <span class="input-label loginlist">Date of Birth</span>
-          <div class="item" style="width:100%;" ion-datetime-picker ng-model="RegisterData.birth">
-            {{datetimeValue| date: "yyyy-MM-dd H:mm:ss"}}
-          </div>
-        </ion-list>
-        <label class="item loginlist">
-          <button class="button button-block loginlist" style="background-color:white; color:#20B2AA;" type="submits">Register</button>
-        </label>
+          <input type="date" ng-model="RegisterData.birth">
+          </label>
+          <label class="item loginlist">
+            <button class="button button-block loginlist" style="background-color:white; color:#20B2AA;" type="submits">Register</button>
+          </label>
       </div>
     </form>
   </ion-content>

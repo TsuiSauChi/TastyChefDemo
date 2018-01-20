@@ -1,0 +1,32 @@
+<ion-view title="UpdateProfile">
+  <ion-content padding="true" class="has-header">
+      <form id="applyLeave-form1" class="list" ng-submit="update(updateProfile)">
+          <label class="item item-input">
+              <span class="input-label">Username</span>
+              <input type="text" placeholder="" ng-model="updateProfile.Username">
+          </label>
+          <label class="item item-input" >
+              <span class="input-label">Email</span>
+              <input type="text" placeholder="" ng-model="updateProfile.Email">
+          </label>
+          <label class="item item-input" >
+              <span class="input-label">Mobile Number</span>
+              <input type="text" placeholder="" ng-model="updateProfile.Mobile">
+          </label>
+            <label class="item item-input">
+              <span class="input-label">Gender</span>
+              <input type="text" placeholder="" ng-model="updateProfile.Gender">
+          </label>
+            <label class="item item-input" >
+              <span class="input-label">Password</span>
+              <input type="text" placeholder="" ng-model="updateProfile.Password">
+          </label>
+          <label class="item item-input" id="applyLeave-input2">
+              <span class="input-label">Date of creation</span>
+              <input type="date" placeholder="" ng-model="updateProfile.DateOfBirth">
+          </label>
+
+          <button class="button button-positive button-block" type="submit">Update</button>
+      </form>
+  </ion-content>
+</ion-view>
