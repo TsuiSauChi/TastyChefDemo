@@ -670,17 +670,15 @@ angular.module('app.controllers', ['firebase'])
             );
             $state.go('login');
           }).catch(function (error) {
-            //Pop up function
-            var alertPopup = $ionicPopup.alert({
-              title: 'Registration Failed',
-              template: 'Password should be at least 6 characters',
-            });
-            alertPopup.then(function (res) {
-              var errorCode = error.code;
-              var errorMessage = error.message;
-              console.log(errorCode, errorMessage, "Registered Failed"
-              )
-            });
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == 'auth/weak-password') {
+              alert('The password is too weak.');
+            } else {
+              alert(errorMessage);
+            }
+            console.log(error);
           });
         } else {
           var alertPopup = $ionicPopup.alert({
@@ -693,58 +691,143 @@ angular.module('app.controllers', ['firebase'])
           });
         }
       }
+    }])
 
+  .controller('updateprofileCtrl', ['$scope', '$state', 'HomeService', '$firebaseArray', '$ionicPopup',
+    function ($scope, $state, HomeService, $firebaseArray, $ionicPopup) {
 
-        .controller('updateprofileCtrl', ['$scope', '$stateParams', 'HomeService', '$firebaseArray', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-          // You can include any angular dependencies as parameters for this function
-          // TIP: Access Route Parameters for your page via $stateParams.parameterName
-          function ($scope, $stateParams, HomeService, $firebaseArray) {
-            var config = {
-              apiKey: "AIzaSyDW5o-5259QI8DZ8I-IT0vKIFyB5P7ahRk",
-              authDomain: "tastychefdemo-20139.firebaseapp.com",
-              databaseURL: "https://tastychefdemo-20139.firebaseio.com",
-              projectId: "tastychefdemo-20139",
-              storageBucket: "tastychefdemo-20139.appspot.com",
-              messagingSenderId: "648974068968"
-            };
-            if (!firebase.apps.length) {
-              firebase.initializeApp(config);
+      var config = {
+        apiKey: "AIzaSyDW5o-5259QI8DZ8I-IT0vKIFyB5P7ahRk",
+        authDomain: "tastychefdemo-20139.firebaseapp.com",
+        databaseURL: "https://tastychefdemo-20139.firebaseio.com",
+        projectId: "tastychefdemo-20139",
+        storageBucket: "tastychefdemo-20139.appspot.com",
+        messagingSenderId: "648974068968"
+      };
+      if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+      }
+
+      var ref = firebase.database().ref().child("member");
+      var HomeArray = $firebaseArray(ref);
+
+      firebase.auth().onAuthStateChanged((user) => {
+        HomeArray.$loaded().then(function (data) {
+          for (var i = 0; i < data.length; i++) {
+            if (user.email == data[i].Email) {
+              $scope.updateProfile = data[i]
+              $scope.updateProfile.date = new Date(data[i].DoB);
+              $scope.updateProfile.retypePassword = data[i].Password
             }
+          }
+        })
+      });
 
-            var ref = firebase.database().ref().child("member");
-            var HomeArray = $firebaseArray(ref);
+      var changeEmail;
+      var changePassword;
+      $scope.update = function (updateProfile) {
+        //if (updateProfile.Password === updateProfile.retypePassword) {
+        changeEmail = updateProfile.Email;
+        changePassword = updateProfile.Password
+        console.log(changeEmail, changePassword);
 
+        var user = firebase.auth().currentUser;
+        console.log(user);
+        user.updateEmail(updateProfile.Email).then(function () {
+          console.log("Changed Email")
+        }, function (error) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Email already exist',
+          });
+        }).then(function () {
+          firebase.auth().onAuthStateChanged((user) => {
+            HomeArray.$loaded().then(function (data) {
+              for (var i = 0; i < data.length; i++) {
+                if (user.email == data[i].Email) {
+                  if (changeEmail == user.email) {
+                    firebase.database().ref().child("member/" + updateProfile.$id)
+                      .update({
+                        Email: updateProfile.Email,
+                        Gender: updateProfile.Gender,
+                        Mobile: updateProfile.Mobile,
+                        Password: updateProfile.Password,
+                        Username: updateProfile.Username
+                      }).then(function () {
+                        user.updatePassword(updateProfile.Password).then(function () {
+                          console.log("Changed Password")
+                        }, function (error) {
+                          console.log("Fail to change Password", error)
+                        })
+                      }).then(function () {
+                        var alertPopup = $ionicPopup.alert({
+                          title: 'Profile Updated',
+                        });
+                      })
+                  } else {
+                    console.log("Update Profile Failed")
+                  }
+                }
+              }
+            })
+          });
+        })
+      }
+
+      $scope.deleteprofile = function () {
+        var user = firebase.auth().currentUser;
+
+        $scope.data = {};
+
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+          template: '<input type="password" ng-model="data.wifi">',
+          title: 'Please enter password to delete profile',
+          scope: $scope,
+          buttons: [
+            { text: 'Cancel' },
+            {
+              text: '<b>Save</b>',
+              type: 'button-positive',
+              onTap: function (e) {
+                if (!$scope.data.wifi) {
+                  //don't allow the user to close unless he enters wifi password
+                  e.preventDefault();
+                } else {
+                  return $scope.data.wifi;
+                }
+              }
+            }
+          ]
+        });
+
+        myPopup.then(function (res) {
+          const credential = firebase.auth.EmailAuthProvider.credential(
+            user.email,
+            res
+          );
+          console.log(credential)
+          user.reauthenticateWithCredential(credential).then(function () {
+            console.log("User re-authenticated.");
             firebase.auth().onAuthStateChanged((user) => {
               HomeArray.$loaded().then(function (data) {
-                console.log(data);
                 for (var i = 0; i < data.length; i++) {
-                  if (user.uid == data[i].uid) {
-                    $scope.updateProfile = data[i]
+                  if (user.email == data[i].Email) {
+                    console.log(data[i]);
+                    HomeService.delete(data[i]);
                   }
                 }
               })
-            });
-
-            $scope.update = function (updateProfile) {
-              firebase.database().ref().child("member/" + updateProfile.$id)
-                .update({
-                  Email: updateProfile.Email,
-                  Gender: updateProfile.Gender,
-                  Mobile: updateProfile.Mobile,
-                  Password: updateProfile.Password,
-                  Username: updateProfile.Username
-                }).then(function () {
-                  var user = firebase.auth().currentUser;
-                  console.log(user);
-
-                  user.updatePassword(updateProfile.Password).then(function () {
-                    console.log("Success")
-                  }, function (error) {
-                    console.log("Fail")
-                  });
-
-                });
-            }
-
-          }]);
+              user.delete().then(function () {
+                //HomeService.delete()
+              }).then(function () {
+                $state.go("login");
+              }).catch(function (error) {
+                console.log(error);
+              });
+            })
+          }).catch(function (error) {
+            console.log("User re-authenticated failed.", error);
+          });
+        })
+      };
     }])

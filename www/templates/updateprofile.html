@@ -1,32 +1,41 @@
 <ion-view title="UpdateProfile">
   <ion-content padding="true" class="has-header">
-      <form id="applyLeave-form1" class="list" ng-submit="update(updateProfile)">
-          <label class="item item-input">
-              <span class="input-label">Username</span>
-              <input type="text" placeholder="" ng-model="updateProfile.Username">
-          </label>
-          <label class="item item-input" >
-              <span class="input-label">Email</span>
-              <input type="text" placeholder="" ng-model="updateProfile.Email">
-          </label>
-          <label class="item item-input" >
-              <span class="input-label">Mobile Number</span>
-              <input type="text" placeholder="" ng-model="updateProfile.Mobile">
-          </label>
-            <label class="item item-input">
-              <span class="input-label">Gender</span>
-              <input type="text" placeholder="" ng-model="updateProfile.Gender">
-          </label>
-            <label class="item item-input" >
-              <span class="input-label">Password</span>
-              <input type="text" placeholder="" ng-model="updateProfile.Password">
-          </label>
-          <label class="item item-input" id="applyLeave-input2">
-              <span class="input-label">Date of creation</span>
-              <input type="date" placeholder="" ng-model="updateProfile.DateOfBirth">
-          </label>
+    <form id="applyLeave-form1" class="list" ng-submit="update(updateProfile)">
+      <label class="item item-input">
+        <span class="input-label">Username</span>
+        <input type="text" placeholder="" ng-model="updateProfile.Username">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Email</span>
+        <input type="text" placeholder="" ng-model="updateProfile.Email">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Mobile Number</span>
+        <input type="text" placeholder="" ng-model="updateProfile.Mobile">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        <input type="password" placeholder="" ng-model="updateProfile.Password">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Retype Password</span>
+        <input type="password" placeholder="" ng-model="updateProfile.retypePassword">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Gender</span>
+      </label>
+      <ion-list>
+        <ion-radio value="Male" ng-model="updateProfile.Gender">Male</ion-radio>
+        <ion-radio value="Female" ng-model="updateProfile.Gender">Female</ion-radio>
+        <ion-radio value="Other" ng-model="updateProfile.Gender">Other</ion-radio>
+      </ion-list>
+      <label class="item item-input" id="applyLeave-input2">
+        <span class="input-label">Date of Birth</span>
+        <input type="date" placeholder="" ng-model="updateProfile.date">
+      </label>
 
-          <button class="button button-positive button-block" type="submit">Update</button>
-      </form>
+      <button class="button button-positive button-block" type="submit">Update</button>
+    </form>
+    <button class="button button-assertive button-block" ng-click="deleteprofile()">Delete Account</button>
   </ion-content>
 </ion-view>

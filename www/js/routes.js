@@ -125,6 +125,12 @@ angular.module('app.routes', [])
         controller: 'registerCtrl'
       })
 
+      .state('updateprofile', {
+        url: '/updateprofile',
+        templateUrl: 'templates/updateprofile.html',
+        controller: 'updateprofileCtrl'
+      })
+
       .state('GetStartedNutritionAssessment', {
         url: '/GetStartedNutritionAssessment',
         templateUrl: 'templates/GetStartedNutritionAssessment.html',

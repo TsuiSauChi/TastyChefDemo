@@ -44,13 +44,15 @@ angular.module('firebaseService', ['firebase'])
         addMember: function (DoB, Email, Gender, Mobile, Password, Username) {
 
           var MemberItem = {
-            DoB: DoB,
+            DoB: DoB.toDateString(),
             Email: Email,
             Gender: Gender,
             Mobile: Mobile,
             Password: Password,
-            Username: Username
+            Username: Username,
+            Role : "Member"
           }
+          console.log(MemberItem);
           Member.$add(MemberItem)
           console.log('Push successfully');
         },
@@ -81,8 +83,8 @@ angular.module('firebaseService', ['firebase'])
         },
 
         delete: function (item) {
-          var item = HomeArray.$getRecord(item.$id);
-          HomeArray.$remove(item);
+          var item = Member.$getRecord(item.$id);
+          Member.$remove(item);
         },
       }
     }])
