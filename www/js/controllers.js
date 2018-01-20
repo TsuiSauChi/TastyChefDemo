@@ -1,4 +1,3 @@
-
 angular.module('app.controllers', ['firebase'])
 
   .controller('tastyChefCtrl', ['$scope', '$stateParams', '$state', 'HomeService', '$firebaseArray', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
