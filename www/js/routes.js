@@ -9,12 +9,22 @@ angular.module('app.routes', [])
   $stateProvider
     
 
-      .state('tabsController.home', {
-    url: '/home',
+      .state('tabsController.search', {
+    url: '/search',
     views: {
       'tab1': {
-        templateUrl: 'templates/home.html',
-        controller: 'homeCtrl'
+        templateUrl: 'templates/search.html',
+        controller: 'recipeCtrl'
+      }
+    }
+  })
+    
+       .state('tabsController.searched', {
+    url: '/searched/:cat',
+    views: {
+      'tab1': {
+        templateUrl: 'templates/searched.html',
+        controller: 'recipeCtrl'
       }
     }
   })
@@ -50,20 +60,25 @@ angular.module('app.routes', [])
   })
     
     .state('tabsController.recipeDetails', {
-    url: '/recipeDetails',
+    url: '/recipeDetails/:id',
     views: {
       'tab2': {
         templateUrl: 'templates/recipeDetails.html',
-        controller: 'recipeDetailsCtrl'
+        controller: 'recipeCtrl'
       }
     }
   })
     
- .state('search', {
-     url: '/search',
-     templateUrl: 'templates/search.html',
-     controller: 'searchCtrl'
+     .state('tabsController.recipeView', {
+    url: '/recipeView',
+    views: {
+      'tab2': {
+        templateUrl: 'templates/recipeView.html',
+        controller: 'recipeCtrl'
+      }
+    }
   })
+ 
     
  .state('addrecipe', {
      url: '/addrecipe',
@@ -119,7 +134,7 @@ angular.module('app.routes', [])
     controller: 'loginCtrl'
   })
 
-$urlRouterProvider.otherwise('/page1/home')
+$urlRouterProvider.otherwise('/page1/recipes')
 
 
 });

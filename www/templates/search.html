@@ -7,10 +7,25 @@
         <form class="list ng-pristine ng-valid">
             <label class="item item-input searchbar" style="border-radius: 50px;" >
                 <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" placeholder="Search">
+                <input type="search" placeholder="Search" ng-model="searchinput">
             </label>
         </form>
         
+        <div class="assessment" ng-repeat="item in recipeArray | filter:searchinput" >
+            <div class="outercard" style=" height:300px; width:48%; margin-left:2%;">
+                <div class="card"  >
+                    <img class="cardimage" src="{{item.image}}"  ui-sref="tabsController.recipeDetails({id:item.id})" />
+                    <div class="fav" >
+                        <icon class="{{item.favIcon}} heart" ng-click="toggleFav(item)"></icon>
+                    </div>
+                </div>
+                <div class="cardtitle">
+                    <i>{{item.name}}</i>
+                </div>
+            </div>
+        </div>
+
+<!--
         <div class="categories">
             <h4 class="hlabel">Meal</h4>
             <ion-scroll direction="x" class="wide-as-needed">
@@ -23,7 +38,9 @@
                     </div>
                 </div>
             </ion-scroll>
+-->
 
+<!--
             <h4 class="hlabel">Ingredient</h4>
             <ion-scroll direction="x"  >
                 <div class="button-bar">
@@ -36,7 +53,9 @@
                     <button class="buttonbar button-block"><img src="img/ingredient/pork.png"><span>Pork</span></button>
                 </div>
             </ion-scroll>
+-->
 
+<!--
             <h4 class="hlabel">Type</h4>
             <ion-scroll direction="x"  >
                 <div class="button-bar">
@@ -47,7 +66,9 @@
                     <button class="buttonbar button-block"><img src="img/icon/family.png"><span>Family</span></button>
                 </div>
             </ion-scroll>
+-->
             
+<!--
              <h4 class="hlabel">Cusine</h4>
             <ion-scroll direction="x"  >
                 <div class="button-bar">
@@ -57,7 +78,10 @@
                     <button class="buttonbar button-block" ui-sref="payment()"><img src="img/ingredient/crossiant.png"><span>French</span></button>
                     <button class="buttonbar button-block"><img src="img/ingredient/Spaghetti.png"><span>Italian</span></button>
                 </div>
+-->
+<!--
             </ion-scroll>
         </div>
+-->
     </ion-content>
 </ion-view>

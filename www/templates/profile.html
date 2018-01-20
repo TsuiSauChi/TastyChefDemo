@@ -1,34 +1,51 @@
 <ion-view title="Profile" id="page4" hide-nav-bar="true">
     <ion-content>
-       <span class="left-buttons">
-                <button style="color:dimgray; font-size:32px; margin-left:3px;" class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-            </span>
-         <span class="right-buttons">
-                <button class="button-clear ion-ios-gear-outline" style="color:dimgray; font-size:25px; float:right; padding:1%; padding-right:3%;"></button>
-            </span>
+        <span class="left-buttons">
+            <button style="color:dimgray; font-size:32px; margin-left:3px;" class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+        </span>
+        <span class="right-buttons">
+            <button class="button-clear ion-ios-gear-outline" style="color:dimgray; font-size:25px; float:right; padding:1%; padding-right:3%;"></button>
+        </span>
         <div data-componentid="image1" data-tap-disabled="true" class="ic-selected"><i class="icon ion-image" src="img/"></i>
         </div>
         <div class="profilebackgrd" style="background:url(img/slide4.jpg) no-repeat center;     background-size:cover; "></div>
         <h2 class="profilelabel">username</h2>
         <input class="bio" style="font-size: 10px; color:dimgray" type="text" placeholder="edit your description">
 
-<!--
-        <div class="buttongrid">
-            <div id="profile-button-bar1" class="button-bar">
-                <button class="buttonbar button-block" ui-sref="nurition()"><i class="ion-android-clipboard"></i><span>Nurition Assessment</span></button>
-                <button class="buttonbar button-block" ui-sref="payment()"><i class="ion-card"></i><span>Payment</span></button>
-                <button class="buttonbar button-block"><i class="ion-ios-paper-outline"></i><span>Ordered Recipe</span></button>
-                <button class="buttonbar button-block"><i class="ion-ios-clock-outline"></i><span>Order History</span></button>
+        <!--
+<div class="buttongrid">
+<div id="profile-button-bar1" class="button-bar">
+<button class="buttonbar button-block" ui-sref="nurition()"><i class="ion-android-clipboard"></i><span>Nurition Assessment</span></button>
+<button class="buttonbar button-block" ui-sref="payment()"><i class="ion-card"></i><span>Payment</span></button>
+<button class="buttonbar button-block"><i class="ion-ios-paper-outline"></i><span>Ordered Recipe</span></button>
+<button class="buttonbar button-block"><i class="ion-ios-clock-outline"></i><span>Order History</span></button>
 
-            </div>
-        </div>
+</div>
+</div>
 -->
-     <div class="buttongrid">
-            <div id="profile-button-bar1" class="button-bar">
-                <button class="buttonbar button-block" ui-sref=""><i class="ion-ios-heart"></i><span>likes</span></button>
-                <button class="buttonbar button-block" ui-sref=""><i class="ion-grid"></i><span>Feed</span></button>
+        <!--
+<div class="buttongrid">
+<div id="profile-button-bar1" class="button-bar">
+<button class="buttonbar button-block" ui-sref=""><i class="ion-ios-heart"></i><span>likes</span></button>
+<button class="buttonbar button-block" ui-sref=""><i class="ion-grid"></i><span>Feed</span></button>
+</div>
+</div>
+
+-->
+        <h3 class="homelabel" style=" padding:5%; text-align:center; color:dimgray; font-size:15px;">Favourites</h3>
+        <div class="assessment" ng-repeat="item in favArray" >
+            <div class="outercard" style=" height:300px; width:48%; margin-left:2%;">
+                <div class="card"  >
+                    <img class="cardimage" src="{{item.image}}"  ui-sref="tabsController.recipeDetails({id:item.id})" />
+                    <div class="fav" >
+                        <icon class="{{item.favIcon}} heart" ng-click="toggfleFav(item)"></icon>
+
+                    </div>
+                </div>
+                <div class="cardtitle">
+                    <i>{{item.name}}</i>
+                </div>
             </div>
         </div>
- 
     </ion-content>
 </ion-view>

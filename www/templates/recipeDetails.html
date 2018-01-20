@@ -1,106 +1,98 @@
 <ion-view title=""  hide-nav-bar="false">
     <ion-content padding="false" class="has-header">
+        <div>
 
-        <img ng-src="img/recipe/Whole wheat pasta alla norma.jpeg" class="cardimage" style="height:400px;">
+            <img ng-src="{{recipeDetailsArray.image}}" class="cardimage" style="height:400px;">
+            <!--
+<div class="fav" style="border:1px solid red; margin-top:-15%; " >
+<icon class="{{item.favIcon}} heart" ng-click="toggleFav(item)"   style="border:1px solid red; text-align: left;padding-left:3%; color:black; margin-top:20%;" ></icon> 
+</div>
+-->
+            <h2  class="recipeName" style="text-align: center;color:white;">{{recipeDetailsArray.name}} </h2>
 
-        <h2  class="recipeName" style="text-align: center;">Whole wheat pasta alla norma</h2>
+            <!-- LIKES AND SHARE BUTTON-->
+            <!--
 
-        <!-- LIKES AND SHARE BUTTON-->
 
-        <div class="likesharebar">
-            <div class="rdfav">
-                <icon class=" ricon ion-ios-heart" ng-click="toggleFav(item)"></icon>
-                <span class="rdNo" >15</span>
-            </div>
-            <div class="rdfav">
-                <icon class=" ricon ion-ios-upload-outline"></icon>
-                <span class="rdNo" >Share</span>
-            </div>
-        </div>
+<span class="rdNo" >{{recipeDetailsArray.likes}}</span>
+</div>
+</h2>
+-->
 
-        <!-- CIRCLE LABEL-->
 
-        <div class="infobar">
-            <div style="margin-left:6%;" style="padding-bottom: 2%;">
-                <div class="recipelabelCircle">
-                    <div class="circleinfo">
-                        <span class="innercircle" >Easy</span>
-                    </div>
-                    <span  class="clabel"> Difficulty</span></div>
 
-                <div class="recipelabelCircle">
-                    <div class="circleinfo">
-                        <span class="innercircle">20 min</span>
-                    </div>
-                    <span  class="clabel">  Duration</span></div>
+            <!-- CIRCLE LABEL-->
 
-                <div class="recipelabelCircle">
-                    <div class="circleinfo">
-                        <span class="innercircle">1</span>
-                    </div>
-                    <span class="clabel"> Serving</span></div>
-            </div>
-        </div>
+            <div class="infobar" style="margin-top:17%;">
+                <div style="padding-bottom: 2%;">
+                    <div class="recipelabelCircle">
+                        <div class="circleinfo">
+                            <span class="innercircle" >{{recipeDetailsArray.difficulty}}</span>
+                        </div>
+                        <span  class="clabel"> Difficulty</span></div>
 
-        <!-- NURITION -->
-        <div class="assessment">
-            <h4 class="recipeTitle">Nurition Per Serving</h4>
-            <div class="recipegrid">
-                <div class="nuritionBar">
-                    <div class="nuritionInfo" style="border:none;">
-                        <span class="nlabel">289 Kcal</span>
-                        <span class="clabel">Calories</span>
-                    </div>
-                    <div class="nuritionInfo">
-                        <span class="nlabel">200 g</span>
-                        <span class="clabel">Carbo</span>
-                    </div>
-                    <div class="nuritionInfo">
-                        <span class="nlabel">50 g</span>
-                        <span class="clabel">Protein</span>
-                    </div>
-                    <div class="nuritionInfo">
-                        <span class="nlabel">18 g</span>
-                        <span class="clabel">Fats</span>
-                    </div>
+                    <div class="recipelabelCircle">
+                        <div class="circleinfo">
+                            <span class="innercircle">{{recipeDetailsArray.duration}}</span>
+                        </div>
+                        <span  class="clabel">  Duration</span></div>
+
+                    <div class="recipelabelCircle">
+                        <div class="circleinfo">
+                            <span class="innercircle">{{recipeDetailsArray.portion}}</span>
+                        </div>
+                        <span class="clabel"> Serving</span></div>
                 </div>
             </div>
-        </div>
+            <br/>
 
-        <!-- INGREDIENTS -->
-        <div class="assessment">
-            <h4 class="recipeTitle">Ingredients</h4>
-            <div class="recipegrid" style="width:100px;">
-                <span class="split" >
-                    125 
-                    50 
-                    200 ml
-                    ½
-                    ½
-                    1 
-                    1½ 
-               "-34.9290,138.6010".split(',');
-                </span>
-                <span class="split">
-                    gpenne (whole wheat)
-                    gricotta cheese
-                    whole peeled tomatoes (canned)
-                    eggplant
-                    onion
-                    clovesgarlic
-                    sprigsthyme
-                     salt
-                    pepper
-                    olive oil for frying
-                    basil to garnish
-                </span>
+            <!-- HOW TO  -->
+            <div class="assessment" style="margin-top:10%:">
+                <h4 class="recipeTitle"  style="margin-top:10%:">How-To</h4>
+                <div class="assessment" style="text-align: justify; vertical-align: middle; max-width:100%; padding:6%;" >
+                    <video controls="controls" class="cardimage slidepage videoPlayer" preload="metadata" webkit-playsinline="webkit-playsinline">
+                        <source   ng-src dynamic-url dynamic-url-src="{{recipeDetailsArray.video}}" type="video/mp4"  />
+                        <br/>
+                    </video>
+                </div>
+            </div>
+
+            <!-- NURITION -->
+            <div class="infobar" style="">
+                <h4 class="recipeTitle">Nurition Per Serving  </h4>
+                <div class="nuritionBar">
+
+                    <div class="nuritionInfo" style="border:none;">
+                        <span class="nlabel">{{recipeDetailsArray.kcal}}</span>
+                        <span class="clabel">Calories</span>
+                    </div>
+
+                    <div class="nuritionInfo">
+                        <span class="nlabel">{{recipeDetailsArray.carbo}}</span>
+                        <span class="clabel">Carbo</span>
+                    </div>
+
+                    <div class="nuritionInfo">
+                        <span class="nlabel">{{recipeDetailsArray.protein}}</span>
+                        <span class="clabel">Protein</span>
+                    </div>
+
+                    <div class="nuritionInfo">
+                        <span class="nlabel">{{recipeDetailsArray.fat}}</span>
+                        <span class="clabel">Fats</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- INGREDIENTS -->
+            <div class="assessment"  style=" float:inherit;" ng-init="inte={{recipeDetailsArray.ingredient| customSplitString}}">
+                <h4 class="recipeTitle">Ingredients</h4>
+                <div class="recipegrid" style="text-align: justify; vertical-align: middle; max-width:100%;" >
+                    <span class="nlabel" id="nlabel" style="text-align: left; color:dimgray; word-spacing: 2px;"  ng-repeat="x in inte">{x} </span>
+                </div>
+            </div>
+            <div class="recipegrid">
+                <button class="button button-block loginlist" style="background-color:#20b2aa; color:white;" type="submit">Add to Cart</button>
             </div>
         </div>
-
-        <!-- HOW TO  -->
-        <div class="assessment">
-            <h4 class="recipeTitle">How-To</h4>
-        </div>
-
-    </ion-content>
-</ion-view>

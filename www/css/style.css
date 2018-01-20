@@ -511,10 +511,12 @@ ion-card-content{
 /** RECIPE DETAILS  **/
 
 .recipeName{
-    font-size: 20px;
+    font-size: 16px;
     border: none;
     color:white;
-    margin-top:-15%;
+    padding:2%;
+    font-weight:bolder;
+    margin-top:-20%;
     text-transform: capitalize;
 }
 
@@ -559,7 +561,7 @@ ion-card-content{
 
 .recipelabelCircle{
     margin-left:10%;
-    font-size:13px;
+    font-size:15px;
     float:left;
     text-align: center;
     vertical-align: middle;
@@ -577,7 +579,11 @@ ion-card-content{
 
 
 .recipegrid{
-    padding-left:6%  
+    padding:9% ;
+    width:97%;
+    padding-bottom:4%;
+    padding-top:2%;
+/*    border:1px solid red;*/
 }
 
 .infobar,.nuritionBar{
@@ -587,12 +593,15 @@ ion-card-content{
     vertical-align: middle;
 /*    border-bottom: 1px dotted gray;*/
 }
+.nuritionBar{
+    padding-left:7%;
+}
 
 .circleinfo{
     border:1px solid lightgrey;
     border-radius: 50%;
-    width:60px;
-    height: 60px;
+    width:80px;
+    height: 80px;
     padding-top:30%;
     text-align: center;
     vertical-align: middle;
@@ -600,9 +609,7 @@ ion-card-content{
 }
 
 .split{
-    width:150px;
     float:left;
-    height:max-content;
     border:1px solid red;
 }
 
@@ -628,7 +635,7 @@ ion-card-content{
 
 .nlabel{
     color:black;
-    font-size:12px;
+    font-size:15px;
     vertical-align: middle;
     text-align: center;
     float:left;

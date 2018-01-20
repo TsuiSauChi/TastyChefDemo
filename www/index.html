@@ -26,7 +26,7 @@
 -->
 
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-        
+
         <link href="css/style.css" rel="stylesheet">
 
         <style type="text/css">
@@ -62,15 +62,32 @@
         <script src="js/controllers.js"></script>
         <script src="js/routes.js"></script>
         <script src="js/firebase-service.js"></script>
-        <script src="js/directives.js"></script>
+       
         <script src="js/services.js"></script>
-<!--
+        <!--
 
 <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
 -->
 
     </head>
     <body ng-app="app" animation="slide-left-right-ios7">
+<!--
+        <script type="text/javascript">
+            .filter('customSplitString', function() {
+                return function(input) {
+                    console.log(input)
+                    var arr = input.split(';;');
+                    console.log(arr)
+                    for(var i =0; i<arr.length;i++){
+                        var splitingred = document.getElementById("nlabel").innerText=arr[i]+"<br>";
+                        console.log(splitingred);
+                    }
+                    return splitingred;
+
+                };
+            });
+        </script>
+-->
         <div>
             <ion-side-menus enable-menu-with-back-views="false" data-componentid="side-menu21">
 
@@ -92,7 +109,6 @@
                     <ion-content ng-controller="tastyChefCtrl" padding="false" class="side-menu-left has-header ">
                         <ion-list class="menulist" data-componentid="list1">
                             <ion-item id="tastyChef-list-item4" ui-sref="login()" menu-close="" data-componentid="list-item4" class="menunav">Login</ion-item>
-                            <ion-item id="tastyChef-list-item5" ui-sref="tabsController.home()" menu-close="" data-componentid="list-item5" class="menunav">Home</ion-item>
                             <ion-item id="tastyChef-list-item6" ui-sref="tabsController.recipe()" menu-close="" data-componentid="list-item6" class="menunav">Recipes</ion-item>
                             <ion-item id="tastyChef-list-item7" ui-sref="recommendedRecipes()" menu-close="" data-componentid="list-item7" class="menunav">Recommended Receipes</ion-item>
                             <ion-item id="tastyChef-list-item8" ui-sref="nurition()" menu-close="" data-componentid="list-item8" class="menunav">Nurition Assessment</ion-item>
@@ -100,13 +116,14 @@
                             <ion-item id="tastyChef-list-item10" ui-sref="orderedRecipe()" menu-close="" data-componentid="list-item10" class="menunav">Ordered Receipe</ion-item>
                             <ion-item id="tastyChef-list-item11" ui-sref="orderHistory()" menu-close="" data-componentid="list-item11" class="menunav">Order History</ion-item>
                             <ion-item id="tastyChef-list-item12" ui-sref="payment()" menu-close="" data-componentid="list-item12" class="menunav">Payment</ion-item>
-                             <ion-item id="tastyChef-list-item12" ui-sref="addrecipe()" menu-close="" data-componentid="list-item13" class="menunav">Add recipe</ion-item>
-                              <ion-item id="tastyChef-list-item12" ui-sref="tabsController.recipeDetails()" menu-close="" data-componentid="list-item13" class="menunav">recipe</ion-item>
-                            
+                            <ion-item id="tastyChef-list-item12" ui-sref="addrecipe()" menu-close="" data-componentid="list-item13" class="menunav">Add recipe</ion-item>
+                            <ion-item id="tastyChef-list-item12" ui-sref="tabsController.recipeView()" menu-close="" data-componentid="list-item13" class="menunav">recipe</ion-item>
+
                         </ion-list>
                     </ion-content>
                 </ion-side-menu>
             </ion-side-menus>
         </div>
     </body>
+ <script src="js/directives.js"></script>
 </html>
