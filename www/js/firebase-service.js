@@ -17,6 +17,7 @@ angular.module('firebaseService', ['firebase'])
         firebase.initializeApp(config);
       }
 
+      var nuref = firebase.database().ref().child("nutritionProfile");
       var ref = firebase.database().ref().child("home");
       var HomeArray = $firebaseArray(ref);
 
@@ -33,6 +34,27 @@ angular.module('firebaseService', ['firebase'])
           HomeArray.$add(HomeItem);
         },
 
+
+        get: function (uid) {
+          //console.log(firebase.database().ref().child("member"),  firebase.database().ref().child("member").child(uid));
+          var starCountRef = MemberRef.child(uid);
+          console.log(starCountRef)
+          return starCountRef;
+        },
+
+        addMember: function (DoB, Email, Gender, Mobile, Password, Username) {
+
+          var MemberItem = {
+            DoB: DoB,
+            Email: Email,
+            Gender: Gender,
+            Mobile: Mobile,
+            Password: Password,
+            Username: Username
+          }
+          Member.$add(MemberItem)
+          console.log('Push successfully');
+        },
         all: function () {
           return HomeArray.$loaded().then(function () {
             return HomeArray;

@@ -218,3 +218,26 @@ angular.module('app.controllers', ['firebase'])
         }
       }
     }])
+
+  .controller('updateprofileCtrl', ['$scope', '$stateParams', 'HomeService', 'nutritionProfileService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, HomeService, nutritionProfileService) {
+
+      firebase.auth().onAuthStateChanged((user) => {
+        console.log(HomeService.get(user.uid));
+        /*
+        HomeService.get(user.uid).on('value', function (snapshot) {
+          $scope.nProfile = snapshot.val();
+          console.log(snapshot.key);
+        });
+        */
+
+        firebase.auth().onAuthStateChanged((user) => {
+          console.log(nutritionProfileService.get(user.uid));
+          nutritionProfileService.get(user.uid).on('value', function (snapshot) {
+            $scope.nProfile = snapshot.val();
+          });
+        });
+      });
+    }])

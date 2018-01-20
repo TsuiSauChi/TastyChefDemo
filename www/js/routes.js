@@ -110,6 +110,12 @@ angular.module('app.routes', [])
         controller: 'loginCtrl'
       })
 
+      .state('updateprofile', {
+        url: '/updateprofile',
+        templateUrl: 'templates/updateprofile.html',
+        controller: 'updateprofileCtrl'
+      })
+
       .state('register', {
         url: '/register',
         templateUrl: 'templates/register.html',
