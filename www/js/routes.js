@@ -119,6 +119,12 @@ angular.module('app.routes', [])
         controller: 'loginCtrl'
       })
 
+      .state('register', {
+        url: '/register',
+        templateUrl: 'templates/register.html',
+        controller: 'registerCtrl'
+      })
+
       .state('GetStartedNutritionAssessment', {
         url: '/GetStartedNutritionAssessment',
         templateUrl: 'templates/GetStartedNutritionAssessment.html',
@@ -147,10 +153,15 @@ angular.module('app.routes', [])
         templateUrl: 'templates/NutritionalAsessmentConfirmationPage.html',
         controller: 'NutritionalAsessmentConfirmationPageCtrl'
       })
-      .state('register', {
-        url: '/register',
-        templateUrl: 'templates/register.html',
-        controller: 'registerCtrl'
+      .state('NutritionProfilePage', {
+        url: '/NutritionProfilePage',
+        templateUrl: 'templates/NutritionProfilePage.html',
+        controller: 'NutritionProfilePageCtrl'
+      })
+      .state('UpdateNutritionProfilePage', {
+        url: '/UpdateNutritionProfilePage',
+        templateUrl: 'templates/UpdateNutritionProfilePage.html',
+        controller: 'UpdateNutritionProfilePageCrtl'
       })
 
 

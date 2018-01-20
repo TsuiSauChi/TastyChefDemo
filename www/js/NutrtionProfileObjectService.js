@@ -42,7 +42,6 @@ angular.module('app.NutrtionProfileObjectService', ['ngStorage', 'firebase'])
             $storage.nutritionProfile.push(JSON.stringify(item)); // Save into local storage
           }
           //else {
-
           //  this.remove(item);
           //}
         },
@@ -52,19 +51,18 @@ angular.module('app.NutrtionProfileObjectService', ['ngStorage', 'firebase'])
           if (index >= 0)
             $storage.nutritionProfile.splice(index, 1);
         },
-
       }
-
-
     }])
 
   .factory('NPService',
   function () {
     var array = [];
+
     return {
       get: function () {
         return array;
       }
     }
+
 
   })

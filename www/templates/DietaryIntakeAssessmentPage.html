@@ -158,11 +158,9 @@
       <div id="content">
         <label class="item item-input" id="applyLeave-input2">
           <span class="input-label">Diet Type:</span>
-          <select style="height:40px; width:60%;">
-            <option value="1">Please Select</option>
-            <option value="2">Vegetarian</option>
-            <option value="3">Vegan</option>
-            <option value="4">Atkins/Ketogenic</option>
+          <select style="height:40px; width:60%;" ng-model="nutritionprofile.DietType" ng-options="item.name for item in DietTypeArray">
+         
+    
           </select>
 
         </label>
@@ -172,16 +170,9 @@
           <span class="input-label">Food Allergy:</span>
 
         </label>
-        <ion-item>
-          <ion-checkbox class="checkbox-balanced"> None</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Egg</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Fish</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Milk</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Peanuts</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Shellfish</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Soy</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Tree-Nuts</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Wheat</ion-checkbox>
+        <ion-item ng-model="nutritionprofile.foodAllergy">
+          <ion-checkbox class="checkbox-balanced" ng-click="clickNone()"> None</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced" ng-show="!None" ng-repeat="chk in foodallergycheckbox" ng-checked="chk.checked" ng-model="chk.checked">{{chk.name}} </ion-checkbox>
         </ion-item>
         <hr />
 
@@ -189,43 +180,28 @@
         <label class="item item-input" id="applyLeave-input2">
           <span class="input-label">Food Avoidance:</span>
         </label>
-        <ion-item>
-          <ion-checkbox class="checkbox-balanced"> None</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Beef</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Cheese</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Mutton</ion-checkbox>
-          <ion-checkbox class="checkbox-balanced"> Onion</ion-checkbox>
+        <ion-item ng-model="checkItems[$index]">
+          <ion-checkbox class="checkbox-balanced" ng-click="clickAvoidanceNone()"> None</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced" ng-show="!AvoidNone" ng-repeat="chk in foodavoidancecheckbox" ng-checked="chk.checked" ng-model="chk.checked">{{chk.name}} </ion-checkbox>
         </ion-item>
         <hr />
         <label class="item item-input" id="applyLeave-input2">
           <span class="input-label">Meal Frequency</span>
-          <select style="height:40px; width:60%;">
-            <option value="0">Please Select</option>
-            <option value="1">1 times per day</option>
-            <option value="2">2 times per day</option>
-            <option value="3">3 times per day</option>
-            <option value="4">4 times per day</option>
-            <option value="5">5 times per day</option>
-            <option value="6">6 times per day</option>
+          <select style="height:40px; width:60%;" ng-model="nutritionprofile.MealFrequency" ng-options="item.name for item in MealFrequencyArray">
+         
+            
           </select>
         </label>
         <hr />
         <label class="item item-input" id="applyLeave-input2">
           <span class="input-label">Snack</span>
-          <select style="height:40px; width:60%;">
-            <option value="0">Please Select</option>
-            <option value="1">1 times per day</option>
-            <option value="2">2 times per day</option>
-            <option value="3">3 times per day</option>
-            <option value="4">4 times per day</option>
-            <option value="5">5 times per day</option>
-            <option value="6">6 times per day</option>
+          <select style="height:40px; width:60%;" ng-model="nutritionprofile.SnackFrequency" ng-options="item.name for item in snackArray">
           </select>
         </label>
       </div>
     </form>
     <div id="buttonBorder">
-      <button class="button button-block" ui-sref="MedicalConditionAssessmentPage()">Next</button>
+      <button class="button button-block" ui-sref="MedicalConditionAssessmentPage()" ng-click="addDietaryIntakeAssessmentInput()">Next</button>
 
     </div>
 

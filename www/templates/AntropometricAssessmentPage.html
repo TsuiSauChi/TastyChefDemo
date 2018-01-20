@@ -173,20 +173,15 @@
 
         <label class="item item-input" id="applyLeave-input2">
           <span class="input-label">Activity Level:</span>
-          <select style="height:40px; width:60%;" ng-model="nutritionprofile.activityLevel">
-            <!--<option>Please Select</option>-->
-            <option value="2">Little or no exercise</option>
-            <option value="3">Light exercise/sports 1 to 3 days per week</option>
-            <option value="4">Moderate exercise/sports 6 to 7 days per week</option>
-            <option value="5">Hard exercise every day or exercise 2 times a day</option>
-            <option value="6">Hard exercise 2 or more times per day</option>
+          <select style="height:40px; width:60%;" ng-model="showActivity.activity" ng-options="item.name for item in array">
+      
           </select>
         </label>
         <input type="hidden" ng-model="email">
 
       </div>
       <div id="buttonBorder">
-        <button class="button button-block" ui-sref="DietaryIntakeAssessmentPage()" ng-click="addAntropometricAssessmentInput(nutritionprofile)">Next</button>
+        <button class="button button-block" ui-sref="DietaryIntakeAssessmentPage()" ng-click="addAntropometricAssessmentInput()">Next</button>
 
       </div>
     </form>
