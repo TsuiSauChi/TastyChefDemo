@@ -1,0 +1,222 @@
+<ion-view title="Edit Nutrition Profile" id="page7">
+  <style>
+    #stepsButton {
+      border: 2px solid #4DB6AC;
+      border-radius: 8px;
+      background-color: white;
+      width: 90px;
+      height: 100%;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #stepsButtonHover {
+      border: 2px solid #4DB6AC;
+      border-radius: 8px;
+      background-color: #4DB6AC;
+      color: white;
+      width: 90px;
+      height: 100%;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #stepsLine {
+      /*border: 2px solid #4DB6AC;*/
+      /*border-radius: 8px;*/
+      background-color: white;
+      margin-top: 80%;
+    }
+
+    .grid {
+      /*border: 2px solid black;*/
+      width: 100%;
+    }
+
+    .row {
+      height: 10%;
+      width: 100%;
+      /*border: 2px solid black;*/
+    }
+
+    .rowContent {
+      height: 10%;
+      width: 100%;
+      /*margin-top:10%;
+      border: 2px solid black;*/
+    }
+
+
+
+    hr {
+      color: #4DB6AC;
+      /*z-index: -1;
+      margin-top: -136px;
+      position: static;*/
+    }
+
+    #buttonBorder {
+      margin-left: 10%;
+      float: left;
+      width: 80%;
+      height: 20%;
+      /*border: 2px solid #4DB6AC;*/
+    }
+
+    #antropometricborder {
+      border: 2px solid #4DB6AC;
+      border-radius: 12px;
+      background-color: white;
+      margin-top: 7.5%;
+      margin-left: 10%;
+      float: left;
+      width: 80%;
+      height: 18%;
+    }
+
+    .borderhead {
+      background-color: #4DB6AC;
+      text-align: center;
+      color: black;
+      font-weight: bold;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    h2 {
+      color: black;
+      font-weight: bold;
+    }
+
+    .padding {
+      border: 2px solid red;
+      height: 100%;
+      width: 100%;
+      float: left;
+    }
+
+
+
+    .input-label {
+      font-size: 14px;
+      width: 50%;
+    }
+
+    #content {
+      margin-left: 10%;
+      width: 80%;
+      height: 20%;
+      border: 3px solid #4DB6AC;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border-radius: 6px;
+      margin-top: 5%;
+    }
+
+    h1 {
+      font-weight: bold;
+    }
+
+    #form {
+      margin-top: 5%;
+    }
+  </style>
+  <ion-content padding="false" class=“has-header”>
+
+    <form id="form" class="list">
+      <h1>Update Nutrition Profile</h1>
+
+      <div id="content">
+        <h2>Antropometric</h2>
+        <hr />
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Height:</span>
+          <input type="number" placeholder="cm" ng-model="updateProfile[0].height">
+
+        </label>
+
+
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Weight:</span>
+          <input type="number" placeholder="kg" ng-model="updateProfile[0].weight">
+
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Activity Level:</span>
+          <select style="height:40px; width:60%;" ng-model="updateProfile[0].activityLevel" ng-options="item.value as item.name for item in activityArr"></select>
+        </label>
+        <hr />
+
+
+
+      </div>
+      <div id="content">
+        <h2>Dietary Intake</h2>
+        <hr />
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Diet Type:</span>
+          <select style="height:40px; width:60%;" ng-model="updateProfile[1].DietType" ng-options="item.name as item.name for item in DietTypeArray"></select>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Meal Frequency</span>
+          <select style="height:40px; width:60%;" ng-model="updateProfile[1].MealFrequency" ng-options="item.Value as item.name for item in MealFrequencyArray"></select>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Snack</span>
+          <select style="height:40px; width:60%;" ng-model="updateProfile[1].SnackFrequency" ng-options="item.Value as item.name for item in snackArray"></select>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Food Allergy:</span>
+
+        </label>
+        <ion-item ng-model="nutritionprofile.foodAllergy">
+          <ion-checkbox class="checkbox-balanced" ng-click="clickAllergyNone()" ng-checked="AllergyNone"> None</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced" ng-show="!AllergyNone" ng-repeat="chk in foodallergycheckbox" ng-checked="chk.checked" ng-model="chk.checked">{{chk.name}} </ion-checkbox>
+        </ion-item>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Food Avoidance:</span>
+        </label>
+        <ion-item ng-model="checkItems[$index]">
+          <ion-checkbox class="checkbox-balanced" ng-click="clickAvoidanceNone()"> None</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced" ng-show="!AvoidNone" ng-repeat="chk in foodavoidancecheckbox" ng-checked="chk.checked" ng-model="chk.checked">{{chk.name}} </ion-checkbox>
+        </ion-item>
+        <hr />
+
+
+
+      </div>
+      <div id="content">
+        <h2>Medical Condition</h2>
+        <hr />
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Diagnosed Medical Condition:</span>
+
+        </label>
+
+        <ion-item ng-model="checkItems[$index]">
+          <ion-checkbox class="checkbox-balanced" ng-click="clickConditionNone()" ng-checked="ConditionNone"> None</ion-checkbox>
+          <ion-checkbox class="checkbox-balanced" ng-show="!ConditionNone" ng-repeat="chk in MedicalConditionArray" ng-checked="chk.checked" ng-model="chk.checked">{{chk.name}} </ion-checkbox>
+        </ion-item>
+
+
+
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Glucose Level:</span>
+          <input type="number" placeholder="mmol/L" ng-model="updateProfile[2].glucoseLevel">
+        </label>
+        <hr />
+
+
+
+      </div>
+    </form>
+    <div id="buttonBorder">
+      <button class="button button-block" ui-sref="NutritionProfilePage()" ng-click="updateNutProfile()">Update</button>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>

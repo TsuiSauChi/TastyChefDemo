@@ -1,0 +1,248 @@
+<ion-view title="Nutrition Profile" id="page7">
+  <style>
+    #stepsButton {
+      border: 2px solid #4DB6AC;
+      border-radius: 8px;
+      background-color: white;
+      width: 90px;
+      height: 100%;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #stepsButtonHover {
+      border: 2px solid #4DB6AC;
+      border-radius: 8px;
+      background-color: #4DB6AC;
+      color: white;
+      width: 90px;
+      height: 100%;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #stepsLine {
+      /*border: 2px solid #4DB6AC;*/
+      /*border-radius: 8px;*/
+      background-color: white;
+      margin-top: 80%;
+    }
+
+    .grid {
+      /*border: 2px solid black;*/
+      width: 100%;
+    }
+
+    .row {
+      height: 10%;
+      width: 100%;
+      /*border: 2px solid black;*/
+    }
+
+    .rowContent {
+      height: 10%;
+      width: 100%;
+      /*margin-top:10%;
+		border: 2px solid black;*/
+    }
+
+
+
+    hr {
+      color: #4DB6AC;
+      /*z-index: -1;
+		margin-top: -136px;
+		position: static;*/
+    }
+
+    #buttonBorder {
+      margin-left: 10%;
+      float: left;
+      width: 80%;
+      height: 20%;
+      /*border: 2px solid #4DB6AC;*/
+    }
+
+    #buttonUpdateBorder {
+      margin-left: 65%;
+      /*float: left;*/
+      width: 30%;
+      height: 5%;
+
+      /*border: 2px solid #4DB6AC;*/
+    }
+
+    #antropometricborder {
+      border: 2px solid #4DB6AC;
+      border-radius: 12px;
+      background-color: white;
+      margin-top: 7.5%;
+      margin-left: 10%;
+      float: left;
+      width: 80%;
+      height: 18%;
+    }
+
+    .borderhead {
+      background-color: #4DB6AC;
+      text-align: center;
+      color: black;
+      font-weight: bold;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    h2 {
+      color: black;
+      font-weight: bold;
+    }
+
+    .padding {
+      border: 2px solid red;
+      height: 100%;
+      width: 100%;
+      float: left;
+    }
+
+
+
+    .input-label {
+      font-size: 14px;
+      width: 50%;
+    }
+
+    #content {
+      margin-left: 10%;
+      width: 80%;
+      height: 20%;
+      border: 3px solid #4DB6AC;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border-radius: 6px;
+      margin-top: 5%;
+    }
+
+    h1 {
+      font-weight: bold;
+    }
+
+    #form {
+      margin-top: 5%;
+    }
+
+    #h4 {
+      font-weight: bold;
+      text-decoration: underline;
+      font-size: 18px;
+    }
+
+    .ColorChange {
+      color: red;
+    }
+  </style>
+  <ion-content padding="false" class=“has-header”>
+
+
+    <form id="form" class="list">
+      <h1>My Nutrition Profile</h1>
+      <div id="content">
+        <h2>Antropometric</h2>
+        <hr />
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label" id="h4">My Body</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Height:{{nProfile.Height}}cm</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Weight:{{nProfile.Weight}}kg</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">BMI:{{nProfile.BMI | number:2}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">BMR:{{nProfile.BMR | number:2}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Activity Level:{{nProfile.ActivityLevel}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label" id="h4">My Body Status</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label" ng-class="{'ColorChange': nProfile.WeightStatus==='OverWeight'}">Weight Status:{{nProfile.WeightStatus}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label" ng-class="{'ColorChange': nProfile.Risk==='Moderate risk'}">Risk Status:{{nProfile.Risk}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label" id="h4">Recommended</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Daily Calories:{{nProfile.DailyCaloriesIntake | number:2}}kcal</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Each Meal Calories:{{nProfile.RecommendedEachMealCalories | number:2}}kcal</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Daily Carbs Intake:{{nProfile.DailyCarbsIntake | number:2}}g</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Daily Proteins Intake:{{nProfile.DailyProteinsIntake | number:2}}g</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Daily Fats Intake:{{nProfile.DailyFatsIntake | number:2}}g</span>
+        </label>
+        <div id="buttonUpdateBorder">
+          <button class="button button-block" ui-sref="UpdateNutritionProfilePage()">Edit</button>
+        </div>
+        <hr />
+      </div>
+      <div id="content">
+        <h2>Dietary Intake</h2>
+        <hr />
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Diet Type:{{nProfile.DietType}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Meal Frequency:{{nProfile.MealFrequency}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Snack Frequency:{{nProfile.SnackFrequency}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Food Allergy:{{nProfile.FoodAllergies}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Food Avoidance:{{nProfile.FoodAvoidance}}</span>
+        </label>
+        <div id="buttonUpdateBorder">
+          <button class="button button-block" ui-sref="">Edit</button>
+        </div>
+        <hr />
+      </div>
+      <div id="content">
+        <h2>Medical Condition</h2>
+        <hr />
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Medical Condition:{{nProfile.MedicalConditions}}</span>
+        </label>
+        <label class="item item-input" id="applyLeave-input2">
+          <span class="input-label">Glucose Level:{{nProfile.GlucoseLevel}}mmo/L</span>
+        </label>
+        <div id="buttonUpdateBorder">
+          <button class="button button-block" ui-sref="">Edit</button>
+        </div>
+        <hr />
+      </div>
+    </form>
+    <div id="buttonBorder">
+      <button class="button button-block" ui-sref="" ng-click="submit()">View Recommened Recipes</button>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>
