@@ -84,4 +84,6 @@
     <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
     <plugin name="cordova-plugin-apiai" spec="^1.7.4" />
     <engine name="android" spec="^5.0.0" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" />
+
 </widget>

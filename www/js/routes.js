@@ -8,7 +8,6 @@ angular.module('app.routes', [])
     // Each state's controller can be found in controllers.js
     $stateProvider
 
-
       .state('tabsController.home', {
         url: '/home',
         views: {
@@ -59,12 +58,35 @@ angular.module('app.routes', [])
         }
       })
 
-      .state('search', {
-        url: '/search',
-        templateUrl: 'templates/search.html',
-        controller: 'searchCtrl'
+      .state('tabsController.recipeView', {
+        url: '/recipeView',
+        views: {
+          'tab2': {
+            templateUrl: 'templates/recipeView.html',
+            controller: 'recipeCtrl'
+          }
+        }
       })
 
+      .state('tabsController.search', {
+        url: '/search',
+        views: {
+          'tab1': {
+            templateUrl: 'templates/search.html',
+            controller: 'recipeCtrl'
+          }
+        }
+      })
+
+      .state('tabsController.searched', {
+        url: '/searched/:cat',
+        views: {
+          'tab1': {
+            templateUrl: 'templates/searched.html',
+            controller: 'recipeCtrl'
+          }
+        }
+      })
       .state('addrecipe', {
         url: '/addrecipe',
         templateUrl: 'templates/addrecipe.html',
@@ -171,5 +193,6 @@ angular.module('app.routes', [])
       })
 
 
-    $urlRouterProvider.otherwise('/page1/home')
+    $urlRouterProvider.otherwise('/page1/recipes')
   });
+

@@ -82,13 +82,13 @@ angular.module('app.controllers', ['firebase'])
 
       recipeService.all().then(function (result) {
         $scope.recipeArray = result;
+        console.log(result);
         for (var i = 0; i < $scope.recipeArray.length; i++) {
           if (favService.isFav($scope.recipeArray[i]) >= 0)
             $scope.recipeArray[i].favIcon = "icon ion-ios-heart";
           else
             $scope.recipeArray[i].favIcon = "icon ion-ios-heart-outline";
         }
-
       });
 
       $scope.toggleFav = function (item) {
@@ -109,6 +109,35 @@ angular.module('app.controllers', ['firebase'])
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
     function ($scope, $stateParams, recipeService, favService) {
       var id = $stateParams.id;
+    }])
+
+  .controller('profileCtrl', ['$scope', '$stateParams', 'favService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, favService) {
+
+      favService.all().then(function (result) {
+
+        $scope.favArray = result;
+      })
+
+      $scope.toggleFav = function (item) {
+        if (item.favIcon == "icon ion-ios-heart-outline") {
+          item.favIcon = "icon ion-ios-heart";
+          item.likes = item.likes + 1;
+          favService.add(item);
+        }
+        else {
+          item.favIcon = "icon ion-ios-heart-outline";
+          favService.dislike(item);
+        }
+      }
+    }])
+
+  .controller('addrecipeCtrl', ['$scope', '$stateParams', 'recipeService', '$rootScope',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, recipeService) {
 
       $scope.recipeDetailsArray = recipeService.getSpecificRecipe(id);
     }])
@@ -224,126 +253,176 @@ angular.module('app.controllers', ['firebase'])
           $scope.foodallergycheckbox[i].checked = $scope.None
         }
       }
+        .controller('recipeCtrl', ['$scope', '$stateParams', 'recipeService', 'favService', '$rootScope',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+          // You can include any angular dependencies as parameters for this function
+          // TIP: Access Route Parameters for your page via $stateParams.parameterName
+          function ($scope, $stateParams, recipeService, favService, $rootScope) {
 
-      $scope.clickAvoidanceNone = function () {
-        $scope.AvoidNone = !$scope.AvoidNone;
-        for (var i = 0; i < $scope.foodavoidancecheckbox.length; i++) {
-          $scope.foodavoidancecheckbox[i].checked = $scope.AvoidNone
-        }
-      }
-
-      $scope.addDietaryIntakeAssessmentInput = function () {
-        var allergies = ""
-        if ($scope.None) {
-          allergies = "None";
-        } else {
-          for (var i = 0; i < $scope.foodallergycheckbox.length; i++) {
-            if ($scope.foodallergycheckbox[i].checked) {
-              allergies = allergies + $scope.foodallergycheckbox[i].name + ";";
+            $scope.clickAvoidanceNone = function () {
+              $scope.AvoidNone = !$scope.AvoidNone;
+              for (var i = 0; i < $scope.foodavoidancecheckbox.length; i++) {
+                $scope.foodavoidancecheckbox[i].checked = $scope.AvoidNone
+              }
             }
-          }
-          allergies = allergies.slice(0, -1);
-        }
-        var avoidance = ""
-        if ($scope.AvoidNone) {
-          avoidance = "None";
-        } else {
-          for (var i = 0; i < $scope.foodavoidancecheckbox.length; i++) {
-            if ($scope.foodavoidancecheckbox[i].checked) {
-              avoidance = avoidance + $scope.foodavoidancecheckbox[i].name + ";";
+
+            $scope.addDietaryIntakeAssessmentInput = function () {
+              var allergies = ""
+              if ($scope.None) {
+                allergies = "None";
+              } else {
+                for (var i = 0; i < $scope.foodallergycheckbox.length; i++) {
+                  if ($scope.foodallergycheckbox[i].checked) {
+                    allergies = allergies + $scope.foodallergycheckbox[i].name + ";";
+                  }
+                }
+                allergies = allergies.slice(0, -1);
+              }
+              var avoidance = ""
+              if ($scope.AvoidNone) {
+                avoidance = "None";
+              } else {
+                for (var i = 0; i < $scope.foodavoidancecheckbox.length; i++) {
+                  if ($scope.foodavoidancecheckbox[i].checked) {
+                    avoidance = avoidance + $scope.foodavoidancecheckbox[i].name + ";";
+                  }
+                }
+                avoidance = avoidance.slice(0, -1);
+                $scope.recipeArray = result;
+
+                for (var i = 0; i < $scope.recipeArray.length; i++) {
+                  $scope.recipeArray[i].favIcon = "icon ion-ios-heart-outline";
+                  if (favService.isFav($scope.recipeArray[i]) >= 0) {
+                    $scope.recipeArray[i].favIcon = "icon ion-ios-heart";
+                  }
+                  else {
+                    $scope.recipeArray[i].favIcon = "icon ion-ios-heart-outline";
+                  }
+                }
+                var tempProfile = {
+                  "DietType": $scope.nutritionprofile.DietType.name,
+                  "MealFrequency": $scope.nutritionprofile.MealFrequency.Value,
+                  "SnackFrequency": $scope.nutritionprofile.SnackFrequency.Value,
+                  "foodallergy": allergies,
+                  "foodavoidance": avoidance
+
+                }
+                var item = NPService.get();
+                item.push(tempProfile);
+                console.log(item);
+              }
             }
-          }
-          avoidance = avoidance.slice(0, -1);
-        }
-        var tempProfile = {
-          "DietType": $scope.nutritionprofile.DietType.name,
-          "MealFrequency": $scope.nutritionprofile.MealFrequency.Value,
-          "SnackFrequency": $scope.nutritionprofile.SnackFrequency.Value,
-          "foodallergy": allergies,
-          "foodavoidance": avoidance
+          }])
+        .controller('categoryCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+          // You can include any angular dependencies as parameters for this function
+          // TIP: Access Route Parameters for your page via $stateParams.parameterName
+          function ($scope, $stateParams) {
 
-        }
-        var item = NPService.get();
-        item.push(tempProfile);
-        console.log(item);
-      }
-    }])
-  .controller('categoryCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-    // You can include any angular dependencies as parameters for this function
-    // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
+          }])
 
-    }])
+        .controller('profileCtrl', ['$scope', '$stateParams', '$sce',
+          function ($scope, $stateParams, $sce) {
 
-  .controller('profileCtrl', ['$scope', '$stateParams', '$sce',
-    function ($scope, $stateParams, $sce) {
-
-      firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-          $scope.profileName = user.displayName;
-          $scope.profileImage = user.photoURL;
-          $scope.trustSrc = function (src) {
-            return $sce.trustAsResourceUrl(src);
-          };
-        } else {
-          $scope.profileName = "Guest User";
-          $scope.profileImage = "../guestuser.png";
-        }
-      });
+            firebase.auth().onAuthStateChanged(function (user) {
+              if (user) {
+                $scope.profileName = user.displayName;
+                $scope.profileImage = user.photoURL;
+                $scope.trustSrc = function (src) {
+                  return $sce.trustAsResourceUrl(src);
+                };
+              } else {
+                $scope.profileName = "Guest User";
+                $scope.profileImage = "../guestuser.png";
+              }
+            });
 
 
-    }])
+          }])
 
-  .controller('recipeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controllerr
-    // You can include any angular dependencies as parameters for this function
-    // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
+        .controller('recipeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controllerr
+          // You can include any angular dependencies as parameters for this function
+          // TIP: Access Route Parameters for your page via $stateParams.parameterName
+          function ($scope, $stateParams) {
 
 
-    }])
-  .controller('MedicalConditionAssessmentPageCtrl', ['$scope', '$stateParams', 'NPService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-    function ($scope, $stateParams, NPService) {
-      $scope.glucoseLevel = { "text": "" }
-      //Diet Type
-      $scope.MedicalConditionArray = [
-        { "name": "Diabetes", "checked": false },
-        { "name": "Hypertension", "checked": false }]
-      $scope.none = false
-      $scope.clickNone = function () {
-        $scope.none = !$scope.none;
-        for (var i = 0; i < $scope.MedicalConditionArray.length; i++) {
-          $scope.MedicalConditionArray[i].checked = $scope.none;
-        }
-      }
+          }])
+        .controller('MedicalConditionAssessmentPageCtrl', ['$scope', '$stateParams', 'NPService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+          function ($scope, $stateParams, NPService) {
 
-      $scope.addDietaryIntakeAssessmentInput = function () {
-        var medcon = "";
-        if ($scope.none) {
-          medcon = "none";
-        } else {
-          for (var i = 0; i < $scope.MedicalConditionArray.length; i++) {
-            if ($scope.MedicalConditionArray[i].checked) {
-              medcon = medcon + $scope.MedicalConditionArray[i].name + ";";
+            $scope.glucoseLevel = { "text": "" }
+            //Diet Type
+            $scope.MedicalConditionArray = [
+              { "name": "Diabetes", "checked": false },
+              { "name": "Hypertension", "checked": false }]
+            $scope.none = false
+            $scope.clickNone = function () {
+              $scope.none = !$scope.none;
+              for (var i = 0; i < $scope.MedicalConditionArray.length; i++) {
+                $scope.MedicalConditionArray[i].checked = $scope.none;
+              }
+
+
+              $scope.addDietaryIntakeAssessmentInput = function () {
+                var medcon = "";
+                if ($scope.none) {
+                  medcon = "none";
+                } else {
+                  for (var i = 0; i < $scope.MedicalConditionArray.length; i++) {
+                    if ($scope.MedicalConditionArray[i].checked) {
+                      medcon = medcon + $scope.MedicalConditionArray[i].name + ";";
+                    }
+                  }
+                  medcon = medcon.slice(0, -1);
+                }
+
+                var item = NPService.get();
+                item.push({
+                  medicalCondition: medcon,
+                  glucoseLevel: $scope.glucoseLevel.text
+                });
+                console.log(item);
+              }
             }
-          }
-          medcon = medcon.slice(0, -1);
-        }
 
-        var item = NPService.get();
-        item.push({
-          medicalCondition: medcon,
-          glucoseLevel: $scope.glucoseLevel.text
-        });
-        console.log(item);
-      }
-    }])
+          }])
 
 
-  .controller('recommendedRecipesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-    // You can include any angular dependencies as parameters for this function
-    // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
+        .controller('recommendedRecipesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+          // You can include any angular dependencies as parameters for this function
+          // TIP: Access Route Parameters for your page via $stateParams.parameterName
+          function ($scope, $stateParams) {
 
+            var id = $stateParams.id;
+
+            $scope.recipeDetailsArray = recipeService.getSpecificRecipe(id);
+
+            //        $scope.mySplit = function(item, nb) {
+            //            var ingred = recipeService.get(item);
+            //            var array = ingred.ingredient;
+            //            console.log(array);
+            //            return array[nb];
+            //        }
+
+
+
+            $scope.split = function (item) {
+              $scope.recipeDetailsArray = recipeService.getSpecificRecipe(id);
+              console.log(id);
+              var ingred = recipeService.get(item);
+              $scope.splitingred = ingred.ingredient.split(';;').toString();
+              console.log($scope.splitingred);
+            }
+          }])
+
+        .controller('recipeDetailsCtrl', ['$scope', '$stateParams', 'recipeService', 'favService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+          // You can include any angular dependencies as parameters for this function
+          // TIP: Access Route Parameters for your page via $stateParams.parameterName
+          function ($scope, $stateParams, recipeService, favService, $rootScope) {
+
+            var id = $stateParams.id;
+
+            $scope.recipeDetailsArray = recipeService.getSpecificRecipe(id);
+
+          }])
 
     }])
   .controller('NutritionalAsessmentConfirmationPageCtrl', ['$scope', '$stateParams', 'NPService', 'nutritionProfileService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller

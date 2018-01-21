@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -102,46 +101,47 @@
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
     -->
 
-</head>
+  </head>
 
-<body ng-app="app" animation="slide-left-right-ios7">
-  <div>
-    <ion-side-menus enable-menu-with-back-views="false" data-componentid="side-menu21">
-      <ion-side-menu-content>
-        <ion-nav-bar class="bar-stable">
-          <ion-nav-back-button></ion-nav-back-button>
-          <ion-nav-buttons side="left">
-            <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-          </ion-nav-buttons>
-        </ion-nav-bar>
-        <ion-nav-view></ion-nav-view>
-      </ion-side-menu-content>
-      <ion-side-menu side="left" id="side-menu21">
-        <ion-header-bar class="bar-stable">
-          <div class="titleheader">
-            <img src="img/Tasty%20Chef%20Logo.png" style="width:40%; padding-top:4%;">
-          </div>
-        </ion-header-bar>
-        <ion-content ng-controller="tastyChefCtrl" padding="false" class="side-menu-left has-header ">
-          <ion-list class="menulist" data-componentid="list1">
-            <ion-item id="tastyChef-list-item4" ui-sref="login()" menu-close="" data-componentid="list-item4" class="menunav">Login</ion-item>
-            <ion-item id="tastyChef-list-item5" ui-sref="tabsController.home()" menu-close="" data-componentid="list-item5" class="menunav">Home</ion-item>
-            <ion-item id="tastyChef-list-item6" ui-sref="tabsController.recipe()" menu-close="" data-componentid="list-item6" class="menunav">Recipes</ion-item>
-            <ion-item id="tastyChef-list-item14" ui-sref="addrecipe()" ng-style="admin" menu-close="" data-componentid="list-item14"
-              class="menunav">Create Recipe</ion-item>
-            <ion-item id="tastyChef-list-item7" ui-sref="recommendedRecipes()" menu-close="" data-componentid="list-item7" class="menunav">Recommended Receipes</ion-item>
-            <ion-item id="tastyChef-list-item8" ui-sref="GetStartedNutritionAssessment()" menu-close="" data-componentid="list-item8"
-              class="menunav">Nurition Assessment</ion-item>
-            <ion-item id="tastyChef-list-item9" ui-sref="tabsController.cart()" menu-close="" data-componentid="list-item9" class="menunav">Shopping Cart</ion-item>
-            <ion-item id="tastyChef-list-item10" ui-sref="orderedRecipe()" menu-close="" data-componentid="list-item10" class="menunav">Ordered Receipe</ion-item>
-            <ion-item id="tastyChef-list-item11" ui-sref="orderHistory()" menu-close="" data-componentid="list-item11" class="menunav">Order History</ion-item>
-            <ion-item id="tastyChef-list-item12" ui-sref="payment()" menu-close="" data-componentid="list-item12" class="menunav">Payment</ion-item>
-            <ion-item id="tastyChef-list-item13" menu-close="" data-componentid="list-item13" class="menunav" ng-click="signOut()">Sign Out</ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-side-menu>
-    </ion-side-menus>
-  </div>
-</body>
+  <body ng-app="app" animation="slide-left-right-ios7">
+    <div>
+      <ion-side-menus enable-menu-with-back-views="false" data-componentid="side-menu21">
+        <ion-side-menu-content>
+          <ion-nav-bar class="bar-stable">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-buttons side="left">
+              <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+          </ion-nav-bar>
+          <ion-nav-view></ion-nav-view>
+        </ion-side-menu-content>
+        <ion-side-menu side="left" id="side-menu21">
+          <ion-header-bar class="bar-stable">
+            <div class="titleheader">
+              <img src="img/Tasty%20Chef%20Logo.png" style="width:40%; padding-top:4%;">
+            </div>
+          </ion-header-bar>
+          <ion-content ng-controller="tastyChefCtrl" padding="false" class="side-menu-left has-header ">
+            <ion-list class="menulist" data-componentid="list1">
+              <ion-item id="tastyChef-list-item4" ui-sref="login()" menu-close="" data-componentid="list-item4" class="menunav">Login</ion-item>
+              <ion-item id="tastyChef-list-item6" ui-sref="tabsController.recipe()" menu-close="" data-componentid="list-item6" class="menunav">Recipes</ion-item>
+              <ion-item id="tastyChef-list-item14" ui-sref="addrecipe()" ng-style="admin" menu-close="" data-componentid="list-item14"
+                class="menunav">Create Recipe</ion-item>
+              <ion-item id="tastyChef-list-item7" ui-sref="recommendedRecipes()" menu-close="" data-componentid="list-item7" class="menunav">Recommended Receipes</ion-item>
+              <ion-item id="tastyChef-list-item8" ui-sref="GetStartedNutritionAssessment()" menu-close="" data-componentid="list-item8"
+                class="menunav">Nurition Assessment</ion-item>
+              <ion-item id="tastyChef-list-item9" ui-sref="tabsController.cart()" menu-close="" data-componentid="list-item9" class="menunav">Shopping Cart</ion-item>
+              <ion-item id="tastyChef-list-item10" ui-sref="orderedRecipe()" menu-close="" data-componentid="list-item10" class="menunav">Ordered Receipe</ion-item>
+              <ion-item id="tastyChef-list-item11" ui-sref="orderHistory()" menu-close="" data-componentid="list-item11" class="menunav">Order History</ion-item>
+              <ion-item id="tastyChef-list-item12" ui-sref="payment()" menu-close="" data-componentid="list-item12" class="menunav">Payment</ion-item>
+              <ion-item id="tastyChef-list-item14" ui-sref="tabsController.recipeView()" menu-close="" data-componentid="list-item13" class="menunav">recipe</ion-item>
+              <ion-item id="tastyChef-list-item13" menu-close="" data-componentid="list-item13" class="menunav" ng-click="signOut()">Sign Out</ion-item>
+            </ion-list>
+          </ion-content>
+        </ion-side-menu>
+      </ion-side-menus>
+    </div>
+  </body>
+  <script src="js/directives.js"></script>
 
 </html>

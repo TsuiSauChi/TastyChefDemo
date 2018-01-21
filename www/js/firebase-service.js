@@ -50,7 +50,7 @@ angular.module('firebaseService', ['firebase'])
             Mobile: Mobile,
             Password: Password,
             Username: Username,
-            Role : "Member"
+            Role: "Member"
           }
           console.log(MemberItem);
           Member.$add(MemberItem)
@@ -111,20 +111,41 @@ angular.module('firebaseService', ['firebase'])
 
       var recipeArray = $firebaseArray(ref);
 
+      var nuritionRef = firebase.database().ref().child("recipe/nurition");
+
+      var nuritionValueArray = $firebaseArray(nuritionRef);
+
       return {
-        add: function (rname, rimage, rportion, rdifficulty, rtype, rdate, likes) {
-          // Transform Date to string
+        add: function (rname, ricon, rimage, rvideo, rduration, rportion, rprice, rdifficulty, rtype, rdate, likes, rnurition, ringredients) {
           var recipeItem = {
             ref: rname,
             name: rname,
+            icon: ricon,
             image: rimage,
+            video: rvideo,
+            duration: rduration,
             portion: rportion,
+            price: rprice,
             difficulty: rdifficulty,
             type: rtype,
             date: rdate.toDateString(),
             likes: likes,
+            nurition: rnurition,
+            ingredients: ringredients,
+
           };
           recipeArray.$add(recipeItem);
+        },
+
+        addNurition: function (rid, icarbo, iprotein, ikcal, ifat) {
+          var nuritionValue = {
+            recipeId: rid,
+            carbo: icarbo,
+            protein: iprotein,
+            kcal: ikcal,
+            fat: ifat,
+          };
+          nuritionValueArray.$add(nuritions);
         },
 
         all: function () {
@@ -134,12 +155,13 @@ angular.module('firebaseService', ['firebase'])
         },
 
         get: function (item) {
-          var item = recipeArray.$getRecord(item.$id);
+          console.log(item);
+          //   var item = recipeArray.$getRecord(item.$id);
           return item;
         },
 
         getTodayRecipe: function (item) {
-          var query = ref.orderByChild("date").equalTo();
+          var query = ref.orderByChild("date").equalTo(DateTime.now);
           var pendingArray = $firebaseArray(query);
           return pendingArray.$loaded().then(function () {
             return pendingArray;
@@ -160,15 +182,21 @@ angular.module('firebaseService', ['firebase'])
           recipeArray.$save(item);
         },
 
+        changeIcon: function (item, newIcon) {
+          var item = recipeArray.$getRecord(item.$id);
+          item.icon = newIcon;
+          recipeArray.$save(item);
+        },
+
 
 
         delete: function (item) {
           var item = recipeArray.$getRecord(item.$id);
           recipeArray.$remove(item);
         },
-
       }
     }])
+
 
   .factory('favService', ['$firebaseArray',
 
@@ -193,10 +221,19 @@ angular.module('firebaseService', ['firebase'])
 
       return {
 
+
         all: function () {
           return likesArray.$loaded().then(function () {
             return likesArray;
           });
+        },
+
+        getSpecificHeart: function (id) {
+          for (var i = 0; i < likesArray.length; i++) {
+            if (likesArray[i].id == id) {
+              return likesArray[i];
+            }
+          }
         },
 
         isFav: function (item) {
@@ -208,7 +245,17 @@ angular.module('firebaseService', ['firebase'])
           return -1;
         },
 
+        add2: function (item, favIcon) {
+          var favItem = {
+            favIcon: favIcon,
+          };
+          if (this.isFav(item) < 0) {
+            likesArray.$add(favItem);
+          }
+        },
+
         add: function (item) {
+
           if (this.isFav(item) < 0) {// Not already in fav
             likesArray.$add(item); // Save into local storage
           }

@@ -1,0 +1,18 @@
+<ion-view title="All Recipe" id="page10">
+    <ion-content padding="true" class="has-header">
+        <!--        <h3 class="homelabel">All Recipe</h3>-->
+        <div class="assessment" ng-repeat="item in recipeArray" >
+            <div class="outercard" style=" height:300px; width:48%; margin-left:2%;">
+                <div class="card"  >
+                    <img class="cardimage" src="{{item.image}}"  ui-sref="tabsController.recipeDetails({id:item.id})" />
+                    <div class="fav" >
+                        <icon class="{{item.favIcon}} heart" ng-click="toggleFav(item)"></icon>
+                    </div>
+                </div>
+                <div class="cardtitle">
+                    <i>{{item.name}}</i>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

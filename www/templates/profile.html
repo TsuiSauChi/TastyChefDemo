@@ -16,21 +16,34 @@
                 <button class="buttonbar button-block"><i class="ion-ios-paper-outline"></i><span>Ordered Recipe</span></button>
                 <button class="buttonbar button-block"><i class="ion-ios-clock-outline"></i><span>Order History</span></button>
 
-            </div>
-        </div>
+
+</div>
+</div>
 -->
-    <div class="buttongrid">
-      <div id="profile-button-bar1" class="button-bar">
-        <button class="buttonbar button-block" ui-sref="">
-          <i class="ion-ios-heart"></i>
-          <span>likes</span>
-        </button>
-        <button class="buttonbar button-block" ui-sref="">
-          <i class="ion-grid"></i>
-          <span>Feed</span>
-        </button>
+
+    <!--
+<div class="buttongrid">
+<div id="profile-button-bar1" class="button-bar">
+<button class="buttonbar button-block" ui-sref=""><i class="ion-ios-heart"></i><span>likes</span></button>
+<button class="buttonbar button-block" ui-sref=""><i class="ion-grid"></i><span>Feed</span></button>
+</div>
+</div>
+
+-->
+    <h3 class="homelabel" style=" padding:5%; text-align:center; color:dimgray; font-size:15px;">Favourites</h3>
+    <div class="assessment" ng-repeat="item in favArray">
+      <div class="outercard" style=" height:300px; width:48%; margin-left:2%;">
+        <div class="card">
+          <img class="cardimage" src="{{item.image}}" ui-sref="tabsController.recipeDetails({id:item.id})" />
+          <div class="fav">
+            <icon class="{{item.favIcon}} heart" ng-click="toggfleFav(item)"></icon>
+
+          </div>
+        </div>
+        <div class="cardtitle">
+          <i>{{item.name}}</i>
+        </div>
       </div>
     </div>
-
   </ion-content>
 </ion-view>
