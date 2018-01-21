@@ -241,6 +241,7 @@ angular.module('app.routes', [])
         }
       })
 
+
       .state('tabsController.changeAvailability', {
         url: '/changeAvailability',
         views: {
