@@ -1,0 +1,38 @@
+<ion-view title="Change Availability" id="page4">
+  <ion-content padding="true" class="has-header">
+    <div class="list card" ng-repeat="item in recipeArray">
+
+      <ion-item class="item-divider">{{item.name}}</ion-item>
+
+      <ion-item>
+        <img ng-src="{{item.image}}" width="80px" height="80px"> Recipe available on: {{item.availability}}</ion-item>
+      <h6>Change to: </h6>
+      <button class="button button-balanced button-small button-outline" ng-click="monday(item)">Monday
+      </button>
+      <button class="button button-positive button-small button-outline" ng-click="tuesday(item)">Tuesday
+      </button>
+      <button class="button button-calm button-small button-outline" ng-click="wednesday(item)">Wednesday
+      </button>
+      <button class="button button-energized button-small button-outline" ng-click="thursday(item)">Thursday
+      </button>
+      <button class="button button-assertive button-small button-outline" ng-click="friday(item)">Friday
+      </button>
+      <button class="button button-dark button-small button-outline" ng-click="notAvailable(item)">Not Available
+      </button>
+    </div>
+
+    <!--
+    <ion-list id="adminRecipe-list1" ng-repeat="item in recipeArray">
+      <ion-item class="item-thumbnail-left item-icon-right" id="adminRecipe-list-item1">
+        <img ng-src="{{item.image}}" width="100%">
+        <h2>{{item.name}}</h2>
+        <p>Recipe available on: {{item.availability}}</p>
+        <p>Created: {{item.date}}</p>
+        <i class="icon ion-chevron-right"></i>
+        <ion-option-button class="button-positive" ng-click="onupdate(item)">Update</ion-option-button>
+        <ion-option-button class="button-assertive" ng-click="delete(item)">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+-->
+  </ion-content>
+</ion-view>

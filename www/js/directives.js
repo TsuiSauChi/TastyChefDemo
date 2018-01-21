@@ -26,12 +26,9 @@ angular.module('app.directives', [])
 
   .filter('customSplitString', function () {
     return function (input) {
-      console.log(input)
-      var arr = input.split(';;');
-      console.log(arr)
+      var arr = input.split(';');
       for (var i = 0; i < arr.length; i++) {
         var splitingred = document.getElementById("nlabel").innerHtml = arr[i] + "<br>";
-        console.log(splitingred);
       }
       return splitingred;
 

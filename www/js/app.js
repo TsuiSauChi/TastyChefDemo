@@ -37,20 +37,21 @@ angular.module('app',
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
-
-      ApiAIPlugin.init(
-        {
-          subscriptionKey: "cb9693af-85ce-4fbf-844a-5563722fc27f",
-          clientAccessToken: "068983cce72742a4aa160682a60a6fbd", // insert your client access key here
-          lang: "en" // set lang tag from list of supported languages
-        },
-        function (result) {
-          console.log("Sucess", result)
-         },
-        function (error) {
-          console.log("Fail")
-         }
-      );
+      /*
+            ApiAIPlugin.init(
+              {
+                subscriptionKey: "cb9693af-85ce-4fbf-844a-5563722fc27f",
+                clientAccessToken: "068983cce72742a4aa160682a60a6fbd", // insert your client access key here
+                lang: "en" // set lang tag from list of supported languages
+              },
+              function (result) {
+                console.log("Sucess", result)
+               },
+              function (error) {
+                console.log("Fail")
+               }
+            );
+            */
     });
 
   })

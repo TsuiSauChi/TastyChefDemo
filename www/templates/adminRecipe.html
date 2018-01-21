@@ -1,0 +1,20 @@
+<ion-view title="AdminRecipe" id="page2">
+  <!--
+
+          <ion-refresher pulling-text="Pull to refresh..." on-refresh="refresh()">
+
+    </ion-refresher>
+-->
+  <ion-content padding="true" class="has-header">
+    <ion-list id="adminRecipe-list1" ng-repeat="item in recipeArray" ui-sref="tabsController.recipeDetail({id:item.id})" ng-click="onclick(item)">
+      <ion-item class="item-thumbnail-left item-icon-right" id="adminRecipe-list-item1">
+        <img ng-src="{{item.image}}" width="100%">
+        <h2>{{item.name}}</h2>
+        <p>Recipe available on: {{item.availability}}</p>
+        <p>Created: {{item.date}}</p>
+        <i class="icon ion-chevron-right"></i>
+        <ion-option-button class="button-assertive" ng-click="delete(item)">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,21 @@
+<ion-view title="Recipe Detail" id="page5">
+  <ion-content padding="true" class="has-header">
+    <img ng-src="{{itemDetails.image}}" width="300px" height="300px">
+    <h3>Basic Information</h3>
+    <p>Recipe Name: {{itemDetails.name}}</p>
+    <p>Date Created: {{itemDetails.date}}</p>
+    <p>Availability: {{itemDetails.availability}}</p>
+    <p>Difiiculty: {{itemDetails.difficulty}}</p>
+    <p>Cooking type: {{itemDetails.type}}</p>
+    <p>Duration: {{itemDetails.duration}} Minutes</p>
+    <h3>Ingredient</h3>
+    <p>Ingredient: {{itemDetails.ingredient}}</p>
+    <h3>Nutrition</h3>
+    <p>Carlories: {{itemDetails.calories}}kcal</p>
+    <p>Carbohydrate: {{itemDetails.carbohydrate}}g</p>
+    <p>Protein: {{itemDetails.protein}}g</p>
+    <p>Fat: {{itemDetails.fat}}g</p>
+
+
+  </ion-content>
+</ion-view>

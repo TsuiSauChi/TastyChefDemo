@@ -1,0 +1,82 @@
+<ion-view title="Create Recipe" id="page3">
+  <ion-content padding="true" class="has-header">
+    <form id="createrecipe-form1" class="list" ng-submit="confirm(recipe)">
+      <h3>Basic Information</h3>
+      <label class="item item-input" id="createRecipe-input1">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="" ng-model="recipe.name">
+      </label>
+      <label class="item item-input" id="createRecipe-input2">
+        <span class="input-label">Portion</span>
+        <input type="text" placeholder="" ng-model="recipe.portion">
+      </label>
+      <label class="item item-input" id="createRecipe-input3">
+        <span class="input-label">Date Created</span>
+        <input type="date" placeholder="" ng-model="recipe.date">
+      </label>
+      <label class="item item-input" id="createRecipe-input4">
+        <span class="input-label">Image</span>
+        <input type="text" placeholder="" ng-model="recipe.image">
+      </label>
+      <label class="item item-select" id="createRecipe-select1">
+        <span class="input-label">Availbility</span>
+        <select ng-model="recipe.availability">
+          <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+        </select>
+      </label>
+      <label class="item item-select" id="createRecipe-select2">
+        <span class="input-label">Cooking Difficulty</span>
+        <select ng-model="recipe.difficulty">
+          <option>Easy</option>
+          <option>Average</option>
+          <option>Above Average</option>
+          <option>Difficult</option>
+        </select>
+      </label>
+      <label class="item item-input" id="createRecipe-input17">
+        <span class="input-label">Cooking Type</span>
+        <input type="text" placeholder="Boil, fry, bake, steam, etc..." ng-model="recipe.type">
+      </label>
+      <label class="item item-input" id="createRecipe-input4">
+        <span class="input-label">Duration</span>
+        <input type="text" placeholder="Minute" ng-model="recipe.duration">
+      </label>
+      <!--          <a id="createRecipe-button1"class="button button-balanced button-block" ng-model = "recipe.image">Upload Image</a>-->
+
+      <h3>Ingredient and Cookware</h3>
+      <label class="item item-input" id="createRecipe-input5">
+        <span class="input-label">Ingredient</span>
+        <input type="text" placeholder="" ng-model="recipe.ingredient">
+      </label>
+      <label class="item item-input" id="createRecipe-input99">
+        <span class="input-label">Cookware</span>
+        <input type="text" placeholder="" ng-model="recipe.cookware">
+      </label>
+
+      <h3>Nutrition</h3>
+      <label class="item item-input" id="createRecipe-input7">
+        <span class="input-label">Calories</span>
+        <input type="text" placeholder="kcal" ng-model="recipe.calories">
+      </label>
+      <label class="item item-input" id="createRecipe-input8">
+        <span class="input-label">Carbohydrate</span>
+        <input type="text" placeholder="Gram" ng-model="recipe.carbohydrate">
+      </label>
+      <label class="item item-input" id="createRecipe-input9">
+        <span class="input-label">Protein</span>
+        <input type="text" placeholder="Gram" ng-model="recipe.protein">
+      </label>
+      <label class="item item-input" id="createRecipe-input10">
+        <span class="input-label">Fat</span>
+        <input type="text" placeholder="Gram" ng-model="recipe.fat">
+      </label>
+      <button id="createRecipe-button2" class="button button-positive button-block" type="submit">
+        Create</button>
+
+    </form>
+  </ion-content>
+</ion-view>

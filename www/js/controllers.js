@@ -37,11 +37,47 @@ angular.module('app.controllers', ['firebase'])
     function ($scope, $stateParams, $ionicPlatform) {
     }])
 
-  .controller('cartCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+  .controller('cartCtrl', ['$scope', '$stateParams', 'cartService', 'memberService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
+    function ($scope, $stateParams, cartService, memberService, $ionicPopup) {
+      $scope.$on('$ionicView.enter', function (e) {
+        $scope.getList();
 
+      });
+      $scope.getList = function () {
+        $scope.list = cartService.all();
+        console.log($scope.list)
+      }
+      $scope.checkout = function (list) {
+        //console.log(list)
+        //console.log(memberService)
+        for (var i = 0; i < list.length; i++) {
+          console.log(list[i])
+          memberService.addToOrderHistory(list[i].name, list[i].image, list[i].id, list[i].portion, "pending");
+        }
+      }
+
+      $scope.onChange = function (item) {
+        console.log(item)
+        cartService.getOne(item)
+      }
+
+      $scope.onDelete = function (item) {
+        var confirmPop = $ionicPopup.confirm({
+          title: 'Are you sure?',
+          template: 'Delete?'
+        });
+        confirmPop.then(function (res) {
+          if (res) {
+            console.log('DELETED')
+            cartService.remove(item)
+            $scope.getList()
+          } else {
+
+          }
+        })
+      }
     }])
 
   .controller('profileCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -75,14 +111,15 @@ angular.module('app.controllers', ['firebase'])
       }
     }])
 
-  .controller('recipeCtrl', ['$scope', '$stateParams', 'recipeService', 'favService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+  .controller('recipeCtrl', ['$scope', '$stateParams', 'recipeService', 'favService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
     function ($scope, $stateParams, recipeService, favService) {
 
+      console.log('test');
+
       recipeService.all().then(function (result) {
         $scope.recipeArray = result;
-        console.log(result);
         for (var i = 0; i < $scope.recipeArray.length; i++) {
           if (favService.isFav($scope.recipeArray[i]) >= 0)
             $scope.recipeArray[i].favIcon = "icon ion-ios-heart";
@@ -101,14 +138,19 @@ angular.module('app.controllers', ['firebase'])
           favService.dislike(item);
         }
       }
-
     }])
 
-  .controller('recipeDetailsCtrl', ['$scope', '$stateParams', 'recipeService', 'favService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+  .controller('recipeDetailsCtrl', ['$scope', '$stateParams', 'recipeService', 'favService', 'cartService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams, recipeService, favService) {
+    function ($scope, $stateParams, recipeService, favService, $rootScope, cartService) {
       var id = $stateParams.id;
+      console.log(cartService);
+      $scope.recipeDetailsArray = recipeService.getSpecificRecipe(id);
+      $scope.addToCart = function () {
+        console.log('ITEM', $scope.recipeDetailsArray, cartService);
+        cartService.add($scope.recipeDetailsArray)
+      }
     }])
 
   .controller('profileCtrl', ['$scope', '$stateParams', 'favService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -117,7 +159,6 @@ angular.module('app.controllers', ['firebase'])
     function ($scope, $stateParams, favService) {
 
       favService.all().then(function (result) {
-
         $scope.favArray = result;
       })
 
@@ -133,16 +174,6 @@ angular.module('app.controllers', ['firebase'])
         }
       }
     }])
-
-  .controller('addrecipeCtrl', ['$scope', '$stateParams', 'recipeService', '$rootScope',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-    // You can include any angular dependencies as parameters for this function
-    // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams, recipeService) {
-
-      $scope.recipeDetailsArray = recipeService.getSpecificRecipe(id);
-    }])
-
-
 
   .controller('recommendedRecipesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     function ($scope, $stateParams) {
@@ -253,65 +284,6 @@ angular.module('app.controllers', ['firebase'])
           $scope.foodallergycheckbox[i].checked = $scope.None
         }
       }
-        .controller('recipeCtrl', ['$scope', '$stateParams', 'recipeService', 'favService', '$rootScope',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-          // You can include any angular dependencies as parameters for this function
-          // TIP: Access Route Parameters for your page via $stateParams.parameterName
-          function ($scope, $stateParams, recipeService, favService, $rootScope) {
-
-            $scope.clickAvoidanceNone = function () {
-              $scope.AvoidNone = !$scope.AvoidNone;
-              for (var i = 0; i < $scope.foodavoidancecheckbox.length; i++) {
-                $scope.foodavoidancecheckbox[i].checked = $scope.AvoidNone
-              }
-            }
-
-            $scope.addDietaryIntakeAssessmentInput = function () {
-              var allergies = ""
-              if ($scope.None) {
-                allergies = "None";
-              } else {
-                for (var i = 0; i < $scope.foodallergycheckbox.length; i++) {
-                  if ($scope.foodallergycheckbox[i].checked) {
-                    allergies = allergies + $scope.foodallergycheckbox[i].name + ";";
-                  }
-                }
-                allergies = allergies.slice(0, -1);
-              }
-              var avoidance = ""
-              if ($scope.AvoidNone) {
-                avoidance = "None";
-              } else {
-                for (var i = 0; i < $scope.foodavoidancecheckbox.length; i++) {
-                  if ($scope.foodavoidancecheckbox[i].checked) {
-                    avoidance = avoidance + $scope.foodavoidancecheckbox[i].name + ";";
-                  }
-                }
-                avoidance = avoidance.slice(0, -1);
-                $scope.recipeArray = result;
-
-                for (var i = 0; i < $scope.recipeArray.length; i++) {
-                  $scope.recipeArray[i].favIcon = "icon ion-ios-heart-outline";
-                  if (favService.isFav($scope.recipeArray[i]) >= 0) {
-                    $scope.recipeArray[i].favIcon = "icon ion-ios-heart";
-                  }
-                  else {
-                    $scope.recipeArray[i].favIcon = "icon ion-ios-heart-outline";
-                  }
-                }
-                var tempProfile = {
-                  "DietType": $scope.nutritionprofile.DietType.name,
-                  "MealFrequency": $scope.nutritionprofile.MealFrequency.Value,
-                  "SnackFrequency": $scope.nutritionprofile.SnackFrequency.Value,
-                  "foodallergy": allergies,
-                  "foodavoidance": avoidance
-
-                }
-                var item = NPService.get();
-                item.push(tempProfile);
-                console.log(item);
-              }
-            }
-          }])
         .controller('categoryCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
           // You can include any angular dependencies as parameters for this function
           // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -338,13 +310,6 @@ angular.module('app.controllers', ['firebase'])
 
           }])
 
-        .controller('recipeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controllerr
-          // You can include any angular dependencies as parameters for this function
-          // TIP: Access Route Parameters for your page via $stateParams.parameterName
-          function ($scope, $stateParams) {
-
-
-          }])
         .controller('MedicalConditionAssessmentPageCtrl', ['$scope', '$stateParams', 'NPService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
           function ($scope, $stateParams, NPService) {
 
@@ -661,9 +626,46 @@ angular.module('app.controllers', ['firebase'])
 
     }])
 
-  .controller('orderHistoryCtrl', ['$scope', '$stateParams', 'PaypalFactory',
-    function ($scope, $stateParams, PaypalFactory) {
+  .controller('orderHistoryCtrl', ['$scope', '$stateParams', 'memberService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, memberService, $ionicPopup) {
+      $scope.$on('$ionicView.enter', function (e) {
+        $scope.list()
+
+      });
+
+      $scope.list = function () {
+        memberService.all().then(function (item) {
+          console.log(item)
+          $scope.orderHistory = item
+        })
+      }
+
+      $scope.onDelete = function (data) {
+        var confirmPop = $ionicPopup.confirm({
+          title: 'Are you sure',
+          template: 'Do you want to delete?'
+        });
+        confirmPop.then(function (res) {
+          if (res) {
+            memberService.delete(data)
+          } else {
+
+          }
+        })
+        //memberService.delete(data)
+      }
+
+      $scope.onUpdate = function (data) {
+        console.log(data)
+        memberService.changeQuantity(data, data.quantity)
+      }
+      $scope.onChange = function () {
+        console.log('CHANGE')
+      }
     }])
+
 
   .controller('paymentCtrl', ['$scope', '$stateParams', 'PaypalFactory', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
@@ -910,3 +912,271 @@ angular.module('app.controllers', ['firebase'])
         })
       };
     }])
+
+  .controller('deliveryMethodCtrl', ['$scope', '$stateParams', '$state', 'recipeService', 'cartService', 'memberService', '$ionicPopup',
+
+    function ($scope, $stateParams, $state, recipeService, cartService, memberService, $ionicPopup) {
+      $scope.$on('$ionicView.enter', function (e) {
+        $scope.type.name = "Home Delivery"
+
+      });
+      $scope.type = {
+        name: ''
+      }
+
+      $scope.details = {
+        address: '',
+        zipCode: ''
+      }
+
+      $scope.self = {
+        tel: '',
+      }
+
+      $scope.testing = function () {
+        console.log("DETAILS", $scope.details)
+        var items = cartService.all()
+        console.log("ITEMS", items)
+        var myPopup = $ionicPopup.confirm({
+          title: 'Confirmation',
+          template: 'Are you sure?'
+        });
+
+        myPopup.then(function (res) {
+          if (res) {
+            for (var i = 0; i < items.length; i++) {
+              console.log(items[i])
+              /* format for home delivery
+                  id
+                  name
+                  image
+                  quantity
+                  status
+                  deliverymethod
+                  address*/
+              if ($scope.type.name === 'Home Delivery') {
+                if ($scope.details.zipCode === '' || $scope.details.address === '') {
+                  var alertPop = $ionicPopup.alert({
+                    title: 'Fill in the blanks',
+                    template: ''
+                  });
+                } else {
+                  memberService.addToOrderHistoryHome(
+                    items[i].name,
+                    items[i].image,
+                    items[i].id,
+                    items[i].portion,
+                    'pending',
+                    'Home Delivery',
+                    $scope.details.zipCode,
+                    $scope.details.address,
+                  )
+                  cartService.clearAll()
+                  $state.go('orderHistory')
+                }
+              } else {
+                console.log($scope.self.tel)
+                if ($scope.self.tel === '') {
+                  var alertPop = $ionicPopup.alert({
+                    title: 'Fill in the blanks',
+                    template: ''
+                  });
+                } else {
+                  memberService.addToOrderHistorySelf(
+                    items[i].name,
+                    items[i].image,
+                    items[i].id,
+                    items[i].portion,
+                    'pending',
+                    'Self Collection',
+                    $scope.self.tel,
+                  )
+                  cartService.clearAll()
+                  $state.go('orderHistory')
+                }
+              }
+            }
+          } else {
+            console.log('NO')
+          }
+        })
+      }
+    }
+  ])
+
+  //Alfred
+  .controller('adminRecipeCtrl', ['$scope', '$state', 'adminService', 'itemService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $state, adminService, itemService) {
+
+      adminService.all().then(function (result) {
+        $scope.recipeArray = result;
+      });
+      $scope.onclick = function (item) {
+        itemService.set(item.$id)
+      }
+
+      $scope.onupdate = function (item) {
+        itemService.set(item.$id);
+        $state.go('tabsController.updateRecipe');
+      }
+      $scope.delete = function (item) {
+
+        adminService.delete(item);
+      }
+
+
+    }])
+
+  .controller('createRecipeCtrl', ['$scope', '$stateParams', 'adminService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, adminService, $ionicPopup) {
+
+      $scope.recipe = {
+        name: null,
+        portion: null,
+        date: new Date(),
+        image: null,
+        availability: null,
+        difficulty: null,
+        type: null,
+        duration: null,
+        ingredient: null,
+        cookware: null,
+        calories: null,
+        carbohydrate: null,
+        protein: null,
+        fat: null
+      };
+
+      $scope.confirm = function (recipe) {
+
+        var confirmPopup = $ionicPopup.confirm({
+          title: 'Are you sure?',
+          template: "Name: " + recipe.name +
+            ", Portion: " + recipe.portion +
+            ", Date created: " + recipe.date +
+            ", Image: " + recipe.image +
+            ", Availability: " + recipe.availability +
+            ", Cooking difficulty: " + recipe.difficulty +
+            ", Cooking type: " + recipe.type +
+            ", Duration: "
+            + recipe.duration + ", Ingredient: "
+            + recipe.ingredient
+            + ", Cookware: "
+            + recipe.cookware
+            + ", Calories: "
+            + recipe.calories
+            + ", Carbohydrate: "
+            + recipe.carbohydrate
+            + ", Protein: "
+            + recipe.protein
+            + ", Fat: "
+            + recipe.fat
+        });
+
+        confirmPopup.then(function (res) {
+          if (res) {
+            adminService.add($scope.recipe.name,
+              $scope.recipe.portion,
+              $scope.recipe.date,
+              $scope.recipe.image,
+              $scope.recipe.availability,
+              $scope.recipe.difficulty,
+              $scope.recipe.type,
+              $scope.recipe.duration,
+              $scope.recipe.ingredient,
+              $scope.recipe.cookware,
+              $scope.recipe.calories,
+              $scope.recipe.carbohydrate,
+              $scope.recipe.protein,
+              $scope.recipe.fat
+            );
+          } else {
+            console.log('Cancelled!');
+          }
+        });
+
+      }
+
+      var itemlist = [];
+
+      $scope.addIngredient = function (item) {
+        itemlist.push(item);
+      }
+    }])
+
+  .controller('recipeDetailCtrl', ['$scope', '$stateParams', 'adminService', 'itemService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, adminService, itemService) {
+
+      adminService.all().then(function (data) {
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].$id == itemService.get()) {
+            $scope.itemDetails = data[i];
+            console.log(data[i]);
+          }
+        }
+      })
+    }])
+
+  .controller('updateRecipeCtrl', ['$scope', '$stateParams', 'adminService', 'itemService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $stateParams, adminService, itemService) {
+
+      adminService.all().then(function (data) {
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].$id == itemService.get()) {
+            $scope.itemDetails = data[i];
+            console.log(data[i]);
+          }
+        }
+      })
+
+    }])
+
+  .controller('changeAvailabilityCtrl', ['$scope', '$state', 'adminService', 'itemService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function ($scope, $state, adminService, itemService) {
+
+      adminService.all().then(function (result) {
+        $scope.recipeArray = result;
+      });
+      $scope.monday = function (item) {
+        adminService.updateAvailablilty(item, "Monday");
+        alert(item.name + "'s availability has been changed to: Monday")
+
+      }
+      $scope.tuesday = function (item) {
+        adminService.updateAvailablilty(item, "Tuesday");
+        alert(item.name + "'s availability has been changed to: Tuesday")
+
+      }
+      $scope.wednesday = function (item) {
+        adminService.updateAvailablilty(item, "Wednesday");
+        alert(item.name + "'s availability has been changed to: Wednesday")
+
+      }
+      $scope.notAvailable = function (item) {
+        adminService.updateAvailablilty(item, "Not Available");
+        alert(item.name + "'s availability has been changed to: Not Available")
+
+      }
+      $scope.thursday = function (item) {
+        adminService.updateAvailablilty(item, "Thursday");
+        alert(item.name + "'s availability has been changed to: Thursday")
+
+      }
+      $scope.friday = function (item) {
+        adminService.updateAvailablilty(item, "Friday");
+        alert(item.name + "'s availability has been changed to: Friday")
+
+      }
+
+    }])
+

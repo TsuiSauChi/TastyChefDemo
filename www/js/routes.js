@@ -176,20 +176,79 @@ angular.module('app.routes', [])
         templateUrl: 'templates/MedicalConditionAssessmentPage.html',
         controller: 'MedicalConditionAssessmentPageCtrl'
       })
+
       .state('NutritionalAsessmentConfirmationPage', {
         url: '/NutritionalAsessmentConfirmationPage',
         templateUrl: 'templates/NutritionalAsessmentConfirmationPage.html',
         controller: 'NutritionalAsessmentConfirmationPageCtrl'
       })
+
       .state('NutritionProfilePage', {
         url: '/NutritionProfilePage',
         templateUrl: 'templates/NutritionProfilePage.html',
         controller: 'NutritionProfilePageCtrl'
       })
+
       .state('UpdateNutritionProfilePage', {
         url: '/UpdateNutritionProfilePage',
         templateUrl: 'templates/UpdateNutritionProfilePage.html',
         controller: 'UpdateNutritionProfilePageCrtl'
+      })
+
+      .state('deliveryMethod', {
+        url: '/deliveryMethod',
+        templateUrl: 'templates/deliveryMethod.html',
+        controller: 'deliveryMethodCtrl'
+      })
+
+      .state('tabsController.adminRecipe', {
+        url: '/adminRecipe',
+        views: {
+          'tab1': {
+            templateUrl: 'templates/adminRecipe.html',
+            controller: 'adminRecipeCtrl'
+          }
+        }
+      })
+
+      .state('tabsController.createRecipe', {
+        url: '/createRecipe',
+        views: {
+          'tab2': {
+            templateUrl: 'templates/createRecipe.html',
+            controller: 'createRecipeCtrl'
+          }
+        }
+      })
+
+      .state('tabsController.recipeDetail', {
+        url: '/recipeDetail/:id',
+        views: {
+          'tab1': {
+            templateUrl: 'templates/recipeDetail.html',
+            controller: 'recipeDetailCtrl'
+          }
+        }
+      })
+
+      .state('tabsController.updateRecipe', {
+        url: '/updateRecipe',
+        views: {
+          'tab1': {
+            templateUrl: 'templates/updateRecipe.html',
+            controller: 'updateRecipeCtrl'
+          }
+        }
+      })
+
+      .state('tabsController.changeAvailability', {
+        url: '/changeAvailability',
+        views: {
+          'tab3': {
+            templateUrl: 'templates/changeAvailability.html',
+            controller: 'changeAvailabilityCtrl'
+          }
+        }
       })
 
 

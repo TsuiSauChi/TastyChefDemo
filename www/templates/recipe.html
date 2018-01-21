@@ -18,7 +18,7 @@
       <h3 class="homelabel">Top Recipe</h3>
       <ion-slides options=" {'loop': true}">
         <ion-slide-page class="slidepage" } ng-repeat="item in recipeArray">
-          <img class="cardimage" src="{{item.image}}" ui-sref="tabsController.recipeDetails({id:item.id})" style="width:100%; border-radius:15px;"
+          <img class="cardimage" src="{{item.image}}"  style="width:100%; border-radius:15px;" ui-sref="tabsController.recipeDetails({id:item.id})"
           />
           <h2 class="recipeName" style="text-align: center;color:white; border-radius:5px;">{{item.name}} </h2>
         </ion-slide-page>

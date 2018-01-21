@@ -1,0 +1,37 @@
+<ion-view title="Delivery Method" id="page3">
+  <ion-content padding="true" class="has-header">
+    <form name="myForm">
+      <h1>DELIVERY DETAILS</h1>
+
+      <span>Delivery Method</span>
+
+
+      <div>
+        <label>
+          <input type="radio" ng-model="type.name" value="Home Delivery"> Home Delivery
+        </label>
+        <label>
+          <input type="radio" ng-model="type.name" value="Self - Collection"> Self - Collection
+        </label>
+      </div>
+      <br>
+      <div ng-if="type.name==='Home Delivery'?true:false">
+        Please key in your preferred delivery address
+        <input type="text" style='background-Color:yellow' ng-model="details.address" ng-required="true" name="address" />
+        <h5 ng-if="!myForm.address.$valid">This required</h5>
+        Please key in your zip code
+        <input type="tel" style='background-Color:yellow' ng-model="details.zipCode" name="zip" maxlength="6" ng-required="true"
+        />
+        <h5 ng-if="!myForm.zip.$valid">This required</h5>
+      </div>
+
+      <div ng-if="type.name==='Self - Collection'?true:false">
+        Please key in your phone number
+        <input type="tel" style='background-Color:yellow' ng-model="self.tel" maxlength="8" />
+      </div>
+
+      <button ng-click="testing()" class="button button-clear button-block" style="background-color:red;color:white;">Check </button>
+
+    </form>
+  </ion-content>
+</ion-view>

@@ -1,4 +1,59 @@
 angular.module('firebaseService', ['firebase'])
+
+  .factory('cartService', ['$localStorage',
+
+    function ($localStorage) {
+      $storage = $localStorage.$default({
+        cart: []
+      });
+      return {
+        all: function () {
+          var result = [];
+          for (var i = 0; i < $storage.cart.length; i++) {
+            var item = JSON.parse($storage.cart[i]);
+            result.push(item);
+          }
+          return result;
+        },
+        isCart: function (item) {
+          for (var i = 0; i < $storage.cart.length; i++) {
+            var cartItem = JSON.parse($storage.cart[i]);
+            if (cartItem.id == item.id)
+              return i;
+          }
+          return -1;
+        },
+        add: function (item) {
+          if (this.isCart(item) < 0) {
+            $storage.cart.push(JSON.stringify(item));
+          }
+        },
+        remove: function (item) {
+          var index = this.isCart(item);
+          if (index >= 0)
+            $storage.cart.splice(index, 1);
+          return $storage.cart
+        },
+        getOne: function (item) {
+
+          for (var i = 0; i < $storage.cart.length; i++) {
+            var a = JSON.parse($storage.cart[i]);
+            if (a.id == item.id) {
+              a.portion = item.portion
+              console.log(a)
+              $storage.cart[i] = JSON.stringify(a)
+              return a;
+            }
+            //console.log('a')
+          }
+        },
+        clearAll: function () {
+          $storage.cart = []
+          return $storage.cart;
+        }
+      }
+    }])
+
   // ----------- HOME
   .factory('HomeService', ['$firebaseArray',
 
@@ -402,3 +457,180 @@ angular.module('firebaseService', ['firebase'])
         },
       }
     }])
+
+  .factory('memberService', ['$firebaseArray',
+
+    function ($firebaseArray) {
+
+      var config = {
+        apiKey: "AIzaSyDW5o-5259QI8DZ8I-IT0vKIFyB5P7ahRk",
+        authDomain: "tastychefdemo-20139.firebaseapp.com",
+        databaseURL: "https://tastychefdemo-20139.firebaseio.com",
+        projectId: "tastychefdemo-20139",
+        storageBucket: "tastychefdemo-20139.appspot.com",
+        messagingSenderId: "648974068968"
+      };
+
+      if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+      }
+
+      var ref = firebase.database().ref().child("history");
+
+      var historyArray = $firebaseArray(ref);
+
+      return {
+        add: function (rname, rimage, rportion, rdifficulty, rtype, rdate) {
+          // Transform Date to string
+          var recipeItem = {
+            ref: rname,
+            name: rname,
+            image: rimage,
+            portion: rportion,
+            difficulty: rdifficulty,
+            type: rtype,
+            date: rdate.toDateString()
+          };
+          recipeArray.$add(recipeItem);
+        },
+
+        addToOrderHistoryHome: function (name, image, id, quantity, status, deliverymethod, zipcode, address) {
+          var add = {
+            id: id,
+            name: name,
+            image: image,
+            quantity: quantity,
+            status: status,
+            deliverymethod: deliverymethod,
+            address: address,
+            zipcode: zipcode,
+          };
+          console.log('add', add)
+          historyArray.$add(add)
+
+        },
+        addToOrderHistorySelf: function (name, image, id, quantity, status, deliverymethod, telephone) {
+          var add = {
+            id: id,
+            name: name,
+            image: image,
+            quantity: quantity,
+            status: status,
+            deliverymethod: deliverymethod,
+            phoneNumber: telephone
+          };
+          console.log('add', add)
+          historyArray.$add(add)
+        },
+        all: function () {
+          return historyArray.$loaded().then(function () {
+            return historyArray;
+          });
+        },
+
+        get: function (itema) {
+          var item = recipeArray.$getRecord(itema);
+          return item;
+        },
+
+        getPending: function () {
+          var query = ref.orderByChild("status").equalTo("pending");
+          var pendingArray = $firebaseArray(query);
+          return pendingArray.$loaded().then(function () {
+            return pendingArray;
+          });
+        },
+
+        changeQuantity: function (item, newQuan) {
+          var item = historyArray.$getRecord(item.$id);
+          item.quantity = newQuan;
+          historyArray.$save(item)
+        },
+
+        changeStatus: function (item, newStatus) {
+          var item = recipeArray.$getRecord(item.$id);
+          item.status = newStatus;
+          recipeArray.$save(item);
+        },
+
+        delete: function (data) {
+
+          var item = historyArray.$getRecord(data.$id);
+          console.log(item)
+          historyArray.$remove(item);
+        },
+      }
+    }])
+
+  .factory('adminService', ['$firebaseArray',
+
+    function ($firebaseArray) {
+
+      var config = {
+        apiKey: "AIzaSyDW5o-5259QI8DZ8I-IT0vKIFyB5P7ahRk",
+        authDomain: "tastychefdemo-20139.firebaseapp.com",
+        databaseURL: "https://tastychefdemo-20139.firebaseio.com",
+        projectId: "tastychefdemo-20139",
+        storageBucket: "tastychefdemo-20139.appspot.com",
+        messagingSenderId: "648974068968"
+      };
+      if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+      }
+      var ref = firebase.database().ref().child("recipe");
+      var recipeArray = $firebaseArray(ref);
+
+      return {
+        //    add: function(name, portion, date, difficulty, type, image) {
+
+        add: function (name, portion, date, image, availability, difficulty, type, duration, ingredient, cookware, calories, carbohydrate, protein, fat) {
+          // Transform Date to string
+          var recipeItem = {
+            name: name,
+            portion: portion,
+            date: date.toDateString(),
+            image: image,
+            availability: availability,
+            difficulty: difficulty,
+            type: type,
+            duration: duration,
+            ingredient: ingredient,
+            cookware: cookware,
+            calories: calories,
+            carbohydrate: carbohydrate,
+            protein: protein,
+            fat: fat,
+            like: null
+          };
+          recipeArray.$add(recipeItem);
+        },
+        all: function () {
+          return recipeArray.$loaded().then(function () {
+            return recipeArray;
+          });
+        },
+        get: function (item) {
+          var item = recipeArray.$getRecord(item.$id);
+          return item;
+        },
+        getPending: function () {
+          var query = ref.orderByChild("status").equalTo("pending");
+          var pendingArray = $firebaseArray(query);
+          return pendingArray.$loaded().then(function () {
+            return pendingArray;
+          });
+        },
+        updateAvailablilty: function (item, newAvailability) {
+          var item = recipeArray.$getRecord(item.$id);
+          item.availability = newAvailability;
+          recipeArray.$save(item);
+        },
+        delete: function (item) {
+          var item = recipeArray.$getRecord(item.$id);
+          recipeArray.$remove(item);
+        },
+      }
+    }])
+
+
+
