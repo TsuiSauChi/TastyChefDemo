@@ -49,7 +49,7 @@ angular.module('app.routes', [])
       })
 
       .state('tabsController.recipeDetails', {
-        url: '/recipeDetails',
+        url: '/recipeDetails/:id',
         views: {
           'tab2': {
             templateUrl: 'templates/recipeDetails.html',
