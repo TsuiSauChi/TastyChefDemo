@@ -1,0 +1,90 @@
+{
+  "member" : {
+    "91061058" : {
+      "DateOfBirth" : "19/5/1998",
+      "EmailAddress" : "test123@gmail.com",
+      "Gender" : "Female",
+      "MobileNumber" : 91061058,
+      "Password" : "password",
+      "Username" : "Jamie"
+    },
+    "97601182" : {
+      "DateOfBirth" : "19/5/1998",
+      "EmailAddress" : "tsuisauchi.tsc@gmail.com",
+      "Gender" : "Male",
+      "MedicalConditionProfile" : [ null, {
+        "MedicalConditionName" : "Allergy",
+        "key" : "1"
+      }, {
+        "MedicalConditionName" : "None",
+        "key" : "2"
+      } ],
+      "MobileNumber" : 97601182,
+      "NurtitionProfie" : [ null, {
+        "Activeness" : "Active",
+        "BMI" : 16.7,
+        "BMR" : 25,
+        "CarbohydratesIntake" : 100,
+        "FatIntake" : 200,
+        "Height" : 169,
+        "MemberMobileNumber" : "97601182",
+        "NutritionProfileID" : "1",
+        "ProteinsInatke" : 150,
+        "Weight" : 60,
+        "WeightStatus" : "Average"
+      } ],
+      "OrderHistory" : [ null, {
+        "OrderHistoryID" : "1",
+        "OrderOrderID" : "100"
+      } ],
+      "Password" : "password",
+      "PaymentMethod" : {
+        "VISA" : {
+          "CardDetails" : [ null, {
+            "CardNumber" : "buyg7878sdyyd",
+            "ExpiryDetails" : "21/1/2022",
+            "PaymentMethodID" : "1"
+          } ],
+          "PaymentMethodID" : "1",
+          "PaymentType" : "VISA",
+          "PromotionType" : "None"
+        }
+      },
+      "Username" : "James Tsui",
+      "dietprofile" : [ null, {
+        "DietID" : "1",
+        "DietType" : "Vegetarian ",
+        "FoodAllergyProfile" : [ "Tartrazine", "Wheat" ],
+        "FoodAvoidanceProfile" : [ "Sugar", "Meat" ],
+        "MealFrequency" : 1,
+        "MemberMobileNumber" : 97601182,
+        "SnackFrequency" : 3
+      }, {
+        "DietID" : "2",
+        "DietType" : "Meat ",
+        "MealFrequency" : 2,
+        "MemberMobileNumber" : 97601182,
+        "SnackFrequency" : 3
+      } ]
+    }
+  },
+  "recipe" : {
+    "Herbed Chicken Marsala" : {
+      "date" : "Sat Jan 13 2018",
+      "difficulty" : "2",
+      "image" : "img/recipe/Herbed Chicken Marsala.jpeg",
+      "name" : "Herbed Chicken Marsala",
+      "portion" : "1",
+      "type" : "steam"
+    },
+      "Herbed Chicken Marsala" : {
+      "date" : "Sat Jan 13 2018",
+      "difficulty" : "2",
+      "image" : "img/recipe/Herbed Chicken Marsala.jpeg",
+      "name" : "Herbed Chicken Marsala",
+      "portion" : "1",
+      "type" : "steam"
+    }
+      
+  }
+}

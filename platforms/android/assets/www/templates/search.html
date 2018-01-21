@@ -1,0 +1,63 @@
+<ion-view title="Search"  hide-nav-bar="true">
+    <ion-content padding="false"> 
+
+      
+        <div style="background-color:#20B2AA; width:100%; height:100px; z-index: -1;">
+          <button class="button-clear" style="color: white; padding:3%; margin-left:90%;" ui-sref="tabsController.recipe()">X</button></div>
+        <form class="list ng-pristine ng-valid">
+            <label class="item item-input searchbar" style="border-radius: 50px;" >
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Search">
+            </label>
+        </form>
+        
+        <div class="categories">
+            <h4 class="hlabel">Meal</h4>
+            <ion-scroll direction="x" class="wide-as-needed">
+                <div style="margin-top:-3%;">
+                    <div class="button-bar">
+                        <button class="buttonbar button-block" ui-sref="nurition()"><img src="img/icon/main.png"><span>Main</span></button>
+                        <button class="buttonbar button-block" ui-sref="nurition()"><img src="img/ingredient/dumpling.png"><span>Appetizer</span></button>
+                        <button class="buttonbar button-block" ui-sref="payment()"><img src="img/ingredient/cake.png"><span>Dessert</span></button>
+                        <button class="buttonbar button-block"><img src="img/ingredient/soup.png"><span>Soup</span></button>
+                    </div>
+                </div>
+            </ion-scroll>
+
+            <h4 class="hlabel">Ingredient</h4>
+            <ion-scroll direction="x"  >
+                <div class="button-bar">
+                    <button class="buttonbar button-block" ui-sref="nurition()"><img src="img/ingredient/chicken.png"><span>Chicken</span></button>
+                    <button class="buttonbar button-block" ui-sref="nurition()"><img src="img/ingredient/fish.png"><span>Seafood</span></button>
+                    <button class="buttonbar button-block" ui-sref="payment()"><img src="img/ingredient/beef.png"><span>Beef</span></button>
+                    <button class="buttonbar button-block" ui-sref="nurition()"><img src="img/ingredient/noodles.png"><span>Noodles</span></button>
+                    <button class="buttonbar button-block" ui-sref="payment()"><img src="img/ingredient/rice.png"><span>Rice</span></button>
+                    <button class="buttonbar button-block"><img src="img/ingredient/salad.png"><span>Salad</span></button>
+                    <button class="buttonbar button-block"><img src="img/ingredient/pork.png"><span>Pork</span></button>
+                </div>
+            </ion-scroll>
+
+            <h4 class="hlabel">Type</h4>
+            <ion-scroll direction="x"  >
+                <div class="button-bar">
+                    <button class="buttonbar button-block" ui-sref="nurition()"><img src="img/icon/budget.png"><span>Budget</span></button>
+                    <button class="buttonbar button-block" ui-sref="payment()"><img src="img/icon/quick.png"><span>Quick</span></button>
+                    <button class="buttonbar button-block"><img src="img/ingredient/healthy.png"><span>Healthy</span></button>
+                    <button class="buttonbar button-block" ui-sref="payment()"><img src="img/icon/easy.png"><span>Easy</span></button>
+                    <button class="buttonbar button-block"><img src="img/icon/family.png"><span>Family</span></button>
+                </div>
+            </ion-scroll>
+            
+             <h4 class="hlabel">Cusine</h4>
+            <ion-scroll direction="x"  >
+                <div class="button-bar">
+                    <button class="buttonbar button-block" ui-sref="nurition()"><img src="img/ingredient/rice.png"><span>Chinese</span></button>
+                    <button class="buttonbar button-block" ui-sref="payment()"><img src="img/ingredient/burger.png"><span>Western</span></button>
+                    <button class="buttonbar button-block"><img src="img/ingredient/sushi.png"><span>Japanese</span></button>
+                    <button class="buttonbar button-block" ui-sref="payment()"><img src="img/ingredient/crossiant.png"><span>French</span></button>
+                    <button class="buttonbar button-block"><img src="img/ingredient/Spaghetti.png"><span>Italian</span></button>
+                </div>
+            </ion-scroll>
+        </div>
+    </ion-content>
+</ion-view>

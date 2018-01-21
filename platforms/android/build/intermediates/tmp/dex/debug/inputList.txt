@@ -1,0 +1,10 @@
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\classes\debug
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\ailib-d752242eed426e5f67a80d3c756f8c17ba3fd1d0.jar
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\okio-1.11.0-64c625cccbf41d64b2873df60a8f035641ee049f.jar
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\classes-b49ee675f540b0574d9ac2d09bdbc1d19b85d485.jar
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\gson-2.3-a70002a59f7e155c2672a656a01d1dc54cd00c4c.jar
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\classes-d748afe94473ffca40a9a69c029ef6463c41840f.jar
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\commons-io-2.4-9f6948716c3ae40508acc567786a362160328bc6.jar
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\okhttp-3.6.0-633361a0d1e13c6a9012635ff1f74386b93cfc4c.jar
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\android-support-v4-27a736199753bb3443bb7795c5b793e960c3b3ac.jar
+C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\classes-90b94345754eb9a33f1375d0508aef8bda4f549e.jar

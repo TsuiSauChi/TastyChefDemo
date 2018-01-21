@@ -1,0 +1,25 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "ai.api.apiaiplugin": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "com.paypal.cordova.mobilesdk": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    }
+  },
+  "dependent_plugins": {
+    "android.support.v4": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "card.io.cordova.mobilesdk": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    }
+  }
+}

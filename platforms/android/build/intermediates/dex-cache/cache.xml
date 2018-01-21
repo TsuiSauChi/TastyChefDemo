@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\libs\ailib.jar"
+        jumboMode="false"
+        revision="26.0.2"
+        sha1="903843f2ac8a1485811d533edc124f77e661f28a">
+        <dex dex="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\ailib-d752242eed426e5f67a80d3c756f8c17ba3fd1d0.jar" />
+    </item>
+    <item
+        jar="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\libs\gson-2.3.jar"
+        jumboMode="false"
+        revision="26.0.2"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\gson-2.3-a70002a59f7e155c2672a656a01d1dc54cd00c4c.jar" />
+    </item>
+    <item
+        jar="C:\Users\tsuis\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jumboMode="false"
+        revision="26.0.2"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\okio-1.11.0-64c625cccbf41d64b2873df60a8f035641ee049f.jar" />
+    </item>
+    <item
+        jar="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\libs\commons-io-2.4.jar"
+        jumboMode="false"
+        revision="26.0.2"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\commons-io-2.4-9f6948716c3ae40508acc567786a362160328bc6.jar" />
+    </item>
+    <item
+        jar="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\exploded-aar\io.card\android-sdk\5.4.0\classes.jar"
+        jumboMode="false"
+        revision="26.0.2"
+        sha1="f19e5ca63dd8a93c701b5586ffd1295d7e6e54f5">
+        <dex dex="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\classes-d748afe94473ffca40a9a69c029ef6463c41840f.jar" />
+    </item>
+    <item
+        jar="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\classes.jar"
+        jumboMode="false"
+        revision="26.0.2"
+        sha1="a463c331fa0f4468421e8f5263da9cf50c68d181">
+        <dex dex="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\classes-b49ee675f540b0574d9ac2d09bdbc1d19b85d485.jar" />
+    </item>
+    <item
+        jar="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\exploded-aar\com.paypal.sdk\paypal-android-sdk\2.15.3\classes.jar"
+        jumboMode="false"
+        revision="26.0.2"
+        sha1="09c5ca6c0b93b5841d4b953d90d269c8743a1572">
+        <dex dex="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\classes-90b94345754eb9a33f1375d0508aef8bda4f549e.jar" />
+    </item>
+    <item
+        jar="C:\Users\tsuis\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.6.0\69edde9fc4b01c9fd51d25b83428837478c27254\okhttp-3.6.0.jar"
+        jumboMode="false"
+        revision="26.0.2"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\okhttp-3.6.0-633361a0d1e13c6a9012635ff1f74386b93cfc4c.jar" />
+    </item>
+    <item
+        jar="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="26.0.2"
+        sha1="9b6a9a9078af571732159b904ad423b03b7cc786">
+        <dex dex="C:\Users\tsuis\Desktop\test123\TastyChefDemo\platforms\android\build\intermediates\pre-dexed\debug\android-support-v4-27a736199753bb3443bb7795c5b793e960c3b3ac.jar" />
+    </item>
+
+</items>
